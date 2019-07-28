@@ -1,0 +1,244 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>AWS &mdash; tech-note 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/custom.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> tech-note
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Cloud</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aws.html">AWS</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installing.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="long.html">Long Sticky Nav</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structure.html">Gatling</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">tech-note</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>AWS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/demo/aws copy.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="aws">
+<h1>AWS<a class="headerlink" href="#aws" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>自動化関連<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="rds">
+<h3>RDSログを取得<a class="headerlink" href="#rds" title="Permalink to this headline">¶</a></h3>
+<p>自動化をしたい場合にRDSログをAPI経由で取得したいケースがある。</p>
+<div class="section" id="aws-cli">
+<h4>1. AWS CLIを利用<a class="headerlink" href="#aws-cli" title="Permalink to this headline">¶</a></h4>
+<p>DB識別子(DBInstanceIdentifier)の一覧を取得</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">$aws</span> rds describe-db-instances  --region ap-northeast-1 <span class="p">|</span> jq <span class="s1">&#39;.DBInstances[].DBInstanceIdentifier&#39;</span>
+<span class="s2">&quot;database-test&quot;</span>
+</pre></div>
+</div>
+<p>特定のDBのログファイル名一覧を取得</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">$aws</span> rds describe-db-log-files --db-instance-identifier database-test --region ap-northeast-1
+<span class="o">{</span>
+<span class="s2">&quot;DescribeDBLogFiles&quot;</span>: <span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">&quot;LogFileName&quot;</span>: <span class="s2">&quot;error/postgres.log&quot;</span>,
+        <span class="s2">&quot;LastWritten&quot;</span>: <span class="m">1572672642000</span>,
+        <span class="s2">&quot;Size&quot;</span>: <span class="m">455</span>
+    <span class="o">}</span>
+...
+</pre></div>
+</div>
+<p>ログファイルを出力</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">$aws</span> rds download-db-log-file-portion --db-instance-identifier database-test --log-file-name <span class="s2">&quot;error/postgresql.log.2019-11-02-09&quot;</span>  --output text --region ap-northeast-1
+<span class="m">2019</span>-11-02 <span class="m">09</span>:02:45 UTC::@:<span class="o">[</span><span class="m">5385</span><span class="o">]</span>:LOG:  checkpoint starting: <span class="nb">time</span>
+<span class="m">2019</span>-11-02 <span class="m">09</span>:02:45 UTC::@:<span class="o">[</span><span class="m">5385</span><span class="o">]</span>:LOG:  checkpoint complete: wrote <span class="m">1</span> buffers <span class="o">(</span><span class="m">0</span>.0%<span class="o">)</span><span class="p">;</span> <span class="m">0</span> WAL file<span class="o">(</span>s<span class="o">)</span> added, <span class="m">0</span> removed, <span class="m">1</span> recycled<span class="p">;</span> <span class="nv">write</span><span class="o">=</span><span class="m">0</span>.101 s, <span class="nv">sync</span><span class="o">=</span><span class="m">0</span>.001 s, <span class="nv">total</span><span class="o">=</span><span class="m">0</span>.113 s<span class="p">;</span> sync <span class="nv">files</span><span class="o">=</span><span class="m">1</span>, <span class="nv">longest</span><span class="o">=</span><span class="m">0</span>.001 s, <span class="nv">average</span><span class="o">=</span><span class="m">0</span>.001 s<span class="p">;</span> <span class="nv">distance</span><span class="o">=</span><span class="m">65535</span> kB, <span class="nv">estimate</span><span class="o">=</span><span class="m">65536</span> kB
+...
+</pre></div>
+</div>
+<p>なお、上記コマンドではログファイルサイズが1MB以上はダウンロードすることができない。
+全てを取得したい場合、以下オプションで出来る。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">$aws</span> rds download-db-log-file-portion --db-instance-identifier database-test --log-file-name <span class="s2">&quot;error/postgresql.log.2019-11-02-09&quot;</span>  --output text --region ap-northeast-1 --cli-input-json <span class="s1">&#39;{ &quot;Marker&quot;: &quot;0&quot; }&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright ny1030
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

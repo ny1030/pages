@@ -1,0 +1,100 @@
+************
+TIPS
+************
+
+SQLパフォーマンスチューニング
+==============================================
+
+.. important::
+
+   PostgreSQLを用いて説明しています。
+
+Level 0 実行計画(Query Plan)の読み方
+---------------------------------------
+以下のようなSQLの実行計画を取得してみる。
+
+.. code:: postgresql
+
+    UPDATE
+          T_ITEM_INBOUND t3
+        SET
+          status_flag = '9'
+          , updated_datetime = CURRENT_TIMESTAMP
+          , updated_by = 'APP_001'
+        FROM
+          (
+            SELECT
+              t1.group_num
+              , t1.level3_item_code
+            FROM
+              T_ITEM_INBOUND t1
+            WHERE
+              t1.status_flag = '1'
+              AND t1.group_num = '10'
+              AND t1.level3_item_code = '1000-2000-3000'
+            GROUP BY
+              t1.group_num
+              , t1.level1_item_code
+              , t1.level2_item_code
+              , t1.level3_item_code
+              , t1.color_code
+              , t1.size_code
+              , t1.pattern_length_code
+            HAVING
+              1   <   COUNT(t1.group_num)
+          ) t2
+        WHERE
+          t3.status_flag = '1'
+          AND t3.group_num = t2.group_num
+          AND t3.level3_item_code = t2.level3_item_code
+          AND t3.brand_code = 'TK'
+          AND t3.region_code = 'JP'
+
+上記クエリの先頭に ``EXPLAIN ANALYZE`` というフレーズを付与→実行することで、以下のように実行計画が出力される。
+
+.. code:: postgresql-console
+
+
+    Update on T_ITEM_INBOUND t3  (cost=19152.43..40432.82 rows=1 width=299) (actual time=65.760..65.760 rows=0 loops=1)
+      ->  Hash Join  (cost=19152.43..40432.82 rows=1 width=299) (actual time=65.758..65.758 rows=0 loops=1)
+            Hash Cond: (((t3.group_num)::text = (t2.group_num)::text) AND (t3.level3_item_code = t2.level3_item_code))
+            ->  Seq Scan on T_ITEM_INBOUND t3  (cost=0.00..19152.36 rows=283735 width=150) (actual time=4.019..4.019 rows=1 loops=1)
+                  Filter: (((status_flag)::text = '1'::text) AND (brand_code = 'TK'::text) AND (region_code = 'JP'::text))
+                  Rows Removed by Filter: 11
+            ->  Hash  (cost=19152.42..19152.42 rows=1 width=62) (actual time=61.731..61.731 rows=0 loops=1)
+                  Buckets: 1024  Batches: 1  Memory Usage: 8kB
+                  ->  Subquery Scan on t2  (cost=19152.37..19152.42 rows=1 width=62) (actual time=61.730..61.730 rows=0 loops=1)
+                        ->  GroupAggregate  (cost=19152.37..19152.41 rows=1 width=55) (actual time=61.730..61.730 rows=0 loops=1)
+                              Group Key: t1.group_num, t1.level1_item_code, t1.level2_item_code, t1.level3_item_code, t1.color_code, t1.size_code, t1.pattern_length_code
+                              Filter: (1 < count(t1.group_num))
+                              Rows Removed by Filter: 1
+                              ->  Sort  (cost=19152.37..19152.38 rows=1 width=55) (actual time=61.724..61.724 rows=1 loops=1)
+                                    Sort Key: t1.level1_item_code, t1.level2_item_code, t1.color_code, t1.size_code, t1.pattern_length_code
+                                    Sort Method: quicksort  Memory: 25kB
+                                    ->  Seq Scan on T_ITEM_INBOUND t1  (cost=0.00..19152.36 rows=1 width=55) (actual time=21.804..61.714 rows=1 loops=1)
+                                          Filter: (((status_flag)::text = '1'::text) AND ((group_num)::text = '10'::text) AND (l3_item_code = '1000-2000-3000'::text))
+                                          Rows Removed by Filter: 283734
+
+全てを説明するのは長くなるので要点だけ。
+
+インデントは処理の順番を表す
+""""""""""""""""""""""""""""
+
+Level 1 Index利用による高速化
+-----------------------------
+
+Level 2 部分Indexの利用
+------------------------
+
+Command メモ
+================
+
+Git
+------------------------
+
+repositoryごとにアカウントを使い分ける
+"""""""""""""""""""""""""""""""""""""""""
+.. code:: bash
+
+    git config --local user.name "ny1030"
+    git config --local user.email "ny1030biz@gmail.com"
