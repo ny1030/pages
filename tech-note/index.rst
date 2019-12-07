@@ -6,6 +6,8 @@ TOP
     :maxdepth: 1
     :caption: Programming Language
 
+    demo/spring
+
 .. toctree::
     :maxdepth: 2
     :caption: OSS Software
