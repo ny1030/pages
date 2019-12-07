@@ -21,12 +21,3 @@ TOP
     :caption: Misc
 
     demo/misc
-
-
-.. toctree::
-    :maxdepth: 2
-    :caption: Guide
-
-    installing
-    demo/long
-    demo/structure
