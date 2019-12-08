@@ -1,15 +1,17 @@
 ************
-その他色々
+TIPS
 ************
 
-SQLチューニング
-================
+SQLパフォーマンスチューニング
+==============================================
 
-Level0. 実行計画(Query Plan)の読み方
+.. important::
+
+   PostgreSQLを用いて説明しています。
+
+Level 0 実行計画(Query Plan)の読み方
 ---------------------------------------
-#製品はPostgreSQLを例にしています
-
-以下のようなSQLの実行計画を取得する。
+以下のようなSQLの実行計画を取得してみる。
 
 .. code:: postgresql
 
@@ -52,6 +54,7 @@ Level0. 実行計画(Query Plan)の読み方
 
 .. code:: postgresql-console
 
+
     Update on T_ITEM_INBOUND t3  (cost=19152.43..40432.82 rows=1 width=299) (actual time=65.760..65.760 rows=0 loops=1)
       ->  Hash Join  (cost=19152.43..40432.82 rows=1 width=299) (actual time=65.758..65.758 rows=0 loops=1)
             Hash Cond: (((t3.group_num)::text = (t2.group_num)::text) AND (t3.level3_item_code = t2.level3_item_code))
@@ -72,33 +75,26 @@ Level0. 実行計画(Query Plan)の読み方
                                           Filter: (((status_flag)::text = '1'::text) AND ((group_num)::text = '10'::text) AND (l3_item_code = '1000-2000-3000'::text))
                                           Rows Removed by Filter: 283734
 
-Level1. Index利用による高速化
+全てを説明するのは長くなるので要点だけ。
+
+インデントは処理の順番を表す
+""""""""""""""""""""""""""""
+
+Level 1 Index利用による高速化
 -----------------------------
 
-
-Level2. 部分Indexの利用
+Level 2 部分Indexの利用
 ------------------------
-https://frit.rickcloud.jp/wiki/pages/viewpage.action?pageId=140326058
 
-1. AWS CLIを利用
-^^^^^^^^^^^^^^^^
-
-.. code:: bash
-
-    $aws rds describe-db-instances  --region ap-northeast-1 | jq '.DBInstances[].DBInstanceIdentifier'
-    "database-test"
-
-
-Command Memo
+Command メモ
 ================
 
 Git
 ------------------------
 
 repositoryごとにアカウントを使い分ける
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+"""""""""""""""""""""""""""""""""""""""""
 .. code:: bash
 
-    $ git config --local user.name "ny1030"
-    $ git config --local user.email "ny1030biz@gmail.com"
+    git config --local user.name "ny1030"
+    git config --local user.email "ny1030biz@gmail.com"

@@ -1,14 +1,14 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="jp" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="jp" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>その他色々 &mdash; tech-note 1.0.0 documentation</title>
+  <title>TIPS &mdash; tech-note 1.0.0 documentation</title>
   
 
   
@@ -38,7 +38,6 @@
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Installation" href="../installing.html" />
     <link rel="prev" title="AWS" href="aws.html" /> 
 </head>
 
@@ -87,23 +86,27 @@
               
             
             
-              <p class="caption"><span class="caption-text">Cloud</span></p>
+              <p class="caption"><span class="caption-text">Programming Language</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="spring.html">Spring</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Cloud</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="aws.html">AWS</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Misc</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">その他色々</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#sql">SQLチューニング</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#level0-query-plan">Level0. 実行計画(Query Plan)の読み方</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#level1-index">Level1. Index利用による高速化</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#level2-index">Level2. 部分Indexの利用</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#aws-cli">1. AWS CLIを利用</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">TIPS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sql">SQLパフォーマンスチューニング</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#level-0-query-plan">Level 0 実行計画(Query Plan)の読み方</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">インデントは処理の順番を表す</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#level-1-index">Level 1 Index利用による高速化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#level-2-index">Level 2 部分Indexの利用</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#command-memo">Command Memo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#command">Command メモ</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#git">Git</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#repository">repositoryごとにアカウントを使い分ける</a></li>
 </ul>
@@ -112,12 +115,6 @@
 </li>
 </ul>
 </li>
-</ul>
-<p class="caption"><span class="caption-text">Guide</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../installing.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="long.html">Long Sticky Nav</a></li>
-<li class="toctree-l1"><a class="reference internal" href="structure.html">Gatling</a></li>
 </ul>
 
             
@@ -163,7 +160,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>その他色々</li>
+      <li>TIPS</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -182,14 +179,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="id1">
-<h1>その他色々<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="tips">
+<h1>TIPS<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="sql">
-<h2>SQLチューニング<a class="headerlink" href="#sql" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="level0-query-plan">
-<h3>Level0. 実行計画(Query Plan)の読み方<a class="headerlink" href="#level0-query-plan" title="Permalink to this headline">¶</a></h3>
-<p>#製品はPostgreSQLを例にしています</p>
-<p>以下のようなSQLの実行計画を取得する。</p>
+<h2>SQLパフォーマンスチューニング<a class="headerlink" href="#sql" title="Permalink to this headline">¶</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>PostgreSQLを用いて説明しています。</p>
+</div>
+<div class="section" id="level-0-query-plan">
+<h3>Level 0 実行計画(Query Plan)の読み方<a class="headerlink" href="#level-0-query-plan" title="Permalink to this headline">¶</a></h3>
+<p>以下のようなSQLの実行計画を取得してみる。</p>
 <div class="highlight-postgresql notranslate"><div class="highlight"><pre><span></span><span class="k">UPDATE</span>
       <span class="n">T_ITEM_INBOUND</span> <span class="n">t3</span>
     <span class="k">SET</span>
@@ -248,30 +248,26 @@
                                       <span class="k">Rows</span> <span class="n">Removed</span> <span class="k">by</span> <span class="k">Filter</span><span class="p">:</span> <span class="mf">283734</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="level1-index">
-<h3>Level1. Index利用による高速化<a class="headerlink" href="#level1-index" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="level2-index">
-<h3>Level2. 部分Indexの利用<a class="headerlink" href="#level2-index" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://frit.rickcloud.jp/wiki/pages/viewpage.action?pageId=140326058">https://frit.rickcloud.jp/wiki/pages/viewpage.action?pageId=140326058</a></p>
-<div class="section" id="aws-cli">
-<h4>1. AWS CLIを利用<a class="headerlink" href="#aws-cli" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">$aws</span> rds describe-db-instances  --region ap-northeast-1 <span class="p">|</span> jq <span class="s1">&#39;.DBInstances[].DBInstanceIdentifier&#39;</span>
-<span class="s2">&quot;database-test&quot;</span>
-</pre></div>
+<p>全てを説明するのは長くなるので要点だけ。</p>
+<div class="section" id="id1">
+<h4>インデントは処理の順番を表す<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
 </div>
 </div>
+<div class="section" id="level-1-index">
+<h3>Level 1 Index利用による高速化<a class="headerlink" href="#level-1-index" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="level-2-index">
+<h3>Level 2 部分Indexの利用<a class="headerlink" href="#level-2-index" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
-<div class="section" id="command-memo">
-<h2>Command Memo<a class="headerlink" href="#command-memo" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="command">
+<h2>Command メモ<a class="headerlink" href="#command" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="git">
 <h3>Git<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="repository">
 <h4>repositoryごとにアカウントを使い分ける<a class="headerlink" href="#repository" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git config --local user.name <span class="s2">&quot;ny1030&quot;</span>
-$ git config --local user.email <span class="s2">&quot;ny1030biz@gmail.com&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git config --local user.name <span class="s2">&quot;ny1030&quot;</span>
+git config --local user.email <span class="s2">&quot;ny1030biz@gmail.com&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -286,8 +282,6 @@ $ git config --local user.email <span class="s2">&quot;ny1030biz@gmail.com&quot;
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../installing.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="aws.html" class="btn btn-neutral float-left" title="AWS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
