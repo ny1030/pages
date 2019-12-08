@@ -100,6 +100,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#sql">SQLパフォーマンスチューニング</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#level-0-query-plan">Level 0 実行計画(Query Plan)の読み方</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id1">インデントは処理の順番を表す</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">テーブルスキャンノード</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">結合系ノード</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">処理コスト</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#level-1-index">Level 1 Index利用による高速化</a></li>
@@ -190,6 +193,42 @@
 <div class="section" id="level-0-query-plan">
 <h3>Level 0 実行計画(Query Plan)の読み方<a class="headerlink" href="#level-0-query-plan" title="Permalink to this headline">¶</a></h3>
 <p>以下のようなSQLの実行計画を取得してみる。</p>
+<div class="highlight-postgresql notranslate"><div class="highlight"><pre><span></span><span class="k">UPDATE</span>
+      <span class="n">T_ITEM_INBOUND</span> <span class="n">t3</span>
+    <span class="k">SET</span>
+      <span class="n">status_flag</span> <span class="o">=</span> <span class="s1">&#39;9&#39;</span>
+      <span class="p">,</span> <span class="n">updated_datetime</span> <span class="o">=</span> <span class="k">CURRENT_TIMESTAMP</span>
+      <span class="p">,</span> <span class="n">updated_by</span> <span class="o">=</span> <span class="s1">&#39;APP_001&#39;</span>
+    <span class="k">FROM</span>
+      <span class="p">(</span>
+        <span class="k">SELECT</span>
+          <span class="n">t1</span><span class="mf">.</span><span class="n">group_num</span>
+          <span class="p">,</span> <span class="n">t1</span><span class="mf">.</span><span class="n">level3_item_code</span>
+        <span class="k">FROM</span>
+          <span class="n">T_ITEM_INBOUND</span> <span class="n">t1</span>
+        <span class="k">WHERE</span>
+          <span class="n">t1</span><span class="mf">.</span><span class="n">status_flag</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+          <span class="k">AND</span> <span class="n">t1</span><span class="mf">.</span><span class="n">group_num</span> <span class="o">=</span> <span class="s1">&#39;10&#39;</span>
+          <span class="k">AND</span> <span class="n">t1</span><span class="mf">.</span><span class="n">level3_item_code</span> <span class="o">=</span> <span class="s1">&#39;1000-2000-3000&#39;</span>
+        <span class="k">GROUP</span> <span class="k">BY</span>
+          <span class="n">t1</span><span class="mf">.</span><span class="n">group_num</span>
+          <span class="p">,</span> <span class="n">t1</span><span class="mf">.</span><span class="n">level1_item_code</span>
+          <span class="p">,</span> <span class="n">t1</span><span class="mf">.</span><span class="n">level2_item_code</span>
+          <span class="p">,</span> <span class="n">t1</span><span class="mf">.</span><span class="n">level3_item_code</span>
+          <span class="p">,</span> <span class="n">t1</span><span class="mf">.</span><span class="n">color_code</span>
+          <span class="p">,</span> <span class="n">t1</span><span class="mf">.</span><span class="n">size_code</span>
+          <span class="p">,</span> <span class="n">t1</span><span class="mf">.</span><span class="n">pattern_length_code</span>
+        <span class="k">HAVING</span>
+          <span class="mf">1</span>   <span class="o">&lt;</span>   <span class="n">COUNT</span><span class="p">(</span><span class="n">t1</span><span class="mf">.</span><span class="n">group_num</span><span class="p">)</span>
+      <span class="p">)</span> <span class="n">t2</span>
+    <span class="k">WHERE</span>
+      <span class="n">t3</span><span class="mf">.</span><span class="n">status_flag</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+      <span class="k">AND</span> <span class="n">t3</span><span class="mf">.</span><span class="n">group_num</span> <span class="o">=</span> <span class="n">t2</span><span class="mf">.</span><span class="n">group_num</span>
+      <span class="k">AND</span> <span class="n">t3</span><span class="mf">.</span><span class="n">level3_item_code</span> <span class="o">=</span> <span class="n">t2</span><span class="mf">.</span><span class="n">level3_item_code</span>
+      <span class="k">AND</span> <span class="n">t3</span><span class="mf">.</span><span class="n">brand_code</span> <span class="o">=</span> <span class="s1">&#39;TK&#39;</span>
+      <span class="k">AND</span> <span class="n">t3</span><span class="mf">.</span><span class="n">region_code</span> <span class="o">=</span> <span class="s1">&#39;JP&#39;</span>
+</pre></div>
+</div>
 <p>上記クエリの先頭に <code class="docutils literal notranslate"><span class="pre">EXPLAIN</span> <span class="pre">ANALYZE</span></code> というフレーズを付与→実行することで、以下のように実行計画が出力される。</p>
 <div class="highlight-postgresql-console notranslate"><div class="highlight"><pre><span></span><span class="k">Update</span> <span class="k">on</span> <span class="n">T_ITEM_INBOUND</span> <span class="n">t3</span>  <span class="p">(</span><span class="k">cost</span><span class="o">=</span><span class="mf">19152.43..40432.82</span> <span class="k">rows</span><span class="o">=</span><span class="mf">1</span> <span class="n">width</span><span class="o">=</span><span class="mf">299</span><span class="p">)</span> <span class="p">(</span><span class="n">actual</span> <span class="nb">time</span><span class="o">=</span><span class="mf">65.760..65.760</span> <span class="k">rows</span><span class="o">=</span><span class="mf">0</span> <span class="n">loops</span><span class="o">=</span><span class="mf">1</span><span class="p">)</span>
   <span class="o">-&gt;</span>  <span class="n">Hash</span> <span class="k">Join</span>  <span class="p">(</span><span class="k">cost</span><span class="o">=</span><span class="mf">19152.43..40432.82</span> <span class="k">rows</span><span class="o">=</span><span class="mf">1</span> <span class="n">width</span><span class="o">=</span><span class="mf">299</span><span class="p">)</span> <span class="p">(</span><span class="n">actual</span> <span class="nb">time</span><span class="o">=</span><span class="mf">65.758..65.758</span> <span class="k">rows</span><span class="o">=</span><span class="mf">0</span> <span class="n">loops</span><span class="o">=</span><span class="mf">1</span><span class="p">)</span>
@@ -215,6 +254,47 @@
 <p>全てを説明するのは長くなるので要点だけ。</p>
 <div class="section" id="id1">
 <h4>インデントは処理の順番を表す<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic simple">
+<li><p>処理を行う単位（=実行計画の各レコード）ノードと呼ぶ。</p></li>
+<li><p>ノードはツリー構造で表現される。最下層のノード（=リーフノード）は必ずテーブルスキャンノードとなる。</p></li>
+<li><p>最下層（=インデントが深い）のノードから順に実行される。</p></li>
+<li><p>最下層ノードの親は結合ノードでさらにその親はその他のノードになっている。</p></li>
+</ol>
+</div>
+<div class="section" id="id2">
+<h4>テーブルスキャンノード<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>テーブルからデータを取り出す役割。代表的なスキャン方法は以下の通り。</p>
+<ol class="arabic simple">
+<li><p>Seq Scan: テーブル全体を順番にスキャンする</p></li>
+<li><p>Index Scan: テーブルに付与されているインデックスのみをスキャンし、実テーブルはスキャンしない</p></li>
+</ol>
+<p>今回の例では <code class="docutils literal notranslate"><span class="pre">Seq</span> <span class="pre">Scan</span></code> が使われいている。</p>
+</div>
+<div class="section" id="id3">
+<h4>結合系ノード<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p>複数のテーブルを結合する役割のノードです。代表的な結合方法は以下の通り。</p>
+<ol class="arabic simple">
+<li><p>Nested Loop: 外側テーブルの行毎に内側テーブルのすべての行を突き合わせ結合する</p></li>
+<li><p>Hash Join: 内側テーブルの結合キーでハッシュを作成し、ハッシュと外側テーブルの結合キーで一致する行を結合する</p></li>
+</ol>
+</div>
+<div class="section" id="id4">
+<h4>処理コスト<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<p>実行計画の各ノードには、始動コストと総コスト、行数と行の長さが記載されている。</p>
+<ul class="simple">
+<li><p>始動コスト: 一件目のデータを返すのにかかる想定のコストを表す( <code class="docutils literal notranslate"><span class="pre">..</span></code> の前)</p></li>
+<li><p>総コスト: 処理完了までにかかる想定のコストを表す( <code class="docutils literal notranslate"><span class="pre">..</span></code> の後)</p></li>
+<li><p>行数： ノード実行によって返却される行数を表す( <code class="docutils literal notranslate"><span class="pre">rows</span></code> )</p></li>
+<li><p>行の長さ： ノードの実行によって返却される行の平均の長さを表す( <code class="docutils literal notranslate"><span class="pre">width</span></code> )</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EXPLAIN</span></code> のみをつけて実行計画を取得すると、プランナによって見積もられたコストとなる。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EXPLAIN</span> <span class="pre">ANALYZE</span></code> をつけて実行計画を取得すると、実際に実行して得られた結果となる。( <cite>actual</cite> 以降の情報がそれ)</p></li>
+<li><p>なので、 <code class="docutils literal notranslate"><span class="pre">cost</span></code> と <code class="docutils literal notranslate"><span class="pre">actual</span></code> の <code class="docutils literal notranslate"><span class="pre">rows</span></code> が大きくずれている場合は統計情報が古い可能性がある。</p></li>
+</ul>
+</div>
 </div>
 </div>
 <div class="section" id="level-1-index">
