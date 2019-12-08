@@ -190,6 +190,42 @@
 <div class="section" id="level-0-query-plan">
 <h3>Level 0 実行計画(Query Plan)の読み方<a class="headerlink" href="#level-0-query-plan" title="Permalink to this headline">¶</a></h3>
 <p>以下のようなSQLの実行計画を取得してみる。</p>
+<div class="highlight-postgresql notranslate"><div class="highlight"><pre><span></span><span class="k">UPDATE</span>
+      <span class="n">T_ITEM_INBOUND</span> <span class="n">t3</span>
+    <span class="k">SET</span>
+      <span class="n">status_flag</span> <span class="o">=</span> <span class="s1">&#39;9&#39;</span>
+      <span class="p">,</span> <span class="n">updated_datetime</span> <span class="o">=</span> <span class="k">CURRENT_TIMESTAMP</span>
+      <span class="p">,</span> <span class="n">updated_by</span> <span class="o">=</span> <span class="s1">&#39;APP_001&#39;</span>
+    <span class="k">FROM</span>
+      <span class="p">(</span>
+        <span class="k">SELECT</span>
+          <span class="n">t1</span><span class="mf">.</span><span class="n">group_num</span>
+          <span class="p">,</span> <span class="n">t1</span><span class="mf">.</span><span class="n">level3_item_code</span>
+        <span class="k">FROM</span>
+          <span class="n">T_ITEM_INBOUND</span> <span class="n">t1</span>
+        <span class="k">WHERE</span>
+          <span class="n">t1</span><span class="mf">.</span><span class="n">status_flag</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+          <span class="k">AND</span> <span class="n">t1</span><span class="mf">.</span><span class="n">group_num</span> <span class="o">=</span> <span class="s1">&#39;10&#39;</span>
+          <span class="k">AND</span> <span class="n">t1</span><span class="mf">.</span><span class="n">level3_item_code</span> <span class="o">=</span> <span class="s1">&#39;1000-2000-3000&#39;</span>
+        <span class="k">GROUP</span> <span class="k">BY</span>
+          <span class="n">t1</span><span class="mf">.</span><span class="n">group_num</span>
+          <span class="p">,</span> <span class="n">t1</span><span class="mf">.</span><span class="n">level1_item_code</span>
+          <span class="p">,</span> <span class="n">t1</span><span class="mf">.</span><span class="n">level2_item_code</span>
+          <span class="p">,</span> <span class="n">t1</span><span class="mf">.</span><span class="n">level3_item_code</span>
+          <span class="p">,</span> <span class="n">t1</span><span class="mf">.</span><span class="n">color_code</span>
+          <span class="p">,</span> <span class="n">t1</span><span class="mf">.</span><span class="n">size_code</span>
+          <span class="p">,</span> <span class="n">t1</span><span class="mf">.</span><span class="n">pattern_length_code</span>
+        <span class="k">HAVING</span>
+          <span class="mf">1</span>   <span class="o">&lt;</span>   <span class="n">COUNT</span><span class="p">(</span><span class="n">t1</span><span class="mf">.</span><span class="n">group_num</span><span class="p">)</span>
+      <span class="p">)</span> <span class="n">t2</span>
+    <span class="k">WHERE</span>
+      <span class="n">t3</span><span class="mf">.</span><span class="n">status_flag</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+      <span class="k">AND</span> <span class="n">t3</span><span class="mf">.</span><span class="n">group_num</span> <span class="o">=</span> <span class="n">t2</span><span class="mf">.</span><span class="n">group_num</span>
+      <span class="k">AND</span> <span class="n">t3</span><span class="mf">.</span><span class="n">level3_item_code</span> <span class="o">=</span> <span class="n">t2</span><span class="mf">.</span><span class="n">level3_item_code</span>
+      <span class="k">AND</span> <span class="n">t3</span><span class="mf">.</span><span class="n">brand_code</span> <span class="o">=</span> <span class="s1">&#39;TK&#39;</span>
+      <span class="k">AND</span> <span class="n">t3</span><span class="mf">.</span><span class="n">region_code</span> <span class="o">=</span> <span class="s1">&#39;JP&#39;</span>
+</pre></div>
+</div>
 <p>上記クエリの先頭に <code class="docutils literal notranslate"><span class="pre">EXPLAIN</span> <span class="pre">ANALYZE</span></code> というフレーズを付与→実行することで、以下のように実行計画が出力される。</p>
 <div class="highlight-postgresql-console notranslate"><div class="highlight"><pre><span></span><span class="k">Update</span> <span class="k">on</span> <span class="n">T_ITEM_INBOUND</span> <span class="n">t3</span>  <span class="p">(</span><span class="k">cost</span><span class="o">=</span><span class="mf">19152.43..40432.82</span> <span class="k">rows</span><span class="o">=</span><span class="mf">1</span> <span class="n">width</span><span class="o">=</span><span class="mf">299</span><span class="p">)</span> <span class="p">(</span><span class="n">actual</span> <span class="nb">time</span><span class="o">=</span><span class="mf">65.760..65.760</span> <span class="k">rows</span><span class="o">=</span><span class="mf">0</span> <span class="n">loops</span><span class="o">=</span><span class="mf">1</span><span class="p">)</span>
   <span class="o">-&gt;</span>  <span class="n">Hash</span> <span class="k">Join</span>  <span class="p">(</span><span class="k">cost</span><span class="o">=</span><span class="mf">19152.43..40432.82</span> <span class="k">rows</span><span class="o">=</span><span class="mf">1</span> <span class="n">width</span><span class="o">=</span><span class="mf">299</span><span class="p">)</span> <span class="p">(</span><span class="n">actual</span> <span class="nb">time</span><span class="o">=</span><span class="mf">65.758..65.758</span> <span class="k">rows</span><span class="o">=</span><span class="mf">0</span> <span class="n">loops</span><span class="o">=</span><span class="mf">1</span><span class="p">)</span>
