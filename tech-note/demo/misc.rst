@@ -14,7 +14,6 @@ Level 0 実行計画(Query Plan)の読み方
 以下のようなSQLの実行計画を取得してみる。
 
 .. code:: postgresql
-    :linenos:
 
     UPDATE
           T_ITEM_INBOUND t3
