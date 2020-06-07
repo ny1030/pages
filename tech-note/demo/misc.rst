@@ -123,12 +123,4 @@ Level 2 部分Indexの利用
 Command メモ
 ================
 
-Git
-------------------------
-
-repositoryごとにアカウントを使い分ける
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. code:: bash
-
-    git config --local user.name "ny1030"
-    git config --local user.email "ny1030biz@gmail.com"
+ここではなくgistに記載：https://gist.github.com/ny1030

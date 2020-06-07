@@ -9,11 +9,13 @@ pip install sphinxcontrib-httpdomain
 ```
 
 ## how to build
+- tech-note/で以下を実行
 ```
 make clean html
 ```
 
 ## how to release
+- tech-note/で以下を実行
 ```
 cp -rp ./build/html/* ../docs/
 ```
