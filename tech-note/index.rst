@@ -20,6 +20,12 @@ TOP
 
 .. toctree::
     :maxdepth: 2
+    :caption: Question and Answer
+
+    demo/faq
+
+.. toctree::
+    :maxdepth: 2
     :caption: Misc
 
     demo/misc
