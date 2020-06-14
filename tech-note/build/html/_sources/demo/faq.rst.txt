@@ -1,5 +1,5 @@
 ************
-AWS
+Question and Answer
 ************
 
 Introduce Yourself
@@ -14,7 +14,7 @@ At that time I was playing baseball at a team of the city.
 I was injured at the time. But the injury was completely recoverd now.
 
 From high school, it was highly relating to my career.
-The high school is composed by industrial department such as machinery, robotics, avionics, infomation.
+The high school is composed by industrial department such as machinery, robotics, avionics, and infomation.
 We choose one department when admitting.
 I choosed information technology department and learned about programming language, computer archtecture, and Linux etc..
 
