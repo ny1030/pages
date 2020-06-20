@@ -24,13 +24,17 @@ C社では現在Amazon Aurora MySQLデータベースによるデータ運用を
 
 Your mission, should you choose to accept it...
 
-.. admonition:: toggle
+.. container:: toggle
 
-    To save the world with only seconds to spare do the following:
+    .. container:: header
 
-    .. code-block:: python
+        **Show/Hide Code**
 
-        from plone import api
+    .. code-block:: xml
+       :linenos:
+
+       from plone import api
+       ...
 
 ３が正解。
 
