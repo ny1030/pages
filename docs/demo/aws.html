@@ -200,19 +200,20 @@
 </ol>
 <p>解説：</p>
 <div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>Show/Hide Code</strong></p>
 </div>
-<p>３が正解。
-AuroraはソースDBクラスターとは異なるリージョンにリードレプリカを作成することができます。 この方法を採用すると、障害回復機能を向上させ、読み取り操作をユーザーに近いリージョンに拡張しつつ、あるリージョンから別のリージョンへの移行を容易にすることができます。Amazon Aurora MySQL DB クラスターを、ソース DB クラスターとは異なる AWS リージョンにリードレプリカとして作成できます。このアプローチを使用すると、災害対策機能が向上し、ユーザーに近い AWS リージョンへの読み取りオペレーションをスケールして、AWS リージョン間の移行を容易にすることができる。</p>
-<p>オプション１:マルチAZの対応だから、リージョン障害には対応できない。</p>
-<p>オプション２：１〜２分の停止でフェイルオーバできるがオプション１に劣るし、そもそもリージョン障害に対応できない。</p>
-<p>オプション４：スナップショットを作成して別リージョンで回復させることも可能だが、時間を要する。（他の案よりはマシ）</p>
-<blockquote>
-<div><div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>from plone import api
 ...
 </pre></div>
 </td></tr></table></div>
-</div></blockquote>
+</div>
+<p>３が正解。</p>
+<p>AuroraはソースDBクラスターとは異なるリージョンにリードレプリカを作成することができます。 この方法を採用すると、障害回復機能を向上させ、読み取り操作をユーザーに近いリージョンに拡張しつつ、あるリージョンから別のリージョンへの移行を容易にすることができます。Amazon Aurora MySQL DB クラスターを、ソース DB クラスターとは異なる AWS リージョンにリードレプリカとして作成できます。このアプローチを使用すると、災害対策機能が向上し、ユーザーに近い AWS リージョンへの読み取りオペレーションをスケールして、AWS リージョン間の移行を容易にすることができる。</p>
+<p>オプション１:マルチAZの対応だから、リージョン障害には対応できない。</p>
+<p>オプション２：１〜２分の停止でフェイルオーバできるがオプション１に劣るし、そもそもリージョン障害に対応できない。</p>
+<p>オプション４：スナップショットを作成して別リージョンで回復させることも可能だが、時間を要する。（他の案よりはマシ）</p>
 </div>
 </div>
 </div>
