@@ -23,24 +23,17 @@ C社では現在Amazon Aurora MySQLデータベースによるデータ運用を
 解説：
 
 .. toggle-header::
-    :header: Example 1 **Show/Hide Code**
+    :header: 解説 **Show/Hide**
 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-    culpa qui officia deserunt mollit anim id est laborum
+    ３が正解。
 
-３が正解。
+    AuroraはソースDBクラスターとは異なるリージョンにリードレプリカを作成することができます。 この方法を採用すると、障害回復機能を向上させ、読み取り操作をユーザーに近いリージョンに拡張しつつ、あるリージョンから別のリージョンへの移行を容易にすることができます。Amazon Aurora MySQL DB クラスターを、ソース DB クラスターとは異なる AWS リージョンにリードレプリカとして作成できます。このアプローチを使用すると、災害対策機能が向上し、ユーザーに近い AWS リージョンへの読み取りオペレーションをスケールして、AWS リージョン間の移行を容易にすることができる。
 
-AuroraはソースDBクラスターとは異なるリージョンにリードレプリカを作成することができます。 この方法を採用すると、障害回復機能を向上させ、読み取り操作をユーザーに近いリージョンに拡張しつつ、あるリージョンから別のリージョンへの移行を容易にすることができます。Amazon Aurora MySQL DB クラスターを、ソース DB クラスターとは異なる AWS リージョンにリードレプリカとして作成できます。このアプローチを使用すると、災害対策機能が向上し、ユーザーに近い AWS リージョンへの読み取りオペレーションをスケールして、AWS リージョン間の移行を容易にすることができる。
+    オプション１:マルチAZの対応だから、リージョン障害には対応できない。
 
-オプション１:マルチAZの対応だから、リージョン障害には対応できない。
+    オプション２：１〜２分の停止でフェイルオーバできるがオプション１に劣るし、そもそもリージョン障害に対応できない。
 
-オプション２：１〜２分の停止でフェイルオーバできるがオプション１に劣るし、そもそもリージョン障害に対応できない。
-
-オプション４：スナップショットを作成して別リージョンで回復させることも可能だが、時間を要する。（他の案よりはマシ）
+    オプション４：スナップショットを作成して別リージョンで回復させることも可能だが、時間を要する。（他の案よりはマシ）
 
 ----------
 
