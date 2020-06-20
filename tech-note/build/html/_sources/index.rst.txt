@@ -20,6 +20,12 @@ TOP
 
 .. toctree::
     :maxdepth: 2
+    :caption: My Tool/App
+
+    demo/tool
+
+.. toctree::
+    :maxdepth: 2
     :caption: Question and Answer
 
     demo/faq

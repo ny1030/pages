@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Question and Answer &mdash; tech-note 1.0.0 documentation</title>
+  <title>My Tool/App &mdash; tech-note 1.0.0 documentation</title>
   
 
   
@@ -41,8 +41,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="TIPS" href="misc.html" />
-    <link rel="prev" title="My Tool/App" href="tool.html" /> 
+    <link rel="next" title="Question and Answer" href="faq.html" />
+    <link rel="prev" title="AWS" href="aws.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -100,15 +100,15 @@
 <li class="toctree-l1"><a class="reference internal" href="aws.html">AWS</a></li>
 </ul>
 <p class="caption"><span class="caption-text">My Tool/App</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="tool.html">My Tool/App</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Question and Answer</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Question and Answer</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#introduce-yourself">Introduce Yourself</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">My Tool/App</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ocr-using-google-drive">OCR using Google Drive</a></li>
 </ul>
 </li>
+</ul>
+<p class="caption"><span class="caption-text">Question and Answer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Question and Answer</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Misc</span></p>
 <ul>
@@ -159,13 +159,13 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Question and Answer</li>
+      <li>My Tool/App</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/demo/faq.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/demo/tool.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -178,23 +178,74 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="question-and-answer">
-<h1>Question and Answer<a class="headerlink" href="#question-and-answer" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="introduce-yourself">
-<h2>Introduce Yourself<a class="headerlink" href="#introduce-yourself" title="Permalink to this headline">¶</a></h2>
-<p>First, I will talk about my background what I did from now.
-I was born at Kawasaki city of Kanagawa Prefecture in Japan.
-I lived there until 6 years old.</p>
-<p>Then we moved Tokyo due to my parents' circumstances.
-I was attending elementary school and junior high school that located a city I am living.
-At that time I was playing baseball at a team of the city.
-I was injured at the time. But the injury was completely recoverd now.</p>
-<p>From high school, it was highly relating to my career.
-The high school is composed by industrial department such as machinery, robotics, avionics, and infomation.
-We choose one department when admitting.
-I choosed information technology department and learned about programming language, computer archtecture, and Linux etc..</p>
-<p>I went on to university and learned more about information engineering.
-And now I work on software company.</p>
+  <div class="section" id="my-tool-app">
+<h1>My Tool/App<a class="headerlink" href="#my-tool-app" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="ocr-using-google-drive">
+<h2>OCR using Google Drive<a class="headerlink" href="#ocr-using-google-drive" title="Permalink to this headline">¶</a></h2>
+<p>ref: <a class="reference external" href="https://developers.google.com/drive/api/v3/quickstart/python">https://developers.google.com/drive/api/v3/quickstart/python</a></p>
+<p>from __future__ import print_function
+import pickle
+import os.path
+from googleapiclient.discovery import build
+from google_auth_oauthlib.flow import InstalledAppFlow
+from google.auth.transport.requests import Request</p>
+<p># If modifying these scopes, delete the file token.pickle.
+SCOPES = ['<a class="reference external" href="https://www.googleapis.com/auth/drive.metadata.readonly">https://www.googleapis.com/auth/drive.metadata.readonly</a>']</p>
+<dl>
+<dt>def main():</dt><dd><p>&quot;&quot;&quot;Shows basic usage of the Drive v3 API.
+Prints the names and ids of the first 10 files the user has access to.
+&quot;&quot;&quot;
+creds = None
+# The file token.pickle stores the user's access and refresh tokens, and is
+# created automatically when the authorization flow completes for the first
+# time.
+if os.path.exists('token.pickle'):</p>
+<blockquote>
+<div><dl class="simple">
+<dt>with open('token.pickle', 'rb') as token:</dt><dd><p>creds = pickle.load(token)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p># If there are no (valid) credentials available, let the user log in.
+if not creds or not creds.valid:</p>
+<blockquote>
+<div><dl>
+<dt>if creds and creds.expired and creds.refresh_token:</dt><dd><p>creds.refresh(Request())</p>
+</dd>
+<dt>else:</dt><dd><dl class="simple">
+<dt>flow = InstalledAppFlow.from_client_secrets_file(</dt><dd><p>'credentials.json', SCOPES)</p>
+</dd>
+</dl>
+<p>creds = flow.run_local_server(port=0)</p>
+</dd>
+</dl>
+<p># Save the credentials for the next run
+with open('token.pickle', 'wb') as token:</p>
+<blockquote>
+<div><p>pickle.dump(creds, token)</p>
+</div></blockquote>
+</div></blockquote>
+<p>service = build('drive', 'v3', credentials=creds)</p>
+<p># Call the Drive v3 API
+results = service.files().list(</p>
+<blockquote>
+<div><p>pageSize=10, fields=&quot;nextPageToken, files(id, name)&quot;).execute()</p>
+</div></blockquote>
+<p>items = results.get('files', [])</p>
+<dl>
+<dt>if not items:</dt><dd><p>print('No files found.')</p>
+</dd>
+<dt>else:</dt><dd><p>print('Files:')
+for item in items:</p>
+<blockquote>
+<div><p>print(u'{0} ({1})'.format(item['name'], item['id']))</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd>
+<dt>if __name__ == '__main__':</dt><dd><p>main()</p>
+</dd>
+</dl>
 </div>
 </div>
 
@@ -206,10 +257,10 @@ And now I work on software company.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="misc.html" class="btn btn-neutral float-right" title="TIPS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="faq.html" class="btn btn-neutral float-right" title="Question and Answer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="tool.html" class="btn btn-neutral float-left" title="My Tool/App" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="aws.html" class="btn btn-neutral float-left" title="AWS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
