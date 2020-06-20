@@ -24,8 +24,7 @@ C社では現在Amazon Aurora MySQLデータベースによるデータ運用を
 
 Your mission, should you choose to accept it...
 
-.. admonition:: Solution
-    :class: toggle
+.. admonition:: toggle
 
     To save the world with only seconds to spare do the following:
 
