@@ -20,10 +20,8 @@ C社では現在Amazon Aurora MySQLデータベースによるデータ運用を
 #. Auroraデータベースのリードレプリカを作成する。
 #. Auroraデータベースのスナップショットを作成する。
 
-解説：
-
 .. toggle-header::
-    :header: 解説 **Show/Hide**
+    :header: **解説**
 
     ３が正解。
 
