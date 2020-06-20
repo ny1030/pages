@@ -29,10 +29,7 @@ C社では現在Amazon Aurora MySQLデータベースによるデータ運用を
         **Show/Hide Code**
 
     .. code-block:: xml
-       :linenos:
-
-       from plone import api
-       ...
+       aaaaaaa
 
 ３が正解。
 
