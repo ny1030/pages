@@ -33,18 +33,6 @@ Your mission, should you choose to accept it...
 
         from plone import api
 
-.. container:: toggle
-
-    .. container:: header
-
-        **Show/Hide Code**
-
-    .. code-block:: xml
-       :linenos:
-
-       from plone import api
-       ...
-
 ３が正解。
 
 AuroraはソースDBクラスターとは異なるリージョンにリードレプリカを作成することができます。 この方法を採用すると、障害回復機能を向上させ、読み取り操作をユーザーに近いリージョンに拡張しつつ、あるリージョンから別のリージョンへの移行を容易にすることができます。Amazon Aurora MySQL DB クラスターを、ソース DB クラスターとは異なる AWS リージョンにリードレプリカとして作成できます。このアプローチを使用すると、災害対策機能が向上し、ユーザーに近い AWS リージョンへの読み取りオペレーションをスケールして、AWS リージョン間の移行を容易にすることができる。
