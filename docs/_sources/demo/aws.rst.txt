@@ -22,6 +22,17 @@ C社では現在Amazon Aurora MySQLデータベースによるデータ運用を
 
 解説：
 
+Your mission, should you choose to accept it...
+
+..  admonition:: Solution
+    :class: toggle
+
+    To save the world with only seconds to spare do the following:
+
+    .. code-block:: python
+
+        from plone import api
+
 .. container:: toggle
 
     .. container:: header
@@ -29,7 +40,10 @@ C社では現在Amazon Aurora MySQLデータベースによるデータ運用を
         **Show/Hide Code**
 
     .. code-block:: xml
-       aaaaaaa
+       :linenos:
+
+       from plone import api
+       ...
 
 ３が正解。
 
