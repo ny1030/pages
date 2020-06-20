@@ -10,7 +10,7 @@ sys.path.append(os.path.abspath('./demo/'))
 
 from sphinx.locale import _
 from sphinx_rtd_theme import __version__
-
+from docutils.parsers.rst import Directive, directives
 
 project = u'tech-note'
 slug = re.sub(r'\W+', '-', project.lower())
