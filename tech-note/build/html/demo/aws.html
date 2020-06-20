@@ -1,0 +1,311 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="jp" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>AWS &mdash; tech-note 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/custom.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Question and Answer" href="faq.html" />
+    <link rel="prev" title="Spring" href="spring.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> tech-note
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Programming Language</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="spring.html">Spring</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Cloud</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">AWS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#qualification">qualification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#aws-certified-solutions-architect-aws-sa">aws certified solutions architect(AWS-SA)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#storage">Storage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#automation">automation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rds">RDSログを取得</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#aws-cli">1. AWS CLIを利用</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Question and Answer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Question and Answer</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Misc</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="misc.html">TIPS</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">tech-note</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>AWS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/demo/aws.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="aws">
+<h1>AWS<a class="headerlink" href="#aws" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="qualification">
+<h2>qualification<a class="headerlink" href="#qualification" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="aws-certified-solutions-architect-aws-sa">
+<h3>aws certified solutions architect(AWS-SA)<a class="headerlink" href="#aws-certified-solutions-architect-aws-sa" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="storage">
+<h4>Storage<a class="headerlink" href="#storage" title="Permalink to this headline">¶</a></h4>
+<p>C社では現在Amazon Aurora MySQLデータベースによるデータ運用を行っています。当該データベースに保存されているデータは業務上で非常に重要であるため、災害発生時に別リージョンでデータを利用できるようにする必要があります。そのため、毎月の請求期間における月間稼働率が99％以上で使用できるようにするSLAが設けられています。</p>
+<p>最も回復性が速い方式で、この要件を達成するための方法を選択してください。</p>
+<ol class="arabic simple">
+<li><p>AuroraのマルチAZ構成による高速フェールオーバーを実施する。</p></li>
+<li><p>AuroraデータベースのマルチAZ構成を有効化する。</p></li>
+<li><p>Auroraデータベースのリードレプリカを作成する。</p></li>
+<li><p>Auroraデータベースのスナップショットを作成する。</p></li>
+</ol>
+<p>解説：</p>
+<p>３が正解。</p>
+<p>AuroraはソースDBクラスターとは異なるリージョンにリードレプリカを作成することができます。 この方法を採用すると、障害回復機能を向上させ、読み取り操作をユーザーに近いリージョンに拡張しつつ、あるリージョンから別のリージョンへの移行を容易にすることができます。Amazon Aurora MySQL DB クラスターを、ソース DB クラスターとは異なる AWS リージョンにリードレプリカとして作成できます。このアプローチを使用すると、災害対策機能が向上し、ユーザーに近い AWS リージョンへの読み取りオペレーションをスケールして、AWS リージョン間の移行を容易にすることができる。</p>
+<p>オプション１:マルチAZの対応だから、リージョン障害には対応できない。</p>
+<p>オプション２：１〜２分の停止でフェイルオーバできるがオプション１に劣るし、そもそもリージョン障害に対応できない。</p>
+<p>オプション４：スナップショットを作成して別リージョンで回復させることも可能だが、時間を要する。（他の案よりはマシ）</p>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="automation">
+<h2>automation<a class="headerlink" href="#automation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="rds">
+<h3>RDSログを取得<a class="headerlink" href="#rds" title="Permalink to this headline">¶</a></h3>
+<p>自動化をしたい場合にRDSログをAPI経由で取得したいケースがある。</p>
+<div class="section" id="aws-cli">
+<h4>1. AWS CLIを利用<a class="headerlink" href="#aws-cli" title="Permalink to this headline">¶</a></h4>
+<p>DB識別子(DBInstanceIdentifier)の一覧を取得</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>aws rds describe-db-instances  --region ap-northeast-1 <span class="p">|</span> jq <span class="s1">&#39;.DBInstances[].DBInstanceIdentifier&#39;</span>
+<span class="s2">&quot;database-test&quot;</span>
+</pre></div>
+</div>
+<p>特定のDBのログファイル名一覧を取得</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>aws rds describe-db-log-files --db-instance-identifier database-test --region ap-northeast-1
+<span class="o">{</span>
+<span class="s2">&quot;DescribeDBLogFiles&quot;</span>: <span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">&quot;LogFileName&quot;</span>: <span class="s2">&quot;error/postgres.log&quot;</span>,
+        <span class="s2">&quot;LastWritten&quot;</span>: <span class="m">1572672642000</span>,
+        <span class="s2">&quot;Size&quot;</span>: <span class="m">455</span>
+    <span class="o">}</span>
+...
+</pre></div>
+</div>
+<p>ログファイルを出力</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>aws rds download-db-log-file-portion --db-instance-identifier database-test --log-file-name <span class="s2">&quot;error/postgresql.log.2019-11-02-09&quot;</span>  --output text --region ap-northeast-1
+<span class="m">2019</span>-11-02 <span class="m">09</span>:02:45 UTC::@:<span class="o">[</span><span class="m">5385</span><span class="o">]</span>:LOG:  checkpoint starting: <span class="nb">time</span>
+<span class="m">2019</span>-11-02 <span class="m">09</span>:02:45 UTC::@:<span class="o">[</span><span class="m">5385</span><span class="o">]</span>:LOG:  checkpoint complete: wrote <span class="m">1</span> buffers <span class="o">(</span><span class="m">0</span>.0%<span class="o">)</span><span class="p">;</span> <span class="m">0</span> WAL file<span class="o">(</span>s<span class="o">)</span> added, <span class="m">0</span> removed, <span class="m">1</span> recycled<span class="p">;</span> <span class="nv">write</span><span class="o">=</span><span class="m">0</span>.101 s, <span class="nv">sync</span><span class="o">=</span><span class="m">0</span>.001 s, <span class="nv">total</span><span class="o">=</span><span class="m">0</span>.113 s<span class="p">;</span> sync <span class="nv">files</span><span class="o">=</span><span class="m">1</span>, <span class="nv">longest</span><span class="o">=</span><span class="m">0</span>.001 s, <span class="nv">average</span><span class="o">=</span><span class="m">0</span>.001 s<span class="p">;</span> <span class="nv">distance</span><span class="o">=</span><span class="m">65535</span> kB, <span class="nv">estimate</span><span class="o">=</span><span class="m">65536</span> kB
+...
+</pre></div>
+</div>
+<p>なお、上記コマンドではログファイルサイズが1MB以上はダウンロードすることができない。
+全てを取得したい場合、以下オプションで出来る。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>aws rds download-db-log-file-portion --db-instance-identifier database-test --log-file-name <span class="s2">&quot;error/postgresql.log.2019-11-02-09&quot;</span>  --output text --region ap-northeast-1 --cli-input-json <span class="s1">&#39;{ &quot;Marker&quot;: &quot;0&quot; }&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="faq.html" class="btn btn-neutral float-right" title="Question and Answer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="spring.html" class="btn btn-neutral float-left" title="Spring" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright ny1030
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

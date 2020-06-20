@@ -22,9 +22,5 @@ function addCopyButtonToCode(){
  $(document).ready(function () {
  // Once the DOM is loaded for the page, attach clipboard buttons
  addCopyButtonToCode();
-$('.toggle-content').hide()
-$('.toggle-header').click(function () {
-    $(this).toggleClass("open");
-    $(this).next('.toggle-content').toggle('400');
 })
  });

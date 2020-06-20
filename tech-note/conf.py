@@ -10,7 +10,6 @@ sys.path.append(os.path.abspath('./demo/'))
 
 from sphinx.locale import _
 from sphinx_rtd_theme import __version__
-from docutils.parsers.rst import Directive, directives
 
 project = u'tech-note'
 slug = re.sub(r'\W+', '-', project.lower())
@@ -66,25 +65,6 @@ texinfo_documents = [
   ('index', slug, project, author, slug, project, 'Miscellaneous'),
 ]
 
-class ToggleDirective(Directive):
-    has_content = True
-    option_spec = {'header': directives.unchanged}
-    optional_arguments = 1
-
-    def run(self):
-        node = nodes.container()
-        node['classes'].append('toggle-content')
-
-        par = nodes.container()
-        par['classes'].append('toggle-header')
-        if self.arguments and self.arguments[0]:
-            par['classes'].append(self.arguments[0])
-
-        self.state.nested_parse(StringList([self.options["header"]]), self.content_offset, par)
-        self.state.nested_parse(self.content, self.content_offset, node)
-
-        return [par, node]
-
 # Extensions to theme docs
 def setup(app):
     from sphinx.domains.python import PyField
@@ -93,7 +73,6 @@ def setup(app):
     app.add_stylesheet('custom.css')
     app.add_javascript("custom.js")
     app.add_javascript("https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js")
-    app.add_directive('toggle-header', ToggleDirective)
 
     app.add_object_type(
         'confval',
