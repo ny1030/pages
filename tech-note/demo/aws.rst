@@ -22,19 +22,10 @@ C社では現在Amazon Aurora MySQLデータベースによるデータ運用を
 
 解説：
 
-Your mission, should you choose to accept it...
+.. toggle-header::
+    :header: Example 1 **Show/Hide Code**
 
-.. container:: toggle
-
-    .. container:: header
-
-        **Show/Hide Code**
-
-    .. code-block:: xml
-       :linenos:
-
-       from plone import api
-       ...
+        Content for header
 
 ３が正解。
 
