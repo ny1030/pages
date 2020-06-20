@@ -59,11 +59,9 @@ h1,h2,h3,h4{
     display: block;
     clear: both;
 }
-
 .toggle .header:after {
     content: " ▶";
 }
-
 .toggle .header.open:after {
     content: " ▼";
 }
