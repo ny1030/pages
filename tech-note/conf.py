@@ -66,7 +66,6 @@ texinfo_documents = [
   ('index', slug, project, author, slug, project, 'Miscellaneous'),
 ]
 
-
 # Extensions to theme docs
 def setup(app):
     from sphinx.domains.python import PyField
