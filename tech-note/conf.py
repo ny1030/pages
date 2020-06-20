@@ -26,6 +26,7 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinxcontrib.httpdomain',
     'sphinx_rtd_theme',
+    'sphinxcontrib.contentui'
 ]
 
 templates_path = ['_templates']
