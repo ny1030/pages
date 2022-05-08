@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://ny1030.github.io/sitemap.xml
