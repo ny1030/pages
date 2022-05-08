@@ -1,4 +1,6 @@
 baseURL: 'https://ny1030.github.io/'
+canonifyurl: 'true'
+
 title: ny1030Note
 paginate: 5
 theme: PaperMod
