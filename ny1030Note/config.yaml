@@ -1,0 +1,75 @@
+baseURL: 'https://ny1030.github.io/'
+title: ny1030Note
+paginate: 5
+theme: PaperMod
+defaultContentLanguage: ja
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+googleAnalytics: G-MY_ID
+
+minify:
+    disableXML: true
+    minifyOutput: true
+
+params:
+    title: ny1030Note
+    description: "ny1030's portal site"
+    keywords: [ny1030, portal, Blog, Portfolio]
+    author: Y Nakajima
+    DateFormat: "January 2, 2006"
+    defaultTheme: auto
+    disableThemeToggle: false
+
+    ShowReadingTime: true
+    ShowShareButtons: true
+    ShowPostNavLinks: true
+    ShowBreadCrumbs: true
+    ShowCodeCopyButtons: false
+    disableSpecial1stPost: false
+    disableScrollToTop: false
+    comments: false
+    hidemeta: false
+    hideSummary: false
+    showtoc: false
+    tocopen: false
+
+    socialIcons:
+        - name: twitter
+        - url: "https://twitter.com/"
+        - name: github
+        - url: "https://github.com/ny1030"
+        - name: linkedin
+        - url: "https://www.linkedin.com/in/"
+
+    languages:
+        ja:
+            languageName: "Japanese"
+            weight: 1
+            contentDir: content/ja
+            staticDir: static/
+            profileMode:
+                enabled: true
+                title: ny1030 portal
+                imageUrl: "images/ny1030.JPG"
+                imageWidth: 120
+                imageHeight: 120
+                imageTitle: ny1030-profile
+                buttons:
+                    - name: 自己紹介
+                    - url: about
+                    - name: ブログ
+                    - url: blogs/
+                menu:
+                    main:
+                    - name: 自己紹介
+                    - url: about
+                    - weight: 5
+                    - name: ブログ
+                    - url: blogs/
+                    - weight: 10
+
+
