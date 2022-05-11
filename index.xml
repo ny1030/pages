@@ -11,9 +11,8 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://ny1030.github.io/pages/blogs/linux-%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E7%8E%87%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/</guid>
-      <description>Hello   freeコマンド
- total : 合計 used : カーネルとプロセスが使用している shared : tmpfsに使われている free : 余っている buffers : バッファキャッシュのメモリサイズ cache : ページキャッシュのメモリサイズ available : 実質的な空きメモリ  free + buff/cache (解放可能な部分)       sar コマンド 物理メモリ使用量が表示される sar -r でメモリ使用状況を確認する - ablog
-  vmstat   #Linux #Command</description>
+      <description>Linux - メモリ使用率について freeコマンド  total : 合計 used : カーネルとプロセスが使用している shared : tmpfsに使われている free : 余っている buffers : バッファキャッシュのメモリサイズ cache : ページキャッシュのメモリサイズ available : 実質的な空きメモリ  free + buff/cache (解放可能な部分)    ![[Pasted image 20220511190928.png]]
+sar コマンド 物理メモリ使用量が表示される = buffers, cacheが含まれた使用量 sar -r でメモリ使用状況を確認する - ablog</description>
     </item>
     
   </channel>
