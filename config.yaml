@@ -17,6 +17,9 @@ minify:
     disableXML: true
     minifyOutput: true
 
+permalinks:
+      posts: /:year/:month/:title/
+
 params:
     title: ny1030Note
     description: "ny1030's portal site"
