@@ -39,6 +39,9 @@ params:
     showtoc: false
     tocopen: false
 
+    staticDir:
+        - content/notes/images
+
     socialIcons:
         - name: twitter
         - url: "https://twitter.com/"
