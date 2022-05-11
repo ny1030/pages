@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://ny1030.github.io/blogs/test/</loc>
+    <loc>https://ny1030.github.io/pages/blogs/test/</loc>
   </url><url>
-    <loc>https://ny1030.github.io/blogs/</loc>
+    <loc>https://ny1030.github.io/pages/blogs/</loc>
   </url><url>
-    <loc>https://ny1030.github.io/categories/</loc>
+    <loc>https://ny1030.github.io/pages/categories/</loc>
   </url><url>
-    <loc>https://ny1030.github.io/</loc>
+    <loc>https://ny1030.github.io/pages/</loc>
   </url><url>
-    <loc>https://ny1030.github.io/tags/</loc>
+    <loc>https://ny1030.github.io/pages/tags/</loc>
   </url>
 </urlset>
