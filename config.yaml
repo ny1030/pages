@@ -64,14 +64,14 @@ params:
                     - name: 自己紹介
                     - url: about
                     - name: ブログ
-                    - url: blogs/
+                    - url: notes/
                 menu:
                     main:
                     - name: 自己紹介
                     - url: about
                     - weight: 5
                     - name: ブログ
-                    - url: blogs/
+                    - url: notes/
                     - weight: 10
 
 

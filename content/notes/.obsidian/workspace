@@ -1,16 +1,17 @@
 {
   "main": {
-    "id": "e0fbb300c02b90ce",
+    "id": "f0b33342a7c98617",
     "type": "split",
     "children": [
       {
-        "id": "33f97471a27845b4",
+        "id": "bb60cae5e82c025c",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "infrastructure/Linux_MemoryUsage.md",
-            "mode": "preview"
+            "file": "infra/Linux_MemoryUsage.md",
+            "mode": "source",
+            "source": false
           }
         }
       }
@@ -18,15 +19,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "a40f5705d62ef4bb",
+    "id": "b277ed86d6e2076f",
     "type": "split",
     "children": [
       {
-        "id": "e5f9d503b5d75f91",
+        "id": "f8f063df38f5425a",
         "type": "tabs",
         "children": [
           {
-            "id": "b0f9f8316edbb13c",
+            "id": "8b6874f7d6a18c4d",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -34,12 +35,12 @@
             }
           },
           {
-            "id": "722b0cdfd8dd0deb",
+            "id": "1c1f0728ac55a1d7",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "mermaid",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -52,23 +53,23 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 289
   },
   "right": {
-    "id": "8bd5e8fd10775d23",
+    "id": "541788cd17c488e6",
     "type": "split",
     "children": [
       {
-        "id": "ec98ea8ea5649c6c",
+        "id": "68e4b58546a1d18e",
         "type": "tabs",
         "children": [
           {
-            "id": "f629fd9144f23d07",
+            "id": "7eb5937532227cdb",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "infrastructure/Linux_MemoryUsage.md",
+                "file": "infra/Linux_MemoryUsage.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -86,12 +87,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "33f97471a27845b4",
+  "active": "bb60cae5e82c025c",
   "lastOpenFiles": [
-    "infrastructure/Linux_MemoryUsage.md",
-    "attach/Pasted image 20220511191805.png",
-    "attach/Pasted image 20220511190928.png",
-    "attach/Pasted image 20220511190928 1.png",
-    "Pasted image 20220425152016.png.md"
+    "infra/Linux_MemoryUsage.md",
+    "infra/Pasted image 20220511191805.png",
+    "Pasted image 20220511225943.png.md",
+    "public/notes/Linux_MemoryUsage.md",
+    "private/attachment/Pasted image 20220425152016.png",
+    "Daily Note/2022-05-10.md",
+    "Daily Note/2022-05-11.md",
+    "attachment/Pasted image 20220425152016.png",
+    "Amazon SCM.md",
+    "Linux - メモリ使用率について.md"
   ]
 }
