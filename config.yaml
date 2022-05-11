@@ -40,7 +40,7 @@ params:
     tocopen: false
 
     staticDir:
-        - content/notes/images
+        - content/notes
 
     socialIcons:
         - name: twitter
