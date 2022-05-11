@@ -4,6 +4,6 @@
   "promptDelete": false,
   "attachmentFolderPath": "",
   "alwaysUpdateLinks": true,
-  "newLinkFormat": "relative",
+  "newLinkFormat": "absolute",
   "useMarkdownLinks": true
 }
