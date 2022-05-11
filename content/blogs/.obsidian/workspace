@@ -9,9 +9,9 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Linux - メモリ使用率について.md",
+            "file": "Linux_MemoryUsage.md",
             "mode": "source",
-            "source": false
+            "source": true
           }
         }
       }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Linux - メモリ使用率について.md",
+                "file": "Linux_MemoryUsage.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,7 +89,7 @@
   },
   "active": "33f97471a27845b4",
   "lastOpenFiles": [
-    "Linux - メモリ使用率について.md",
+    "Linux_MemoryUsage.md",
     "attach/Pasted image 20220511191805.png",
     "attach/Pasted image 20220511190928.png",
     "attach/Pasted image 20220511190928 1.png",
