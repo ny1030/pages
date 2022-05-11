@@ -1,4 +1,4 @@
-baseURL: 'https://ny1030.github.io/pages/notes'
+baseURL: 'https://ny1030.github.io/pages'
 canonifyurl: 'true'
 
 title: ny1030Note
@@ -38,9 +38,6 @@ params:
     hideSummary: false
     showtoc: false
     tocopen: false
-
-    staticDir:
-        - content/notes
 
     socialIcons:
         - name: twitter
