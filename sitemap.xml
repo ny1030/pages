@@ -2,9 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://ny1030.github.io/pages/categories/</loc>
-  </url><url>
     <loc>https://ny1030.github.io/pages/notes/infra/</loc>
+  </url><url>
+    <loc>https://ny1030.github.io/pages/categories/</loc>
   </url><url>
     <loc>https://ny1030.github.io/pages/notes/</loc>
   </url><url>
