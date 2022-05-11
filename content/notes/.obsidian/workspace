@@ -11,7 +11,7 @@
           "state": {
             "file": "infra/index.md",
             "mode": "source",
-            "source": false
+            "source": true
           }
         }
       }
@@ -89,7 +89,6 @@
   },
   "active": "bb60cae5e82c025c",
   "lastOpenFiles": [
-    "infra/index.md",
     "infra/index.md",
     "infra/Pasted image 20220511234524.png",
     "infra/Pasted image 20220511191805.png",
