@@ -24,7 +24,7 @@ outputs:
         - JSON # is necessary
 
 params:
-    title: ny1030Note
+    title: ny1030.github.io
     description: "ny1030's portal site"
     keywords: [ny1030, portal, Blog, Portfolio]
     author: Y Nakajima
@@ -59,5 +59,4 @@ menu:
       name: search
       url: /search
       weight: 20
-
 
