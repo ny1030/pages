@@ -17,6 +17,12 @@ minify:
 
 googleAnalytics: "G-4LRDXP31GR"
 
+outputs:
+    home:
+        - HTML
+        - RSS
+        - JSON # is necessary
+
 params:
     title: ny1030Note
     description: "ny1030's portal site"
