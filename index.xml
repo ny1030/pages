@@ -46,7 +46,7 @@
     <item>
       <title>Drupal関連のコマンド</title>
       <link>https://ny1030.github.io/pages/2022/drupal%E9%96%A2%E9%80%A3%E3%81%AE%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/</link>
-      <pubDate>Sat, 05 Mar 2022 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 25 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>https://ny1030.github.io/pages/2022/drupal%E9%96%A2%E9%80%A3%E3%81%AE%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/</guid>
       <description>マイナーバージョンアップ ※スペック低すぎると失敗するので、4コア8GBに事前スケールアップした
@@ -64,6 +64,41 @@ housekeeping(キャッシュ削除) drush -y wd-del all</description>
       <guid>https://ny1030.github.io/pages/2022/wsl2%E3%82%92%E5%85%A5%E3%82%8C%E3%81%9F%E5%BE%8C%E3%81%AB%E3%82%84%E3%82%8B%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%9E%E3%82%A4%E3%82%BA/</guid>
       <description>※ OSは Ubuntu 20.04(LTS) を使用
  まずはプロンプトを変更（ミニマルな内容にする）  #1.まずは現在の設定確認 user@DESKTOP-XXXXX:~$ **echo $PS1** \\[\\e]0;\\u@\\h: \\w\\a\\]${debian_chroot:+($debian_chroot)}\\[\\033[01;32m\\]\\u@\\h\\[\\033[00m\\]:\\[\\033[01;34m\\]\\w\\[\\033[00m\\]\\$ #2.PS1の値を書き換え user@DESKTOP-XXXXX:~$ **PS1=&amp;#39;\\[\\e[1;32m\\]\\W\\$ \\[\\e[m\\]&amp;#39;** ~$ #3.設定内容を永続化 ~$ **echo &amp;#34;PS1=&amp;#39;\\[\\e[1;32m\\]\\W\\$ \\[\\e[m\\]&amp;#39;&amp;#34; &amp;gt;&amp;gt; .bashrc** #4.ターミナルを再起動して、設定が永続化されてること確認 ~$  systemd を PID1（親プロセス）にする  #1.現状のプロセスを確認 ~$ ps aux USER PID %CPU %MEM VSZ RSS TTY STAT START TIME COMMAND root 1 0.0 0.0 896 528 ? Sl 16:13 0:00 /init root 120 0.0 0.0 896 84 ? Ss 16:19 0:00 /init #2.</description>
+    </item>
+    
+    <item>
+      <title>Flutter 導入まとめ</title>
+      <link>https://ny1030.github.io/pages/2021/flutter-%E5%B0%8E%E5%85%A5%E3%81%BE%E3%81%A8%E3%82%81/</link>
+      <pubDate>Wed, 15 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/2021/flutter-%E5%B0%8E%E5%85%A5%E3%81%BE%E3%81%A8%E3%82%81/</guid>
+      <description>１．環境セットアップ（２時間くらい） Flutter １．SDKのダウンロード・解凍
+Install
+２．PATH設定
+以下をPATHに追加（ホームディレクトリの名前は適宜変更する）
+/Users/{username}/flutter/bin ３．確認
+以下のコマンドが実行できることを確認する
+flutter Android １．Android Studioダウンロード⇛インストール
+Install
+２．確認
+flutter doctor ※最初は５分くらい時間かかる
+の結果でAndroid Studioがチェックマーク入ってるのを確認 ![[Pasted image 20220513215817.png]]
+４．Andoroid toolchainのエラー解消
+・Command-Line Toolsのインストール（AndoroidSDKの設定画面からできる）
+![[Pasted image 20220513215852.png]]
+・Andoroidライセンスの許可
+flutter doctor --android-licenses ※ javaのPATH通ってないとエラー出る
+５．Android toolchainがチェックついてることを確認
+flutter doctor ![[Pasted image 20220513215916.png]]
+６．FlutterプラグインをAndoroid Studioからインストール
+![[Pasted image 20220513215944.png]]
+XCode（iOS） １．XCodeをインストール
+２．Cocoapodをインストール
+brew install cocoapods brew link --overwrite cocoapods ※バージョン指定している理由はエラー回避しようとした結果
+３．XCodeにチェックがついてることを確認
+flutter doctor ![[Pasted image 20220513220013.png]]
+２．Flutterプロジェクト作成・デモアプリ実行（30分） １．以下のように作成
+![[Pasted image 20220513220039.png]]</description>
     </item>
     
   </channel>
