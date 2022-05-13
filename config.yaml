@@ -1,7 +1,7 @@
 baseURL: 'https://ny1030.github.io/pages'
 canonifyurl: 'true'
 
-title: ny1030Note
+title: ny1030.github.io
 paginate: 5
 theme: PaperMod
 defaultContentLanguage: ja
@@ -26,7 +26,7 @@ outputs:
 params:
     title: ny1030.github.io
     description: "ny1030's portal site"
-    keywords: [ny1030, portal, Blog, Portfolio]
+    keywords: [ny1030, portal, Blog, Portfolio, engineering]
     author: Y Nakajima
     DateFormat: "January 2, 2006"
     defaultTheme: auto
