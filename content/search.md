@@ -4,5 +4,5 @@ layout: "search" # is necessary
 url: "/search"
 # description: "Description for Search"
 summary: "search"
-placeholder: "type text"
+placeholder: "Search the Anything"
 ---
