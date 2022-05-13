@@ -112,8 +112,3 @@ Level 1 Index利用による高速化
 
 Level 2 部分Indexの利用
 ------------------------
-
-Command メモ
-================
-
-[ここではなくgistに記載](https://gist.github.com/ny1030)
