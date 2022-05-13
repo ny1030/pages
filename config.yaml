@@ -54,7 +54,7 @@ params:
         - url: "https://www.linkedin.com/in/"
 
 menu:
-    - main:
+    main:
     - identifier: search
       name: search
       url: /search
