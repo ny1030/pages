@@ -53,31 +53,11 @@ params:
         - name: linkedin
         - url: "https://www.linkedin.com/in/"
 
-    languages:
-        ja:
-            languageName: "Japanese"
-            weight: 1
-            contentDir: content/ja
-            staticDir: static/
-            profileMode:
-                enabled: true
-                title: ny1030 portal
-                imageUrl: "images/ny1030.JPG"
-                imageWidth: 120
-                imageHeight: 120
-                imageTitle: ny1030-profile
-                buttons:
-                    - name: 自己紹介
-                    - url: about
-                    - name: ブログ
-                    - url: notes/
-                menu:
-                    main:
-                    - name: 自己紹介
-                    - url: about
-                    - weight: 5
-                    - name: ブログ
-                    - url: notes/
-                    - weight: 10
+menu:
+    - main:
+    - identifier: search
+      name: search
+      url: /search
+      weight: 20
 
 
