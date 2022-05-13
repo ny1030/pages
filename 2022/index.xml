@@ -43,5 +43,28 @@
  UPDATE T_ITEM_INBOUND t3 SET status_flag = &amp;#39;9&amp;#39; , updated_datetime = CURRENT_TIMESTAMP , updated_by = &amp;#39;APP_001&amp;#39; FROM ( SELECT t1.group_num , t1.level3_item_code FROM T_ITEM_INBOUND t1 WHERE t1.status_flag = &amp;#39;1&amp;#39; AND t1.group_num = &amp;#39;10&amp;#39; AND t1.level3_item_code = &amp;#39;1000-2000-3000&amp;#39; GROUP BY t1.group_num , t1.level1_item_code , t1.level2_item_code , t1.level3_item_code , t1.color_code , t1.size_code , t1.pattern_length_code HAVING 1 &amp;lt; COUNT(t1.group_num) ) t2 WHERE t3.status_flag = &amp;#39;1&amp;#39; AND t3.group_num = t2.</description>
     </item>
     
+    <item>
+      <title>SQLパフォーマンスチューニング</title>
+      <link>https://ny1030.github.io/pages/2022/wsl2%E3%82%92%E5%85%A5%E3%82%8C%E3%81%9F%E5%BE%8C%E3%81%AB%E3%82%84%E3%82%8B%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%9E%E3%82%A4%E3%82%BA/</link>
+      <pubDate>Sat, 05 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/2022/wsl2%E3%82%92%E5%85%A5%E3%82%8C%E3%81%9F%E5%BE%8C%E3%81%AB%E3%82%84%E3%82%8B%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%9E%E3%82%A4%E3%82%BA/</guid>
+      <description>WSL2を入れた後にやるカスタマイズ ※ OSは Ubuntu 20.04(LTS) を使用
+ まずはプロンプトを変更（ミニマルな内容にする）  #1.まずは現在の設定確認 user@DESKTOP-XXXXX:~$ **echo $PS1** \\[\\e]0;\\u@\\h: \\w\\a\\]${debian_chroot:+($debian_chroot)}\\[\\033[01;32m\\]\\u@\\h\\[\\033[00m\\]:\\[\\033[01;34m\\]\\w\\[\\033[00m\\]\\$ #2.PS1の値を書き換え user@DESKTOP-XXXXX:~$ **PS1=&amp;#39;\\[\\e[1;32m\\]\\W\\$ \\[\\e[m\\]&amp;#39;** ~$ #3.設定内容を永続化 ~$ **echo &amp;#34;PS1=&amp;#39;\\[\\e[1;32m\\]\\W\\$ \\[\\e[m\\]&amp;#39;&amp;#34; &amp;gt;&amp;gt; .bashrc** #4.ターミナルを再起動して、設定が永続化されてること確認 ~$  systemd を PID1（親プロセス）にする  #1.現状のプロセスを確認 ~$ ps aux USER PID %CPU %MEM VSZ RSS TTY STAT START TIME COMMAND root 1 0.0 0.0 896 528 ? Sl 16:13 0:00 /init root 120 0.0 0.0 896 84 ? Ss 16:19 0:00 /init #2.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://ny1030.github.io/pages/2022/drupal%E9%96%A2%E9%80%A3%E3%81%AE%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/2022/drupal%E9%96%A2%E9%80%A3%E3%81%AE%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/</guid>
+      <description>マイナーバージョンアップ ※スペック低すぎると失敗するので、4コア8GBに事前スケールアップした
+ バージョン確認  composer outdated &amp;quot;drupal/*&amp;quot;
+ druplaのrootディレクトリで以下を実行  sudo composer update drupal/core &amp;quot;drupal/core-*&amp;quot; --with-all-dependencies sudo composer update drupal/core --with-dependencies
+参考
+housekeeping(キャッシュ削除) drush -y wd-del all</description>
+    </item>
+    
   </channel>
 </rss>
