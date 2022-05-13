@@ -50,21 +50,21 @@ params:
     tocopen: false
 
     socialIcons:
-        - name: twitter
-          url: "https://twitter.com/"
+        #   - name: twitter
+        #   url: "https://twitter.com/"
         - name: github
           url: "https://github.com/ny1030"
-        - name: linkedin
-          url: "https://www.linkedin.com/in/"
+              #  - name: linkedin
+              #  url: "https://www.linkedin.com/in/"
 
 menu:
     main:
     - identifier: search
-      name: 🔎 search
+      name: 🔎 Search
       url: /search
       weight: 10
     - identifier: archive
-      name: 📚 archive
+      name: 📚 Archive
       url: /archives
       weight: 20
 
