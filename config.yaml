@@ -32,10 +32,9 @@ params:
     defaultTheme: auto
     disableThemeToggle: false
 
-    profileMode:
-        enabled: true # needs to be explicitly set
-        title: "Welcome🙌"
-        subtitle: "I am into software engineering, gadget, food, sleep"
+    homeInfoParams:
+        Title: "Welcome🙌"
+        Content: "I am into software engineering, gadget, food, sleep"
 
     ShowReadingTime: true
     ShowShareButtons: true
@@ -64,4 +63,8 @@ menu:
       name: search
       url: /search
       weight: 20
+    - identifier: archive
+      name: archive
+      url: /archives
+      weight: 10
 
