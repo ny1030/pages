@@ -1,5 +1,5 @@
 ---
-- [ ] title: SQLパフォーマンスチューニング
+title: SQLパフォーマンスチューニング
 ---
 
 Level 0 実行計画(Query Plan)の読み方
