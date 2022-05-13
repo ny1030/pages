@@ -116,4 +116,4 @@ Level 2 部分Indexの利用
 Command メモ
 ================
 
-ここではなくgistに記載：https://gist.github.com/ny1030
+(ここではなくgistに記載)[https://gist.github.com/ny1030]
