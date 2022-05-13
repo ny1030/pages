@@ -68,10 +68,10 @@ housekeeping(キャッシュ削除) drush -y wd-del all</description>
     
     <item>
       <title>Flutter 導入まとめ</title>
-      <link>https://ny1030.github.io/pages/2021/flutter-%E5%B0%8E%E5%85%A5%E3%81%BE%E3%81%A8%E3%82%81/</link>
+      <link>https://ny1030.github.io/pages/2022/flutter-%E5%B0%8E%E5%85%A5%E3%81%BE%E3%81%A8%E3%82%81/</link>
       <pubDate>Wed, 15 Dec 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ny1030.github.io/pages/2021/flutter-%E5%B0%8E%E5%85%A5%E3%81%BE%E3%81%A8%E3%82%81/</guid>
+      <guid>https://ny1030.github.io/pages/2022/flutter-%E5%B0%8E%E5%85%A5%E3%81%BE%E3%81%A8%E3%82%81/</guid>
       <description>１．環境セットアップ（２時間くらい） Flutter １．SDKのダウンロード・解凍
 Install
 ２．PATH設定
