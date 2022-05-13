@@ -6,6 +6,15 @@
     <description>Recent content on ny1030Note</description>
     <generator>Hugo -- gohugo.io</generator><atom:link href="https://ny1030.github.io/pages/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Command(Snipet)メモ</title>
+      <link>https://ny1030.github.io/pages/2022/commandsnipet%E3%83%A1%E3%83%A2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/2022/commandsnipet%E3%83%A1%E3%83%A2/</guid>
+      <description>ここではなくgistに記載</description>
+    </item>
+    
+    <item>
       <title>Google DriveにあるファイルをOCRするPythonスクリプト</title>
       <link>https://ny1030.github.io/pages/2022/google-drive%E3%81%AB%E3%81%82%E3%82%8B%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92ocr%E3%81%99%E3%82%8Bpython%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
