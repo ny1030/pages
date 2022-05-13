@@ -28,8 +28,8 @@ params:
     ShowShareButtons: true
     ShowPostNavLinks: true
     ShowBreadCrumbs: true
-    ShowCodeCopyButtons: false
-    disableSpecial1stPost: false
+    ShowCodeCopyButtons: true
+    disableSpecial1stPost: true
     disableScrollToTop: false
     comments: false
     hidemeta: false
