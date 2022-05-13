@@ -33,7 +33,7 @@ params:
     disableThemeToggle: false
 
     homeInfoParams:
-        Title: "Welcome🙌"
+        Title: "Welcome 🙌"
         Content: "I am into software engineering, gadget, food, sleep"
 
     ShowReadingTime: true
