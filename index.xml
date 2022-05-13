@@ -14,5 +14,15 @@
       <description>freeコマンド  total : 合計 used : カーネルとプロセスが使用している shared : tmpfsに使われている free : 余っている buffers : バッファキャッシュのメモリサイズ cache : ページキャッシュのメモリサイズ available : 実質的な空きメモリ  free + buff/cache (解放可能な部分)     sar コマンド 物理メモリ使用量が表示される = buffers, cacheが含まれた使用量 sar -r でメモリ使用状況を確認する - ablog</description>
     </item>
     
+    <item>
+      <title>SQLパフォーマンスチューニング</title>
+      <link>https://ny1030.github.io/pages/2022/sql%E3%83%91%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%B3%E3%82%B9%E3%83%81%E3%83%A5%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/2022/sql%E3%83%91%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%B3%E3%82%B9%E3%83%81%E3%83%A5%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0/</guid>
+      <description>Level 0 実行計画(Query Plan)の読み方 以下のようなSQLの実行計画を取得してみる。
+ UPDATE T_ITEM_INBOUND t3 SET status_flag = &amp;#39;9&amp;#39; , updated_datetime = CURRENT_TIMESTAMP , updated_by = &amp;#39;APP_001&amp;#39; FROM ( SELECT t1.group_num , t1.level3_item_code FROM T_ITEM_INBOUND t1 WHERE t1.status_flag = &amp;#39;1&amp;#39; AND t1.group_num = &amp;#39;10&amp;#39; AND t1.level3_item_code = &amp;#39;1000-2000-3000&amp;#39; GROUP BY t1.group_num , t1.level1_item_code , t1.level2_item_code , t1.level3_item_code , t1.color_code , t1.size_code , t1.pattern_length_code HAVING 1 &amp;lt; COUNT(t1.group_num) ) t2 WHERE t3.status_flag = &amp;#39;1&amp;#39; AND t3.group_num = t2.</description>
+    </item>
+    
   </channel>
 </rss>
