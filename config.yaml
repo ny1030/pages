@@ -32,6 +32,11 @@ params:
     defaultTheme: auto
     disableThemeToggle: false
 
+    profileMode:
+        enabled: true # needs to be explicitly set
+        title: "Welcome🙌"
+        subtitle: "I am into software engineering, gadget, food, sleep"
+
     ShowReadingTime: true
     ShowShareButtons: true
     ShowPostNavLinks: true
@@ -47,11 +52,11 @@ params:
 
     socialIcons:
         - name: twitter
-        - url: "https://twitter.com/"
+          url: "https://twitter.com/"
         - name: github
-        - url: "https://github.com/ny1030"
+          url: "https://github.com/ny1030"
         - name: linkedin
-        - url: "https://www.linkedin.com/in/"
+          url: "https://www.linkedin.com/in/"
 
 menu:
     main:
