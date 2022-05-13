@@ -15,6 +15,8 @@ minify:
     disableXML: true
     minifyOutput: true
 
+googleAnalytics: "G-4LRDXP31GR"
+
 params:
     title: ny1030Note
     description: "ny1030's portal site"
