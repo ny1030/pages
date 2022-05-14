@@ -60,7 +60,7 @@ params:
 menu:
     main:
     - identifier: search
-      name: 🔎 Search
+      name: 🔎  Search
       url: /search
       weight: 10
     - identifier: archive
