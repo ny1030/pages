@@ -8,33 +8,25 @@ title: GCPのアラート情報をDiscordに通知する
 - Compute Engine（GCE）のインスタンスを再起動することで上記事象は直るので、復旧時間を短くするために、通知することでできるだけ早く気付けるようにする。
 - 通知先として、スマホから手軽に見れてWebhookで楽に設定できるDiscordを使ってみる。
 - 通知のロジックを超カンタンな図で表すと以下のような形：
-```mermaid
-graph TD
-
-開始 --> C{CPU使用率が95%以上}
-
-C -->|T| D[Discordへ通知]
-
-C -->|F| E[何もしない]
-```
+![](Pasted%20image%2020220515184502.png)
 
 ## やったこと
 ### 通知ポリシーの作成（GCP管理画面）
 GCEのCPU使用率が95%以上の状態が何分間以上続いたら通知するか、といった条件をGCPの管理画面から設定する。これはGCEの画面のオブザーバビリティのタブから画像のように設定。
-![[Pasted image 20220515154907.png]]
+![](Pasted%20image%2020220515184226.png)
 
 ### 通知チャンネルの作成（GCP管理画面）
 通知ポリシーと似た名前だがこちらは通知先を設定するサービス。画像の通りSlackやWebhook、（見えてないけど）SMSやEmailの設定が可能。今回はDiscordに通知したかったので通知したいDiscordチャンネルのWebhook URLを設定。
-![[Pasted image 20220515155349.png]]
+![](Pasted%20image%2020220515184245.png)
 
 ### トラブルシューティング
 上記の設定を終えたところで、通知チャンネルから「TEST CONNECTION」があったので試しに実行。
-![[Pasted image 20220515155806.png]]
+![](Pasted%20image%2020220515184302.png)
 「successfully sent」と出ているがDiscordチャンネルを見るとメッセージが届いてない。。
 
 #### GCP側のログ確認
 Cloud Logging で 確認したところ、同タイミングで400エラーが出ていることを確認 😇
-![[Pasted image 20220515160228.png]]
+![](Pasted%20image%2020220515184321.png)
 
 #### curlで送ってみる
 件のDiscordにcurlで試しにPOSTをしてみたところ、
@@ -98,4 +90,4 @@ package.json
 ```
 
 このFunctionをDeployして、再度テストしたところ無事に送信されたことを確認
-![[Pasted image 20220515183740.png]]
+![](Pasted%20image%2020220515184342.png)
