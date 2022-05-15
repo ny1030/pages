@@ -5,7 +5,21 @@
     <link>https://ny1030.github.io/pages/</link>
     <description>Recent content on ny1030.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 14 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GCPのアラート情報をDiscordに通知する</title>
+      <link>https://ny1030.github.io/pages/posts/engineering/gcp%E3%81%AE%E3%82%A2%E3%83%A9%E3%83%BC%E3%83%88%E6%83%85%E5%A0%B1%E3%82%92discord%E3%81%AB%E9%80%9A%E7%9F%A5%E3%81%99%E3%82%8B/</link>
+      <pubDate>Sun, 15 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/posts/engineering/gcp%E3%81%AE%E3%82%A2%E3%83%A9%E3%83%BC%E3%83%88%E6%83%85%E5%A0%B1%E3%82%92discord%E3%81%AB%E9%80%9A%E7%9F%A5%E3%81%99%E3%82%8B/</guid>
+      <description>やりたいこと  運用しているシステムで時折、CPU使用率が100%を超過しアクセス不可になる。 Compute Engine（GCE）のインスタンスを再起動することで上記事象は直るので、復旧時間を短くするために、通知することでできるだけ早く気付けるようにする。 通知先として、スマホから手軽に見れてWebhookで楽に設定できるDiscordを使ってみる。 通知のロジックを超カンタンな図で表すと以下のような形：  graph TD 開始 --&amp;gt; C{CPU使用率が95%以上} C --&amp;gt;|T| D[Discordへ通知] C --&amp;gt;|F| E[何もしない] やったこと 通知ポリシーの作成（GCP管理画面） GCEのCPU使用率が95%以上の状態が何分間以上続いたら通知するか、といった条件をGCPの管理画面から設定する。これはGCEの画面のオブザーバビリティのタブから画像のように設定。 ![[Pasted image 20220515154907.png]]
+通知チャンネルの作成（GCP管理画面） 通知ポリシーと似た名前だがこちらは通知先を設定するサービス。画像の通りSlackやWebhook、（見えてないけど）SMSやEmailの設定が可能。今回はDiscordに通知したかったので通知したいDiscordチャンネルのWebhook URLを設定。 ![[Pasted image 20220515155349.png]]
+トラブルシューティング 上記の設定を終えたところで、通知チャンネルから「TEST CONNECTION」があったので試しに実行。 ![[Pasted image 20220515155806.png]] 「successfully sent」と出ているがDiscordチャンネルを見るとメッセージが届いてない。。
+GCP側のログ確認 Cloud Logging で 確認したところ、同タイミングで400エラーが出ていることを確認 😇 ![[Pasted image 20220515160228.png]]
+curlで送ってみる 件のDiscordにcurlで試しにPOSTをしてみたところ、
+$ curl -H &amp;#39;Content-Type: application/json&amp;#39; -d &amp;#39;{&amp;#34;data&amp;#34;: &amp;#34;Hello World&amp;#34;}&amp;#39; https://discord.com/api/webhooks/{YOUR_PATH} {&amp;#34;message&amp;#34;: &amp;#34;Cannot send an empty message&amp;#34;, &amp;#34;code&amp;#34;: 50006} というメッセージが返ってきた。status codeを調べると400なのでGCPと同じエラーっぽい。</description>
+    </item>
+    
     <item>
       <title>Webhookの疎通テスト</title>
       <link>https://ny1030.github.io/pages/posts/engineering/webhook%E3%81%AE%E7%96%8E%E9%80%9A%E3%83%86%E3%82%B9%E3%83%88/</link>
