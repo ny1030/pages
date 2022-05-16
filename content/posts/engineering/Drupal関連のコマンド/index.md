@@ -3,6 +3,11 @@ date: "2022-04-25"
 title: Drupal関連のコマンド
 ---
 
+### サービス再起動
+#### bitnami drupal の場合
+```
+sudo /opt/bitnami/ctlscript.sh restart
+```
 ### マイナーバージョンアップ
 
 ※スペック低すぎると失敗するので、4コア8GBに事前スケールアップした
