@@ -24,3 +24,7 @@ sudo `composer update drupal/core --with-dependencies`
 [参考](https://www.drupal.org/docs/updating-drupal/updating-drupal-core-via-composer)
 ### housekeeping(キャッシュ削除)
 `drush -y wd-del all`
+
+#### リダイレクト設定
+[こちらの通りに設定](https://docs.bitnami.com/installer/apps/drupal/administration/redirect-custom-domains/)
+`installdir/apache2/conf/vhosts/APPNAME-vhost.conf`  に設定を書けば良い
