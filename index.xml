@@ -76,7 +76,8 @@ $ curl -H &amp;#39;Content-Type: application/json&amp;#39; -d &amp;#39;{&amp;#34
  バージョン確認  composer outdated &amp;quot;drupal/*&amp;quot;
  druplaのrootディレクトリで以下を実行  sudo composer update drupal/core &amp;quot;drupal/core-*&amp;quot; --with-all-dependencies sudo composer update drupal/core --with-dependencies
 参考
-housekeeping(キャッシュ削除) drush -y wd-del all</description>
+housekeeping(キャッシュ削除) drush -y wd-del all
+リダイレクト設定 こちらの通りに設定 installdir/apache2/conf/vhosts/APPNAME-vhost.conf に設定を書けば良い</description>
     </item>
     
     <item>
