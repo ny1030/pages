@@ -72,7 +72,7 @@ $ curl -H &amp;#39;Content-Type: application/json&amp;#39; -d &amp;#39;{&amp;#34
       <pubDate>Mon, 25 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>https://ny1030.github.io/pages/posts/engineering/drupal%E9%96%A2%E9%80%A3%E3%81%AE%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/</guid>
-      <description>マイナーバージョンアップ ※スペック低すぎると失敗するので、4コア8GBに事前スケールアップした
+      <description>サービス再起動 bitnami drupal の場合 sudo /opt/bitnami/ctlscript.sh restart マイナーバージョンアップ ※スペック低すぎると失敗するので、4コア8GBに事前スケールアップした
  バージョン確認  composer outdated &amp;quot;drupal/*&amp;quot;
  druplaのrootディレクトリで以下を実行  sudo composer update drupal/core &amp;quot;drupal/core-*&amp;quot; --with-all-dependencies sudo composer update drupal/core --with-dependencies
 参考
