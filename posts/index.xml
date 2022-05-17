@@ -131,7 +131,7 @@ flutter doctor ![[Pasted image 20220513220013.png]]
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://ny1030.github.io/pages/posts/engineering/oracle-sqls/</guid>
-      <description>一般用途  {USER_NAME } というユーザのオブジェクト権限確認  SELECT grantee, table_name, privilege FROM dba_tab_privs WHERE grantee = &amp;#39;USER_NAME&amp;#39;;  初期化パラメータの一覧  SELECT name,display_value,default_value,isdefault,description FROM V$PARAMETER; 特定用途  気になるパラメータチェック  SELECT name,display_value,default_value,isdefault,description FROM V$PARAMETER WHERE name IN (&amp;#39;client_statistics_level&amp;#39;) OR name like &amp;#39;_optim%&amp;#39;; </description>
+      <description>一般用途  {USER_NAME } というユーザのオブジェクト権限確認  SELECT grantee, table_name, privilege FROM dba_tab_privs WHERE grantee = &amp;#39;USER_NAME&amp;#39;;  初期化パラメータの一覧  SELECT name,display_value,default_value,isdefault,description FROM V$PARAMETER;  隠しパラメータを調べる  select ksppinm as &amp;#34;parameter&amp;#34;, ksppstvl as &amp;#34;value&amp;#34; from x$ksppi join x$ksppcv using (indx) where ksppinm = &amp;#39;{隠しパラメータ名}&amp;#39;; 特定用途  気になるパラメータチェック  SELECT name,display_value,default_value,isdefault,description FROM V$PARAMETER WHERE name IN (&amp;#39;client_statistics_level&amp;#39;) OR name like &amp;#39;_optim%&amp;#39;;  気になる隠しパラメータ  select ksppinm as &amp;#34;parameter&amp;#34;, ksppstvl as &amp;#34;value&amp;#34; from x$ksppi join x$ksppcv using (indx) where ksppinm IN (&amp;#39;_optimizer_use_stats_on_conventional_dml&amp;#39;,&amp;#39;_optimizer_gather_stats_on_conventional_dml&amp;#39;); </description>
     </item>
     
   </channel>
