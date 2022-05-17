@@ -125,5 +125,14 @@ flutter doctor ![[Pasted image 20220513220013.png]]
 ![[Pasted image 20220513220039.png]]</description>
     </item>
     
+    <item>
+      <title></title>
+      <link>https://ny1030.github.io/pages/posts/engineering/oracle-sqls/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/posts/engineering/oracle-sqls/</guid>
+      <description>一般用途  {USER_NAME } というユーザのオブジェクト権限確認  SELECT grantee, table_name, privilege FROM dba_tab_privs WHERE grantee = &amp;#39;USER_NAME&amp;#39;;  初期化パラメータの一覧  SELECT name,display_value,default_value,isdefault,description FROM V$PARAMETER; 特定用途  気になるパラメータチェック  SELECT name,display_value,default_value,isdefault,description FROM V$PARAMETER WHERE name IN (&amp;#39;client_statistics_level&amp;#39;) OR name like &amp;#39;_optim%&amp;#39;; </description>
+    </item>
+    
   </channel>
 </rss>
