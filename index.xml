@@ -5,7 +5,16 @@
     <link>https://ny1030.github.io/pages/</link>
     <description>Recent content on ny1030.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 15 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 17 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Oracle SQLs</title>
+      <link>https://ny1030.github.io/pages/posts/engineering/oracle-sqls/</link>
+      <pubDate>Tue, 17 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/posts/engineering/oracle-sqls/</guid>
+      <description>一般用途  {USER_NAME } というユーザのオブジェクト権限確認  SELECT grantee, table_name, privilege FROM dba_tab_privs WHERE grantee = &amp;#39;USER_NAME&amp;#39;;  初期化パラメータの一覧  SELECT name,display_value,default_value,isdefault,description FROM V$PARAMETER;  隠しパラメータを調べる  select ksppinm as &amp;#34;parameter&amp;#34;, ksppstvl as &amp;#34;value&amp;#34; from x$ksppi join x$ksppcv using (indx) where ksppinm = &amp;#39;{隠しパラメータ名}&amp;#39;; 特定用途  気になるパラメータチェック  SELECT name,display_value,default_value,isdefault,description FROM V$PARAMETER WHERE name IN (&amp;#39;client_statistics_level&amp;#39;) OR name like &amp;#39;_optim%&amp;#39;;  気になる隠しパラメータ  select ksppinm as &amp;#34;parameter&amp;#34;, ksppstvl as &amp;#34;value&amp;#34; from x$ksppi join x$ksppcv using (indx) where ksppinm IN (&amp;#39;_optimizer_use_stats_on_conventional_dml&amp;#39;,&amp;#39;_optimizer_gather_stats_on_conventional_dml&amp;#39;); </description>
+    </item>
+    
     <item>
       <title>GCPのアラート情報をDiscordに通知する</title>
       <link>https://ny1030.github.io/pages/posts/engineering/gcp%E3%81%AE%E3%82%A2%E3%83%A9%E3%83%BC%E3%83%88%E6%83%85%E5%A0%B1%E3%82%92discord%E3%81%AB%E9%80%9A%E7%9F%A5%E3%81%99%E3%82%8B/</link>
@@ -123,15 +132,6 @@ brew install cocoapods brew link --overwrite cocoapods ※バージョン指定�
 flutter doctor ![[Pasted image 20220513220013.png]]
 ２．Flutterプロジェクト作成・デモアプリ実行（30分） １．以下のように作成
 ![[Pasted image 20220513220039.png]]</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://ny1030.github.io/pages/posts/engineering/oracle-sqls/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ny1030.github.io/pages/posts/engineering/oracle-sqls/</guid>
-      <description>一般用途  {USER_NAME } というユーザのオブジェクト権限確認  SELECT grantee, table_name, privilege FROM dba_tab_privs WHERE grantee = &amp;#39;USER_NAME&amp;#39;;  初期化パラメータの一覧  SELECT name,display_value,default_value,isdefault,description FROM V$PARAMETER;  隠しパラメータを調べる  select ksppinm as &amp;#34;parameter&amp;#34;, ksppstvl as &amp;#34;value&amp;#34; from x$ksppi join x$ksppcv using (indx) where ksppinm = &amp;#39;{隠しパラメータ名}&amp;#39;; 特定用途  気になるパラメータチェック  SELECT name,display_value,default_value,isdefault,description FROM V$PARAMETER WHERE name IN (&amp;#39;client_statistics_level&amp;#39;) OR name like &amp;#39;_optim%&amp;#39;;  気になる隠しパラメータ  select ksppinm as &amp;#34;parameter&amp;#34;, ksppstvl as &amp;#34;value&amp;#34; from x$ksppi join x$ksppcv using (indx) where ksppinm IN (&amp;#39;_optimizer_use_stats_on_conventional_dml&amp;#39;,&amp;#39;_optimizer_gather_stats_on_conventional_dml&amp;#39;); </description>
     </item>
     
     
