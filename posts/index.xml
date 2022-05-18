@@ -12,7 +12,7 @@
       <pubDate>Wed, 18 May 2022 00:00:00 +0000</pubDate>
       
       <guid>https://ny1030.github.io/pages/posts/engineering/aws-ecr-commands/</guid>
-      <description> apple というECRリポジトリの developタグの imageDigest を確認  aws ecr describe-images --repository-name apple --image-ids imageTag=develop | jq .imageDetails[].imageDigest TODO:
+      <description> apple というECRリポジトリの developタグの imageDigest を確認  aws ecr describe-images --repository-name apple --image-ids imageTag=develop | jq .imageDetails[].imageDigest  認証後にPull (AWSアカウントIDは12345678とする)  aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin 12345678.dkr.ecr.ap-northeast-1.amazonaws.com TODO:
  スニペット化  </description>
     </item>
     
