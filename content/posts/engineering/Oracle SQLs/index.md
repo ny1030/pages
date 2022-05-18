@@ -31,3 +31,6 @@ select ksppinm as "parameter",
 from x$ksppi join x$ksppcv using (indx)
 where ksppinm IN ('_optimizer_use_stats_on_conventional_dml','_optimizer_gather_stats_on_conventional_dml');
 ```
+
+TODO: 
+- スニペット化
