@@ -8,10 +8,10 @@
     <lastBuildDate>Wed, 18 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AWS ECR Commands</title>
-      <link>https://ny1030.github.io/pages/posts/engineering/ecr-commands/</link>
+      <link>https://ny1030.github.io/pages/posts/engineering/aws-ecr-commands/</link>
       <pubDate>Wed, 18 May 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://ny1030.github.io/pages/posts/engineering/ecr-commands/</guid>
+      <guid>https://ny1030.github.io/pages/posts/engineering/aws-ecr-commands/</guid>
       <description> apple というECRリポジトリの developタグの imageDigest を確認  aws ecr describe-images --repository-name apple --image-ids imageTag=develop | jq .imageDetails[].imageDigest TODO:
  スニペット化  </description>
     </item>
