@@ -5,7 +5,18 @@
     <link>https://ny1030.github.io/pages/posts/</link>
     <description>Recent content in Posts on ny1030.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 18 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 19 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>pip Commands</title>
+      <link>https://ny1030.github.io/pages/posts/engineering/pip-commands/</link>
+      <pubDate>Thu, 19 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/posts/engineering/pip-commands/</guid>
+      <description>  install 済みのパッケージ pip list
+  特定パッケージのインストール場所などの詳細情報 pip show jupyter
+  </description>
+    </item>
+    
     <item>
       <title>AWS ECR Commands</title>
       <link>https://ny1030.github.io/pages/posts/engineering/aws-ecr-commands/</link>
