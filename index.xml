@@ -5,7 +5,22 @@
     <link>https://ny1030.github.io/pages/</link>
     <description>Recent content on ny1030.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 19 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 21 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JSONで定義したURLの置換ルールをPythonで変換する</title>
+      <link>https://ny1030.github.io/pages/posts/engineering/json%E3%81%A7%E5%AE%9A%E7%BE%A9%E3%81%97%E3%81%9Furl%E3%81%AE%E7%BD%AE%E6%8F%9B%E3%83%AB%E3%83%BC%E3%83%AB%E3%82%92python%E3%81%A7%E5%A4%89%E6%8F%9B%E3%81%99%E3%82%8B/</link>
+      <pubDate>Sat, 21 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/posts/engineering/json%E3%81%A7%E5%AE%9A%E7%BE%A9%E3%81%97%E3%81%9Furl%E3%81%AE%E7%BD%AE%E6%8F%9B%E3%83%AB%E3%83%BC%E3%83%AB%E3%82%92python%E3%81%A7%E5%A4%89%E6%8F%9B%E3%81%99%E3%82%8B/</guid>
+      <description>概要 ApacheやNginx、ELBのアクセスログの集計などをする時に以下のような変換を行う必要がある。
+Input:
+timestamp,backend_processing_time_msec,alb_status_code,backend_status_code,target_status_code_list,method,URL 2021-12-01T03:50:00.115676Z,182,201,201,201,POST,https://api.test.io:443/service1/v2/jp/cart/7219b08ec8464865a6020bb6025cd641/details 2021-12-01T03:50:20.597508Z,67,200,200,200,GET,https://api.test.io:443/service2/v2/jp/history/0130050002112010350-8052922 2021-12-01T03:50:20.613452Z,145,200,200,200,GET,https://api.test.io:443/service2/v2/jp/history?display_results=5&amp;amp;search_page=1 2021-12-01T03:50:20.894114Z,22,200,200,200,GET,https://api.test.io:443/service2/v2/jp/history/0130050002112010350-8052921 2021-12-01T03:51:45.903017Z,8,404,404,404,DELETE,https://api.test.io:443/service3/v1/jp/reserve/7041b995fa1b4c8b99543acc50c60865 2021-12-01T03:54:41.598315Z,20,200,200,200,GET,https://api.test.io:443/service3/v1/jp/stocks?code_list=11111111%22222222%33333333 2021-12-01T03:54:56.672346Z,165,200,200,200,GET,https://api.test.io:443/service4/v1/jp/pay/accesstoken?device_id=AAAAA-BBBB-CCC ⬇️ URLの正規化（≒変換, 名寄せ）
+Output:
+timestamp,backend_processing_time_msec,alb_status_code,backend_status_code,method,URL 2021-12-01T03:50:00.115676Z,182.0,201,201,POST,https://api.test.io:443/service1/v2/jp/cart/{cart_no}/details 2021-12-01T03:50:20.597508Z,67.0,200,200,GET,https://api.test.io:443/service2/v2/jp/history/{order_no} 2021-12-01T03:50:20.613452Z,145.0,200,200,GET,https://api.test.io:443/service2/v2/jp/history 2021-12-01T03:50:20.894114Z,22.0,200,200,GET,https://api.test.io:443/service2/v2/jp/history/{order_no} 2021-12-01T03:51:45.903017Z,8.0,404,404,DELETE,https://api.test.io:443/service3/v1/jp/reserve/{cart_no} 2021-12-01T03:54:41.598315Z,20.0,200,200,GET,https://api.test.io:443/service3/v1/jp/stocks 2021-12-01T03:54:56.672346Z,165.0,200,200,GET,https://api.test.io:443/service4/v1/jp/pay/accesstoken 上記のような変換を行うことで、APIのEndpointごとにコール回数やレスポンス時間など統計処理をPandasなどを行うことができる。
+コード 概要で説明したような事を実現するために、以下のコードを作成。
+1. URLの変換パターンを定義した設定ファイル（JSON）  置換のパターンはAPIの定義書などを参考に記述するのが良い（ない場合はアクセスログからリバースするしかない&amp;hellip;）  { 	&amp;#34;^(.*)/history/[0-9]{12,19}-[0-9]{5,7}&amp;#34;: &amp;#34;\\1/history/{order_no}&amp;#34;, 	&amp;#34;^(.*)(cart|reserve)/[0-9a-z]{32}&amp;#34;: &amp;#34;\\1\\2/{cart_no}&amp;#34; } 2. inputしたCSVからURLの変換処理を行うスクリプト（Python）  タイトル詐欺になるが、クエリパラメータに関する置換はルールが単純なのでJSONでは定義せず、こちらのスクリプトで定義・処理している（# REMOVE QUERY PARAMETERのセクション）。  import pandas as pd import json  input_filename = &amp;#39;./input.csv&amp;#39; output_filename = &amp;#39;./output.csv&amp;#39;  input_csv = pd.read_csv(  input_filename,  sep=&amp;#39;,&amp;#39;,  usecols=lambda x: x in [&amp;#39;timestamp&amp;#39;,&amp;#39;alb_status_code&amp;#39;, &amp;#39;backend_status_code&amp;#39;, &amp;#39;method&amp;#39;, &amp;#39;URL&amp;#39;, &amp;#39;backend_processing_time_msec&amp;#39;],  index_col=&amp;#39;timestamp&amp;#39;,  dtype={&amp;#39;timestamp&amp;#39;: str, &amp;#39;alb_status_code&amp;#39;: str, &amp;#39;backend_status_code&amp;#39;: str, &amp;#39;method&amp;#39;: str, &amp;#39;URL&amp;#39;: str, &amp;#39;backend_processing_time_msec&amp;#39;: &amp;#39;float16&amp;#39;} )  # REMOVE QUERY PARAMETER input_csv = pd.</description>
+    </item>
+    
     <item>
       <title>pip Commands</title>
       <link>https://ny1030.github.io/pages/posts/engineering/pip-commands/</link>
