@@ -8,7 +8,7 @@ title: JSONで定義したURLの置換ルールをPythonで変換する
 ApacheやNginx、ELBのアクセスログの集計などをする時に以下のような変換を行う必要がある。
 
 Input: 
-```
+```plain text:input.csv
 timestamp,backend_processing_time_msec,alb_status_code,backend_status_code,target_status_code_list,method,URL
 2021-12-01T03:50:00.115676Z,182,201,201,201,POST,https://api.test.io:443/service1/v2/jp/cart/7219b08ec8464865a6020bb6025cd641/details
 2021-12-01T03:50:20.597508Z,67,200,200,200,GET,https://api.test.io:443/service2/v2/jp/history/0130050002112010350-8052922
@@ -22,7 +22,7 @@ timestamp,backend_processing_time_msec,alb_status_code,backend_status_code,targe
 ⬇️ URLの正規化（≒変換, 名寄せ）
 
 Output: 
-```
+```plain text:output.csv
 timestamp,backend_processing_time_msec,alb_status_code,backend_status_code,method,URL
 2021-12-01T03:50:00.115676Z,182.0,201,201,POST,https://api.test.io:443/service1/v2/jp/cart/{cart_no}/details
 2021-12-01T03:50:20.597508Z,67.0,200,200,GET,https://api.test.io:443/service2/v2/jp/history/{order_no}
