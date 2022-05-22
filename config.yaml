@@ -68,3 +68,5 @@ menu:
       url: /archives
       weight: 20
 
+ignoreFiles:
+    - content/template/template\.md$
