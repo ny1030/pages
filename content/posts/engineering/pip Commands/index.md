@@ -8,4 +8,3 @@ title: pip Commands
 
 - 特定パッケージのインストール場所などの詳細情報
 `pip show jupyter`
-
