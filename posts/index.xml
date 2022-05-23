@@ -5,7 +5,17 @@
     <link>https://ny1030.github.io/pages/posts/</link>
     <description>Recent content in Posts on ny1030.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 21 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 23 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Terraformのお作法</title>
+      <link>https://ny1030.github.io/pages/posts/engineering/terraform%E3%81%AE%E3%81%8A%E4%BD%9C%E6%B3%95/</link>
+      <pubDate>Mon, 23 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/posts/engineering/terraform%E3%81%AE%E3%81%8A%E4%BD%9C%E6%B3%95/</guid>
+      <description>基本コンセプト Composition コンポジションはインフラモジュールの集合体であり、論理的に分離された複数の領域（例：AWSリージョン、複数のAWSアカウント）にまたがることが可能である。コンポジションは、組織全体やプロジェクトに必要な完全なインフラストラクチャを表現するために使用される。
+コンポジションは、インフラストラクチャーモジュールで構成され、リソースモジュールで構成され、個々のリソースを実装する。 作成すべきファイル  main.tf: モジュール、ローカル、データソースを呼び出して、すべてのリソースを作成 outpputs.tf: main.tfで作成されたリソースからの出力 variables.tf: main.tfで使用される変数の宣言 terraform.tfvars: 環境特有の変数の値を宣言  ref: terraform-best-practices**</description>
+    </item>
+    
     <item>
       <title>JSONで定義したURLの置換ルールをPythonで変換する</title>
       <link>https://ny1030.github.io/pages/posts/engineering/json%E3%81%A7%E5%AE%9A%E7%BE%A9%E3%81%97%E3%81%9Furl%E3%81%AE%E7%BD%AE%E6%8F%9B%E3%83%AB%E3%83%BC%E3%83%AB%E3%82%92python%E3%81%A7%E5%A4%89%E6%8F%9B%E3%81%99%E3%82%8B/</link>
