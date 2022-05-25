@@ -17,5 +17,6 @@ title: Terraformのお作法
 - variables.tf: main.tfで使用される変数の宣言
 - terraform.tfvars: 環境特有の変数の値を宣言
 
-ref: [terraform-best-practices](https://github.com/antonbabenko/terraform-best-practices)**
+ref: https://github.com/antonbabenko/terraform-best-practices/tree/master/examples/large-terraform/stage
+
 
