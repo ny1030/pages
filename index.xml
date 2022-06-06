@@ -5,7 +5,16 @@
     <link>https://ny1030.github.io/pages/</link>
     <description>Recent content on ny1030.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 23 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>EC2インスタンスにタグを付与</title>
+      <link>https://ny1030.github.io/pages/posts/engineering/ec2%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%82%B9%E3%81%AB%E3%82%BF%E3%82%B0%E3%82%92%E4%BB%98%E4%B8%8E/</link>
+      <pubDate>Mon, 06 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/posts/engineering/ec2%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%82%B9%E3%81%AB%E3%82%BF%E3%82%B0%E3%82%92%E4%BB%98%E4%B8%8E/</guid>
+      <description>単発実行 現在の状態を確認 aws ec2 describe-images --image-ids ami-ffa5df99 タグを付与 aws ec2 create-tags --resources ami-ffa5df99 --tags Key=system_id,Value=599453524280/prd01-tky-NewUTME-frontapp- ⇨再度実行しても同じKey/Valueなら結果は変わらないことを確認</description>
+    </item>
+    
     <item>
       <title>Terraformのお作法</title>
       <link>https://ny1030.github.io/pages/posts/engineering/terraform%E3%81%AE%E3%81%8A%E4%BD%9C%E6%B3%95/</link>
@@ -13,7 +22,7 @@
       
       <guid>https://ny1030.github.io/pages/posts/engineering/terraform%E3%81%AE%E3%81%8A%E4%BD%9C%E6%B3%95/</guid>
       <description>基本コンセプト Composition コンポジションはインフラモジュールの集合体であり、論理的に分離された複数の領域（例：AWSリージョン、複数のAWSアカウント）にまたがることが可能である。コンポジションは、組織全体やプロジェクトに必要な完全なインフラストラクチャを表現するために使用される。
-コンポジションは、インフラストラクチャーモジュールで構成され、リソースモジュールで構成され、個々のリソースを実装する。 作成すべきファイル  main.tf: モジュール、ローカル、データソースを呼び出して、すべてのリソースを作成 outpputs.tf: main.tfで作成されたリソースからの出力 variables.tf: main.tfで使用される変数の宣言 terraform.tfvars: 環境特有の変数の値を宣言  ref: https://github.com/antonbabenko/terraform-best-practices/tree/master/examples/large-terraform/stage</description>
+コンポジションは、インフラストラクチャーモジュールで構成され、リソースモジュールで構成され、個々のリソースを実装する。 作成すべきファイル main.tf: モジュール、ローカル、データソースを呼び出して、すべてのリソースを作成 outpputs.tf: main.tfで作成されたリソースからの出力 variables.tf: main.tfで使用される変数の宣言 terraform.tfvars: 環境特有の変数の値を宣言 ref: https://github.com/antonbabenko/terraform-best-practices/tree/master/examples/large-terraform/stage</description>
     </item>
     
     <item>
@@ -28,7 +37,7 @@ timestamp,backend_processing_time_msec,alb_status_code,backend_status_code,targe
 Output:
 timestamp,backend_processing_time_msec,alb_status_code,backend_status_code,method,URL 2021-12-01T03:50:00.115676Z,182.0,201,201,POST,https://api.test.io:443/service1/v2/jp/cart/{cart_no}/details 2021-12-01T03:50:20.597508Z,67.0,200,200,GET,https://api.test.io:443/service2/v2/jp/history/{order_no} 2021-12-01T03:50:20.613452Z,145.0,200,200,GET,https://api.test.io:443/service2/v2/jp/history 2021-12-01T03:50:20.894114Z,22.0,200,200,GET,https://api.test.io:443/service2/v2/jp/history/{order_no} 2021-12-01T03:51:45.903017Z,8.0,404,404,DELETE,https://api.test.io:443/service3/v1/jp/reserve/{cart_no} 2021-12-01T03:54:41.598315Z,20.0,200,200,GET,https://api.test.io:443/service3/v1/jp/stocks 2021-12-01T03:54:56.672346Z,165.0,200,200,GET,https://api.test.io:443/service4/v1/jp/pay/accesstoken 上記のような変換を行うことで、APIのEndpointごとにコール回数やレスポンス時間など統計処理をPandasなどを行うことができる。
 コード 概要で説明したような事を実現するために、以下のコードを作成。
-1. URLの変換パターンを定義した設定ファイル（JSON）  置換のパターンはAPIの定義書などを参考に記述するのが良い（ない場合はアクセスログからリバースするしかない&amp;hellip;）  { 	&amp;#34;^(.*)/history/[0-9]{12,19}-[0-9]{5,7}&amp;#34;: &amp;#34;\\1/history/{order_no}&amp;#34;, 	&amp;#34;^(.*)(cart|reserve)/[0-9a-z]{32}&amp;#34;: &amp;#34;\\1\\2/{cart_no}&amp;#34; } 2. inputしたCSVからURLの変換処理を行うスクリプト（Python）  タイトル詐欺になるが、クエリパラメータに関する置換はルールが単純なのでJSONでは定義せず、こちらのスクリプトで定義・処理している（# REMOVE QUERY PARAMETERのセクション）。  import pandas as pd import json  input_filename = &amp;#39;./input.csv&amp;#39; output_filename = &amp;#39;./output.csv&amp;#39;  input_csv = pd.read_csv(  input_filename,  sep=&amp;#39;,&amp;#39;,  usecols=lambda x: x in [&amp;#39;timestamp&amp;#39;,&amp;#39;alb_status_code&amp;#39;, &amp;#39;backend_status_code&amp;#39;, &amp;#39;method&amp;#39;, &amp;#39;URL&amp;#39;, &amp;#39;backend_processing_time_msec&amp;#39;],  index_col=&amp;#39;timestamp&amp;#39;,  dtype={&amp;#39;timestamp&amp;#39;: str, &amp;#39;alb_status_code&amp;#39;: str, &amp;#39;backend_status_code&amp;#39;: str, &amp;#39;method&amp;#39;: str, &amp;#39;URL&amp;#39;: str, &amp;#39;backend_processing_time_msec&amp;#39;: &amp;#39;float16&amp;#39;} )  # REMOVE QUERY PARAMETER input_csv = pd.</description>
+1. URLの変換パターンを定義した設定ファイル（JSON） 置換のパターンはAPIの定義書などを参考に記述するのが良い（ない場合はアクセスログからリバースするしかない&amp;hellip;） { &amp;#34;^(.*)/history/[0-9]{12,19}-[0-9]{5,7}&amp;#34;: &amp;#34;\\1/history/{order_no}&amp;#34;, &amp;#34;^(.*)(cart|reserve)/[0-9a-z]{32}&amp;#34;: &amp;#34;\\1\\2/{cart_no}&amp;#34; } 2. inputしたCSVからURLの変換処理を行うスクリプト（Python） タイトル詐欺になるが、クエリパラメータに関する置換はルールが単純なのでJSONでは定義せず、こちらのスクリプトで定義・処理している（# REMOVE QUERY PARAMETERのセクション）。 import pandas as pd import json input_filename = &amp;#39;./input.csv&amp;#39; output_filename = &amp;#39;./output.csv&amp;#39; input_csv = pd.read_csv( input_filename, sep=&amp;#39;,&amp;#39;, usecols=lambda x: x in [&amp;#39;timestamp&amp;#39;,&amp;#39;alb_status_code&amp;#39;, &amp;#39;backend_status_code&amp;#39;, &amp;#39;method&amp;#39;, &amp;#39;URL&amp;#39;, &amp;#39;backend_processing_time_msec&amp;#39;], index_col=&amp;#39;timestamp&amp;#39;, dtype={&amp;#39;timestamp&amp;#39;: str, &amp;#39;alb_status_code&amp;#39;: str, &amp;#39;backend_status_code&amp;#39;: str, &amp;#39;method&amp;#39;: str, &amp;#39;URL&amp;#39;: str, &amp;#39;backend_processing_time_msec&amp;#39;: &amp;#39;float16&amp;#39;} ) # REMOVE QUERY PARAMETER input_csv = pd.</description>
     </item>
     
     <item>
@@ -37,9 +46,8 @@ timestamp,backend_processing_time_msec,alb_status_code,backend_status_code,metho
       <pubDate>Thu, 19 May 2022 00:00:00 +0000</pubDate>
       
       <guid>https://ny1030.github.io/pages/posts/engineering/pip-commands/</guid>
-      <description>  install 済みのパッケージ pip list
-  特定パッケージのインストール場所などの詳細情報 pip show jupyter
-  </description>
+      <description>install 済みのパッケージ pip list
+特定パッケージのインストール場所などの詳細情報 pip show jupyter</description>
     </item>
     
     <item>
@@ -48,8 +56,8 @@ timestamp,backend_processing_time_msec,alb_status_code,backend_status_code,metho
       <pubDate>Wed, 18 May 2022 00:00:00 +0000</pubDate>
       
       <guid>https://ny1030.github.io/pages/posts/engineering/aws-ecr-commands/</guid>
-      <description> apple というECRリポジトリの developタグの imageDigest を確認  aws ecr describe-images --repository-name apple --image-ids imageTag=develop | jq .imageDetails[].imageDigest  認証後にPull (AWSアカウントIDは12345678とする)  aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin 12345678.dkr.ecr.ap-northeast-1.amazonaws.com TODO:
- スニペット化  </description>
+      <description> apple というECRリポジトリの developタグの imageDigest を確認 aws ecr describe-images --repository-name apple --image-ids imageTag=develop | jq .imageDetails[].imageDigest 認証後にPull (AWSアカウントIDは12345678とする) aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin 12345678.dkr.ecr.ap-northeast-1.amazonaws.com TODO:
+スニペット化 </description>
     </item>
     
     <item>
@@ -58,7 +66,7 @@ timestamp,backend_processing_time_msec,alb_status_code,backend_status_code,metho
       <pubDate>Tue, 17 May 2022 00:00:00 +0000</pubDate>
       
       <guid>https://ny1030.github.io/pages/posts/engineering/oracle-sqls/</guid>
-      <description>一般用途  {USER_NAME } というユーザのオブジェクト権限確認  SELECT grantee, table_name, privilege FROM dba_tab_privs WHERE grantee = &amp;#39;USER_NAME&amp;#39;;  初期化パラメータの一覧  SELECT name,display_value,default_value,isdefault,description FROM V$PARAMETER;  隠しパラメータを調べる  select ksppinm as &amp;#34;parameter&amp;#34;, ksppstvl as &amp;#34;value&amp;#34; from x$ksppi join x$ksppcv using (indx) where ksppinm = &amp;#39;{隠しパラメータ名}&amp;#39;; 特定用途  気になるパラメータチェック  SELECT name,display_value,default_value,isdefault,description FROM V$PARAMETER WHERE name IN (&amp;#39;client_statistics_level&amp;#39;) OR name like &amp;#39;_optim%&amp;#39;;  気になる隠しパラメータ  select ksppinm as &amp;#34;parameter&amp;#34;, ksppstvl as &amp;#34;value&amp;#34; from x$ksppi join x$ksppcv using (indx) where ksppinm IN (&amp;#39;_optimizer_use_stats_on_conventional_dml&amp;#39;,&amp;#39;_optimizer_gather_stats_on_conventional_dml&amp;#39;); TODO:</description>
+      <description>一般用途 {USER_NAME } というユーザのオブジェクト権限確認 SELECT grantee, table_name, privilege FROM dba_tab_privs WHERE grantee = &amp;#39;USER_NAME&amp;#39;; 初期化パラメータの一覧 SELECT name,display_value,default_value,isdefault,description FROM V$PARAMETER; 隠しパラメータを調べる select ksppinm as &amp;#34;parameter&amp;#34;, ksppstvl as &amp;#34;value&amp;#34; from x$ksppi join x$ksppcv using (indx) where ksppinm = &amp;#39;{隠しパラメータ名}&amp;#39;; 特定用途 気になるパラメータチェック SELECT name,display_value,default_value,isdefault,description FROM V$PARAMETER WHERE name IN (&amp;#39;client_statistics_level&amp;#39;) OR name like &amp;#39;_optim%&amp;#39;; 気になる隠しパラメータ select ksppinm as &amp;#34;parameter&amp;#34;, ksppstvl as &amp;#34;value&amp;#34; from x$ksppi join x$ksppcv using (indx) where ksppinm IN (&amp;#39;_optimizer_use_stats_on_conventional_dml&amp;#39;,&amp;#39;_optimizer_gather_stats_on_conventional_dml&amp;#39;); TODO:</description>
     </item>
     
     <item>
@@ -67,7 +75,7 @@ timestamp,backend_processing_time_msec,alb_status_code,backend_status_code,metho
       <pubDate>Sun, 15 May 2022 00:00:00 +0000</pubDate>
       
       <guid>https://ny1030.github.io/pages/posts/engineering/gcp%E3%81%AE%E3%82%A2%E3%83%A9%E3%83%BC%E3%83%88%E6%83%85%E5%A0%B1%E3%82%92discord%E3%81%AB%E9%80%9A%E7%9F%A5%E3%81%99%E3%82%8B/</guid>
-      <description>やりたいこと  運用しているシステムで時折、CPU使用率が100%を超過しアクセス不可になる。 Compute Engine（GCE）のインスタンスを再起動することで上記事象は直るので、復旧時間を短くするために、通知することでできるだけ早く気付けるようにする。 通知先として、スマホから手軽に見れてWebhookで楽に設定できるDiscordを使ってみる。 通知のロジックを超カンタンな図で表すと以下のような形：   やったこと 通知ポリシーの作成（GCP管理画面） GCEのCPU使用率が95%以上の状態が何分間以上続いたら通知するか、といった条件をGCPの管理画面から設定する。これはGCEの画面のオブザーバビリティのタブから画像のように設定。 通知チャンネルの作成（GCP管理画面） 通知ポリシーと似た名前だがこちらは通知先を設定するサービス。画像の通りSlackやWebhook、（見えてないけど）SMSやEmailの設定が可能。今回はDiscordに通知したかったので通知したいDiscordチャンネルのWebhook URLを設定。 トラブルシューティング 上記の設定を終えたところで、通知チャンネルから「TEST CONNECTION」があったので試しに実行。 「successfully sent」と出ているがDiscordチャンネルを見るとメッセージが届いてない。。
+      <description>やりたいこと 運用しているシステムで時折、CPU使用率が100%を超過しアクセス不可になる。 Compute Engine（GCE）のインスタンスを再起動することで上記事象は直るので、復旧時間を短くするために、通知することでできるだけ早く気付けるようにする。 通知先として、スマホから手軽に見れてWebhookで楽に設定できるDiscordを使ってみる。 通知のロジックを超カンタンな図で表すと以下のような形： やったこと 通知ポリシーの作成（GCP管理画面） GCEのCPU使用率が95%以上の状態が何分間以上続いたら通知するか、といった条件をGCPの管理画面から設定する。これはGCEの画面のオブザーバビリティのタブから画像のように設定。 通知チャンネルの作成（GCP管理画面） 通知ポリシーと似た名前だがこちらは通知先を設定するサービス。画像の通りSlackやWebhook、（見えてないけど）SMSやEmailの設定が可能。今回はDiscordに通知したかったので通知したいDiscordチャンネルのWebhook URLを設定。 トラブルシューティング 上記の設定を終えたところで、通知チャンネルから「TEST CONNECTION」があったので試しに実行。 「successfully sent」と出ているがDiscordチャンネルを見るとメッセージが届いてない。。
 GCP側のログ確認 Cloud Logging で 確認したところ、同タイミングで400エラーが出ていることを確認 😇 curlで送ってみる 件のDiscordにcurlで試しにPOSTをしてみたところ、
 $ curl -H &amp;#39;Content-Type: application/json&amp;#39; -d &amp;#39;{&amp;#34;data&amp;#34;: &amp;#34;Hello World&amp;#34;}&amp;#39; https://discord.com/api/webhooks/{YOUR_PATH} {&amp;#34;message&amp;#34;: &amp;#34;Cannot send an empty message&amp;#34;, &amp;#34;code&amp;#34;: 50006} というメッセージが返ってきた。status codeを調べると400なのでGCPと同じエラーっぽい。
 微修正して以下のようなPOSTをしたところ通知が成功。
@@ -99,7 +107,7 @@ $ curl -H &amp;#39;Content-Type: application/json&amp;#39; -d &amp;#39;{&amp;#34
       <pubDate>Tue, 03 May 2022 00:00:00 +0000</pubDate>
       
       <guid>https://ny1030.github.io/pages/posts/engineering/linux-%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E7%8E%87%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/</guid>
-      <description>freeコマンド  total : 合計 used : カーネルとプロセスが使用している shared : tmpfsに使われている free : 余っている buffers : バッファキャッシュのメモリサイズ cache : ページキャッシュのメモリサイズ available : 実質的な空きメモリ  free + buff/cache (解放可能な部分)     sar コマンド 物理メモリ使用量が表示される = buffers, cacheが含まれた使用量 sar -r でメモリ使用状況を確認する - ablog</description>
+      <description>freeコマンド total : 合計 used : カーネルとプロセスが使用している shared : tmpfsに使われている free : 余っている buffers : バッファキャッシュのメモリサイズ cache : ページキャッシュのメモリサイズ available : 実質的な空きメモリ free + buff/cache (解放可能な部分) sar コマンド 物理メモリ使用量が表示される = buffers, cacheが含まれた使用量 sar -r でメモリ使用状況を確認する - ablog</description>
     </item>
     
     <item>
@@ -118,7 +126,7 @@ $ curl -H &amp;#39;Content-Type: application/json&amp;#39; -d &amp;#39;{&amp;#34
       
       <guid>https://ny1030.github.io/pages/posts/engineering/sql%E3%83%91%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%B3%E3%82%B9%E3%83%81%E3%83%A5%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0/</guid>
       <description>Level 0 実行計画(Query Plan)の読み方 以下のようなSQLの実行計画を取得してみる。
- UPDATE T_ITEM_INBOUND t3 SET status_flag = &amp;#39;9&amp;#39; , updated_datetime = CURRENT_TIMESTAMP , updated_by = &amp;#39;APP_001&amp;#39; FROM ( SELECT t1.group_num , t1.level3_item_code FROM T_ITEM_INBOUND t1 WHERE t1.status_flag = &amp;#39;1&amp;#39; AND t1.group_num = &amp;#39;10&amp;#39; AND t1.level3_item_code = &amp;#39;1000-2000-3000&amp;#39; GROUP BY t1.group_num , t1.level1_item_code , t1.level2_item_code , t1.level3_item_code , t1.color_code , t1.size_code , t1.pattern_length_code HAVING 1 &amp;lt; COUNT(t1.group_num) ) t2 WHERE t3.status_flag = &amp;#39;1&amp;#39; AND t3.group_num = t2.</description>
+UPDATE T_ITEM_INBOUND t3 SET status_flag = &amp;#39;9&amp;#39; , updated_datetime = CURRENT_TIMESTAMP , updated_by = &amp;#39;APP_001&amp;#39; FROM ( SELECT t1.group_num , t1.level3_item_code FROM T_ITEM_INBOUND t1 WHERE t1.status_flag = &amp;#39;1&amp;#39; AND t1.group_num = &amp;#39;10&amp;#39; AND t1.level3_item_code = &amp;#39;1000-2000-3000&amp;#39; GROUP BY t1.group_num , t1.level1_item_code , t1.level2_item_code , t1.level3_item_code , t1.color_code , t1.size_code , t1.pattern_length_code HAVING 1 &amp;lt; COUNT(t1.group_num) ) t2 WHERE t3.status_flag = &amp;#39;1&amp;#39; AND t3.group_num = t2.group_num AND t3.</description>
     </item>
     
     <item>
@@ -128,8 +136,8 @@ $ curl -H &amp;#39;Content-Type: application/json&amp;#39; -d &amp;#39;{&amp;#34
       
       <guid>https://ny1030.github.io/pages/posts/engineering/drupal%E9%96%A2%E9%80%A3%E3%81%AE%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/</guid>
       <description>サービス再起動 bitnami drupal の場合 sudo /opt/bitnami/ctlscript.sh restart マイナーバージョンアップ ※スペック低すぎると失敗するので、4コア8GBに事前スケールアップした
- バージョン確認  composer outdated &amp;quot;drupal/*&amp;quot;
- druplaのrootディレクトリで以下を実行  sudo composer update drupal/core &amp;quot;drupal/core-*&amp;quot; --with-all-dependencies sudo composer update drupal/core --with-dependencies
+バージョン確認 composer outdated &amp;quot;drupal/*&amp;quot;
+druplaのrootディレクトリで以下を実行 sudo composer update drupal/core &amp;quot;drupal/core-*&amp;quot; --with-all-dependencies sudo composer update drupal/core --with-dependencies
 参考
 housekeeping(キャッシュ削除) drush -y wd-del all
 リダイレクト設定 こちらの通りに設定 installdir/apache2/conf/vhosts/APPNAME-vhost.conf に設定を書けば良い</description>
@@ -142,7 +150,7 @@ housekeeping(キャッシュ削除) drush -y wd-del all
       
       <guid>https://ny1030.github.io/pages/posts/engineering/wsl2%E3%82%92%E5%85%A5%E3%82%8C%E3%81%9F%E5%BE%8C%E3%81%AB%E3%82%84%E3%82%8B%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%9E%E3%82%A4%E3%82%BA/</guid>
       <description>※ OSは Ubuntu 20.04(LTS) を使用
- まずはプロンプトを変更（ミニマルな内容にする）  #1.まずは現在の設定確認 user@DESKTOP-XXXXX:~$ **echo $PS1** \\[\\e]0;\\u@\\h: \\w\\a\\]${debian_chroot:+($debian_chroot)}\\[\\033[01;32m\\]\\u@\\h\\[\\033[00m\\]:\\[\\033[01;34m\\]\\w\\[\\033[00m\\]\\$ #2.PS1の値を書き換え user@DESKTOP-XXXXX:~$ **PS1=&amp;#39;\\[\\e[1;32m\\]\\W\\$ \\[\\e[m\\]&amp;#39;** ~$ #3.設定内容を永続化 ~$ **echo &amp;#34;PS1=&amp;#39;\\[\\e[1;32m\\]\\W\\$ \\[\\e[m\\]&amp;#39;&amp;#34; &amp;gt;&amp;gt; .bashrc** #4.ターミナルを再起動して、設定が永続化されてること確認 ~$  systemd を PID1（親プロセス）にする  #1.現状のプロセスを確認 ~$ ps aux USER PID %CPU %MEM VSZ RSS TTY STAT START TIME COMMAND root 1 0.0 0.0 896 528 ? Sl 16:13 0:00 /init root 120 0.0 0.0 896 84 ? Ss 16:19 0:00 /init #2.</description>
+まずはプロンプトを変更（ミニマルな内容にする） #1.まずは現在の設定確認 user@DESKTOP-XXXXX:~$ **echo $PS1** \\[\\e]0;\\u@\\h: \\w\\a\\]${debian_chroot:+($debian_chroot)}\\[\\033[01;32m\\]\\u@\\h\\[\\033[00m\\]:\\[\\033[01;34m\\]\\w\\[\\033[00m\\]\\$ #2.PS1の値を書き換え user@DESKTOP-XXXXX:~$ **PS1=&amp;#39;\\[\\e[1;32m\\]\\W\\$ \\[\\e[m\\]&amp;#39;** ~$ #3.設定内容を永続化 ~$ **echo &amp;#34;PS1=&amp;#39;\\[\\e[1;32m\\]\\W\\$ \\[\\e[m\\]&amp;#39;&amp;#34; &amp;gt;&amp;gt; .bashrc** #4.ターミナルを再起動して、設定が永続化されてること確認 ~$ systemd を PID1（親プロセス）にする #1.現状のプロセスを確認 ~$ ps aux USER PID %CPU %MEM VSZ RSS TTY STAT START TIME COMMAND root 1 0.0 0.0 896 528 ? Sl 16:13 0:00 /init root 120 0.0 0.0 896 84 ? Ss 16:19 0:00 /init #2.dotnet-runtime-5.0などの依存モジュールをインストール wget &amp;lt;https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb&amp;gt; -O packages-microsoft-prod.</description>
     </item>
     
     <item>
@@ -187,7 +195,7 @@ flutter doctor ![[Pasted image 20220513220013.png]]
       
       <guid>https://ny1030.github.io/pages/posts/engineering/apache%E3%81%AEredirect%E8%A8%AD%E5%AE%9A/</guid>
       <description>www無しドメイン -&amp;gt; www有りドメインにリダイレクト 参考：Apache RewriteCond の基礎知識 | - WEB ARCH LABO {apache_dir}/conf/vhost
-&amp;lt;VirtualHost *:80&amp;gt; ... &amp;lt;Directory &amp;#34;/opt/blog&amp;#34;&amp;gt; ... &amp;lt;/Directory&amp;gt; RewriteEngine On RewriteCond %{HTTP_HOST} !^www\. [NC] RewriteCond %{REQUEST_URI} !^/admin/ RewriteRule ^(.*)$ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L] ... &amp;lt;/VirtualHost&amp;gt;  RewriteEngine On: このディレクティブを書かないとRewriteは動かない。言い換えるとここだけコメントアウトすればRewriteを無効にできる。 RewriteCond: この条件に合致（true）したらRewriteRuleにしたがってURLの書き換えをおこなう。  今回の例：サーバのホスト名%{HTTP_HOST} でwww.が先頭にない !^www\.とき。（大文字小文字は区別しない[NC]） RewriteCondを複数記述した場合はデフォルトではAND条件になる。ORにしたい場合は末尾に [OR] を指定する。   RewriteRule: URLの書き換えルールを書いている。リダイレクトのステータスコードを末尾に記載。  [L] をつけると振り分けが終わる（それ以降の処理は無視される）が、Rewrite後に再度評価が実行されるのでループに注意とのこと。再度評価をしたくない場合、[END] をつければいいとのこと。.htaccess に RewriteRule 書くときは、[L]フラグをつけても    </description>
+&amp;lt;VirtualHost *:80&amp;gt; ... &amp;lt;Directory &amp;#34;/opt/blog&amp;#34;&amp;gt; ... &amp;lt;/Directory&amp;gt; RewriteEngine On RewriteCond %{HTTP_HOST} !^www\. [NC] RewriteCond %{REQUEST_URI} !^/admin/ RewriteRule ^(.*)$ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L] ... &amp;lt;/VirtualHost&amp;gt; RewriteEngine On: このディレクティブを書かないとRewriteは動かない。言い換えるとここだけコメントアウトすればRewriteを無効にできる。 RewriteCond: この条件に合致（true）したらRewriteRuleにしたがってURLの書き換えをおこなう。 今回の例：サーバのホスト名%{HTTP_HOST} でwww.が先頭にない !^www\.とき。（大文字小文字は区別しない[NC]） RewriteCondを複数記述した場合はデフォルトではAND条件になる。ORにしたい場合は末尾に [OR] を指定する。 RewriteRule: URLの書き換えルールを書いている。リダイレクトのステータスコードを末尾に記載。 [L] をつけると振り分けが終わる（それ以降の処理は無視される）が、Rewrite後に再度評価が実行されるのでループに注意とのこと。再度評価をしたくない場合、[END] をつければいいとのこと。.htaccess に RewriteRule 書くときは、[L]フラグをつけても </description>
     </item>
     
     
