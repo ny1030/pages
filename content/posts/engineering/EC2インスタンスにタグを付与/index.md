@@ -21,6 +21,10 @@ aws ec2 create-tags --resources ami-ffa5df99 --tags Key=system,Value=front
 ```
 aws ec2 describe-images --filter Name="tag-key",Values="system"
 ```
+- ワイルドカードによる検索も可能
+```
+aws ec2 describe-images --filter Name="tag-key",Values="sys*"
+```
 
 ### Reference
 [describe-instances — AWS CLI 1.25.2 Command Reference](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html)
