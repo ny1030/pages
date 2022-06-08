@@ -28,3 +28,4 @@ aws ec2 describe-images --filter Name="tag-key",Values="sys*"
 
 ### Reference
 [describe-instances — AWS CLI 1.25.2 Command Reference](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html)
+[describe-images — AWS CLI 1.25.4 Command Reference](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html)
