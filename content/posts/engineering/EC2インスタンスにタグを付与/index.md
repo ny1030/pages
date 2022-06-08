@@ -10,7 +10,7 @@ title: EC2インスタンス/AMIにタグを付与
 aws ec2 describe-images --image-ids ami-xxxxxx
 ```
 
-2. タグを付与(例としてsystem : front というTagを付与する)
+2. タグを付与(例として `system:front` というTagを付与する)
 ```
 aws ec2 create-tags --resources ami-ffa5df99 --tags Key=system,Value=front
 ```
