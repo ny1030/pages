@@ -42,13 +42,13 @@ flutter doctor
 ※最初は５分くらい時間かかる
 
 の結果でAndroid Studioがチェックマーク入ってるのを確認
-![[Pasted image 20220513215817.png]]
+![](Pasted%20image%2020220612155127.png)
 
 ４．Andoroid toolchainのエラー解消
 
 ・Command-Line Toolsのインストール（AndoroidSDKの設定画面からできる）
 
-![[Pasted image 20220513215852.png]]
+![](Pasted%20image%2020220612155223.png)
 
 ・Andoroidライセンスの許可
 
@@ -64,11 +64,11 @@ flutter doctor --android-licenses
 flutter doctor
 ```
 
-![[Pasted image 20220513215916.png]]
+![](Pasted%20image%2020220612155500.png)
 
 ６．FlutterプラグインをAndoroid Studioからインストール
 
-![[Pasted image 20220513215944.png]]
+![](Pasted%20image%2020220612155444.png)
 
 ### XCode（iOS）
 
@@ -89,34 +89,34 @@ brew link --overwrite cocoapods
 flutter doctor
 ```
 
-![[Pasted image 20220513220013.png]]
+![](Pasted%20image%2020220612155515.png)
 
 ## ２．Flutterプロジェクト作成・デモアプリ実行（30分）
 
 １．以下のように作成
 
-![[Pasted image 20220513220039.png]]
+![](Pasted%20image%2020220612155530.png)
 
 ２．仮想デバイス（iOS）を実装
 
-![[Pasted image 20220513220108.png]]
-![[Pasted image 20220513220127.png]]
+![](Pasted%20image%2020220612155608.png)
+![](Pasted%20image%2020220612155552.png)
 
 ３．仮想デバイス（Andoroid）を実装
-![[Pasted image 20220513220156.png]]
-![[Pasted image 20220513220209.png]]
+![](Pasted%20image%2020220612155628.png)
+![](Pasted%20image%2020220612155645.png)
 
 System Image：何でもいいらしいのでPieに
-![[Pasted image 20220513220235.png]]
-![[Pasted image 20220513220251.png]]
+![](Pasted%20image%2020220612155701.png)
+![](Pasted%20image%2020220612155719.png)
 
 ４．アプリの実行
-![[Pasted image 20220513220307.png]]
+![](Pasted%20image%2020220612155738.png)
 Android：
-![[Pasted image 20220513220324.png]]
+![](Pasted%20image%2020220612155759.png)
 
 iOS：同じ見た目
-![[Pasted image 20220513220346.png]]
+![](Pasted%20image%2020220612155820.png)
 ## Appendix．UIのデザインツール
 
 ３−１．Flutter Studio
