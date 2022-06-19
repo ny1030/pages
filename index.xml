@@ -5,7 +5,27 @@
     <link>https://ny1030.github.io/pages/</link>
     <description>Recent content on ny1030.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 06 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VSCodeで引数付きのプログラムをデバッグモードで動かす時の設定例</title>
+      <link>https://ny1030.github.io/pages/posts/engineering/vscode%E3%81%A7%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%A2%E3%83%BC%E3%83%89%E7%94%A8%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E4%BE%8B/</link>
+      <pubDate>Sun, 19 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/posts/engineering/vscode%E3%81%A7%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%A2%E3%83%BC%E3%83%89%E7%94%A8%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E4%BE%8B/</guid>
+      <description>Python 以下のような引数付きのPythonスクリプトをVSCode上のデバッグモードで実行する場合
+コマンド python 03_filter.py ../data/1653823316.json VSCode上の設定（launch.json） { &amp;#34;version&amp;#34;: &amp;#34;0.2.0&amp;#34;, &amp;#34;configurations&amp;#34;: [ { &amp;#34;name&amp;#34;: &amp;#34;Launch Python&amp;#34;, &amp;#34;program&amp;#34;: &amp;#34;03_filter.py&amp;#34;, &amp;#34;cwd&amp;#34;: &amp;#34;${workspaceFolder}/app/script&amp;#34;, &amp;#34;request&amp;#34;: &amp;#34;launch&amp;#34;, &amp;#34;type&amp;#34;: &amp;#34;python&amp;#34;, &amp;#34;args&amp;#34;: [&amp;#34;../data/thread/1653823316.json&amp;#34;] } ] } 上記のような設定をすることで動くことを確認。補足として、cwd (change work directory) を入れないと、実行した際に 03_filter.py not found みたいなエラーが出たので VSCodeのRootフォルダとプログラムの場所が同じで無い場合は入れておいたほうがいい。
+Nodejs コマンド node 02_get.js VSCode上の設定（launch.json） { &amp;#34;version&amp;#34;: &amp;#34;0.2.0&amp;#34;, &amp;#34;configurations&amp;#34;: [ { &amp;#34;name&amp;#34;: &amp;#34;Launch Program&amp;#34;, &amp;#34;program&amp;#34;: &amp;#34;02_get.js&amp;#34;, &amp;#34;cwd&amp;#34;: &amp;#34;${workspaceFolder}/app/script&amp;#34;, &amp;#34;request&amp;#34;: &amp;#34;launch&amp;#34;, &amp;#34;runtimeExecutable&amp;#34;: &amp;#34;${HOME}/.nodebrew/node/v14.6.0/bin/node&amp;#34;, &amp;#34;skipFiles&amp;#34;: [ &amp;#34;&amp;lt;node_internals&amp;gt;/**&amp;#34; ], &amp;#34;type&amp;#34;: &amp;#34;node&amp;#34; } ] } </description>
+    </item>
+    
+    <item>
+      <title>nodejsでCSVファイルを作成する</title>
+      <link>https://ny1030.github.io/pages/posts/engineering/nodejs%E3%81%A7csv%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%93%E3%81%A0%E3%82%8A%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%97%E3%81%9F%E3%82%8A%E3%81%99%E3%82%8B/</link>
+      <pubDate>Wed, 15 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/posts/engineering/nodejs%E3%81%A7csv%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%93%E3%81%A0%E3%82%8A%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%97%E3%81%9F%E3%82%8A%E3%81%99%E3%82%8B/</guid>
+      <description>CSVファイルを読み込む let datas = fs.readFileSync(&amp;#39;data/chart/1m_&amp;#39; + code + &amp;#39;.csv&amp;#39;).toString().split(&amp;#34;\r\n&amp;#34;); </description>
+    </item>
+    
     <item>
       <title>EC2インスタンス/AMI/Snapshotにタグを付与</title>
       <link>https://ny1030.github.io/pages/posts/engineering/ec2%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%82%B9%E3%81%AB%E3%82%BF%E3%82%B0%E3%82%92%E4%BB%98%E4%B8%8E/</link>
