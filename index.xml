@@ -5,7 +5,16 @@
     <link>https://ny1030.github.io/pages/</link>
     <description>Recent content on ny1030.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 19 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 21 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RDS CLI</title>
+      <link>https://ny1030.github.io/pages/posts/engineering/rds-cli/</link>
+      <pubDate>Tue, 21 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/posts/engineering/rds-cli/</guid>
+      <description> インスタンス情報をCSV出力（ヘッダなし） aws rds describe-db-instances --query &amp;#34;DBInstances[].[DBInstanceIdentifier,DBInstanceClass,Engine,EngineVersion]&amp;#34; | jq -r &amp;#34;.[] | @csv&amp;#34; &amp;gt; rds_describe-db-instances.csv インスタンス情報をCSV出力（ヘッダあり） aws rds describe-db-instances --query &amp;#34;DBInstances[].[DBInstanceIdentifier,DBInstanceClass,Engine,EngineVersion]&amp;#34; | jq -r &amp;#39;[&amp;#34;DBInstanceIdentifier&amp;#34;,&amp;#34;DBInstanceClass&amp;#34;,&amp;#34;Engine&amp;#34;,&amp;#34;EngineVersion&amp;#34;],(.[])|@csv&amp;#39; &amp;gt; rds_describe-db-instances_with-header.csv </description>
+    </item>
+    
     <item>
       <title>VSCodeで引数付きのプログラムをデバッグモードで動かす時の設定例</title>
       <link>https://ny1030.github.io/pages/posts/engineering/vscode%E3%81%A7%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%A2%E3%83%BC%E3%83%89%E7%94%A8%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E4%BE%8B/</link>
@@ -27,15 +36,23 @@ Nodejs コマンド node 02_get.js VSCode上の設定（launch.json） { &amp;#3
     </item>
     
     <item>
+      <title>RDSパラメータ確認CLI</title>
+      <link>https://ny1030.github.io/pages/posts/engineering/rds%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E7%A2%BA%E8%AA%8Dcli/</link>
+      <pubDate>Fri, 10 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/posts/engineering/rds%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E7%A2%BA%E8%AA%8Dcli/</guid>
+      <description> 特定のパラメータの値をチェック </description>
+    </item>
+    
+    <item>
       <title>EC2インスタンス/AMI/Snapshotにタグを付与</title>
       <link>https://ny1030.github.io/pages/posts/engineering/ec2%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%82%B9%E3%81%AB%E3%82%BF%E3%82%B0%E3%82%92%E4%BB%98%E4%B8%8E/</link>
       <pubDate>Mon, 06 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>https://ny1030.github.io/pages/posts/engineering/ec2%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%82%B9%E3%81%AB%E3%82%BF%E3%82%B0%E3%82%92%E4%BB%98%E4%B8%8E/</guid>
       <description>単発実行 AMI 現在のインスタンスのTagの状態を確認 aws ec2 describe-images --image-ids ami-xxxxxx タグを付与(例として system:front というTagを付与する) aws ec2 create-tags --resources ami-ffa5df99 --tags Key=system,Value=front ⇨再度実行しても同じKey/Valueなら結果は変わらないことを確認
-systemのタグが付いてるリソースを列挙 aws ec2 describe-images --filter Name=&amp;#34;tag-key&amp;#34;,Values=&amp;#34;system&amp;#34; ワイルドカードによる検索も可能 aws ec2 describe-images --filter Name=&amp;#34;tag-key&amp;#34;,Values=&amp;#34;sys*&amp;#34; Snapshot 現在のTagの状態を確認
-snapshotIdをキーに確認する場合 VolumeId=$(aws ec2 describe-snapshots --snapshot-ids snap-xxxxxx | jq .Snapshots[].VolumeId | tr -d &amp;#39;&amp;#34;&amp;#39;) aws ec2 describe-volumes --volume-ids $VolumeId ``
-AMIのImageIdをキーに確認する場合 SnapshotId=$(aws ec2 describe-images --image-ids ami-xxxxxxx | jq .Images[].BlockDeviceMappings[].Ebs.SnapshotId | tr -d &amp;#39;&amp;#34;&amp;#39;) VolumeId=$(aws ec2 describe-snapshots --snapshot-ids ${SnapshotId} | jq .</description>
+systemのタグが付いてるリソースを列挙 aws ec2 describe-images --filter Name=&amp;#34;tag-key&amp;#34;,Values=&amp;#34;system&amp;#34; ワイルドカードによる検索も可能 aws ec2 describe-images --filter Name=&amp;#34;tag-key&amp;#34;,Values=&amp;#34;sys*&amp;#34; タグのKeyが system の値を取得 aws ec2 describe-images --image-ids ami-xxxxxx | jq &amp;#39;.Snapshots[] | [ .Tags[] | select(.Key == &amp;#34;system&amp;#34;).Value]&amp;#39; Snapshot 現在のTagの状態を確認
+snapshotIdをキーに確認する場合 VolumeId=$(aws ec2 describe-snapshots --snapshot-ids snap-xxxxxx | jq .Snapshots[].VolumeId | tr -d &amp;#39;&amp;#34;&amp;#39;) aws ec2 describe-volumes --volume-ids $VolumeId ``</description>
     </item>
     
     <item>
