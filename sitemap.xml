@@ -2,11 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://ny1030.github.io/pages/posts/engineering/spring-boot-%E3%81%AEjdbc%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%97%E3%83%BC%E3%83%ABhikaricp%E3%81%AE%E3%83%AD%E3%82%AE%E3%83%B3%E3%82%B0%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2022-06-22T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://ny1030.github.io/pages/</loc>
-    <lastmod>2022-06-21T00:00:00+00:00</lastmod>
+    <lastmod>2022-06-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ny1030.github.io/pages/posts/</loc>
-    <lastmod>2022-06-21T00:00:00+00:00</lastmod>
+    <lastmod>2022-06-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ny1030.github.io/pages/posts/engineering/rds-cli/</loc>
     <lastmod>2022-06-21T00:00:00+00:00</lastmod>

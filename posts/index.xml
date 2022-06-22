@@ -5,7 +5,20 @@
     <link>https://ny1030.github.io/pages/posts/</link>
     <description>Recent content in Posts on ny1030.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 21 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://ny1030.github.io/pages/posts/engineering/spring-boot-%E3%81%AEjdbc%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%97%E3%83%BC%E3%83%ABhikaricp%E3%81%AE%E3%83%AD%E3%82%AE%E3%83%B3%E3%82%B0%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Wed, 22 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/posts/engineering/spring-boot-%E3%81%AEjdbc%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%97%E3%83%BC%E3%83%ABhikaricp%E3%81%AE%E3%83%AD%E3%82%AE%E3%83%B3%E3%82%B0%E6%96%B9%E6%B3%95/</guid>
+      <description>やりたいこと Spring Boot で オンラインアプリケーションを作成した時に、DBとの接続をコネクションプール（以降コネプ）を用いる時に、コネプのサイズが適正かどうかを確認するためにログに使用状況を出したい。 *前提として、使用するコネプライブラリはSpring Boot 2.0のデフォルトであるHikariCPとする。
+設定方法の例 logback.xmlに以下のようなloggerディレクティブを追加する。
+&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; &amp;lt;configuration&amp;gt; &amp;lt;appender name=&amp;#34;STDOUT&amp;#34; class=&amp;#34;ch.qos.logback.core.ConsoleAppender&amp;#34;&amp;gt; &amp;lt;encoder&amp;gt; &amp;lt;pattern&amp;gt;%msg%n&amp;lt;/pattern&amp;gt; &amp;lt;/encoder&amp;gt; &amp;lt;/appender&amp;gt; &amp;lt;logger name=&amp;#34;com.zaxxer.hikari&amp;#34; level=&amp;#34;DEBUG&amp;#34; additivity=&amp;#34;false&amp;#34;&amp;gt; &amp;lt;appender-ref ref=&amp;#34;STDOUT&amp;#34;/&amp;gt; &amp;lt;/logger&amp;gt; &amp;lt;root level=&amp;#34;INFO&amp;#34;&amp;gt; &amp;lt;appender-ref ref=&amp;#34;STDOUT&amp;#34; /&amp;gt; &amp;lt;/root&amp;gt; &amp;lt;/configuration&amp;gt; 上記設定をおこなうことで、以下のようなコネプ使用状況のログが30秒間隔で出力されることを確認。
+... 2020-06-04T02:26:18+00:00 serviceA.xxxxxx.debug {&amp;#34;hostName&amp;#34;:&amp;#34;xxxxxx&amp;#34;,&amp;#34;level&amp;#34;:&amp;#34;DEBUG&amp;#34;,&amp;#34;time&amp;#34;:&amp;#34;2020-06-04T02:26:18.473763Z&amp;#34;,&amp;#34;message&amp;#34;:&amp;#34;HikariPool-2 - Pool stats (total=10, active=0, idle=10, waiting=0)&amp;#34;} 2020-06-04T02:26:47+00:00 serviceA.xxxxxx.debug {&amp;#34;hostName&amp;#34;:&amp;#34;xxxxxx&amp;#34;,&amp;#34;level&amp;#34;:&amp;#34;DEBUG&amp;#34;,&amp;#34;time&amp;#34;:&amp;#34;2020-06-04T02:26:47.881731Z&amp;#34;,&amp;#34;message&amp;#34;:&amp;#34;HikariPool-1 - Pool stats (total=20, active=0, idle=20, waiting=0)&amp;#34;} 2020-06-04T02:26:48+00:00 serviceA.xxxxxx.debug {&amp;#34;hostName&amp;#34;:&amp;#34;xxxxxx&amp;#34;,&amp;#34;level&amp;#34;:&amp;#34;DEBUG&amp;#34;,&amp;#34;time&amp;#34;:&amp;#34;2020-06-04T02:26:48.473995Z&amp;#34;,&amp;#34;message&amp;#34;:&amp;#34;HikariPool-2 - Pool stats (total=10, active=0, idle=10, waiting=0)&amp;#34;} ... messageに出力されている内容を抜粋すると以下の通り。
+HikariPool-2 - Pool stats (total=10, active=0, idle=10, waiting=0) それぞれ説明すると、</description>
+    </item>
+    
     <item>
       <title>RDS CLI</title>
       <link>https://ny1030.github.io/pages/posts/engineering/rds-cli/</link>
