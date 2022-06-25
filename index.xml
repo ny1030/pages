@@ -5,9 +5,24 @@
     <link>https://ny1030.github.io/pages/</link>
     <description>Recent content on ny1030.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 22 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 23 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title></title>
+      <title>MySQL, MaridDBでスロークエリを出力する設定</title>
+      <link>https://ny1030.github.io/pages/posts/engineering/mysql-mariddb%E3%81%A7%E3%82%B9%E3%83%AD%E3%83%BC%E3%82%AF%E3%82%A8%E3%83%AA%E3%82%92%E5%87%BA%E5%8A%9B%E3%81%99%E3%82%8B%E8%A8%AD%E5%AE%9A/</link>
+      <pubDate>Thu, 23 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/posts/engineering/mysql-mariddb%E3%81%A7%E3%82%B9%E3%83%AD%E3%83%BC%E3%82%AF%E3%82%A8%E3%83%AA%E3%82%92%E5%87%BA%E5%8A%9B%E3%81%99%E3%82%8B%E8%A8%AD%E5%AE%9A/</guid>
+      <description>1. 記録するログファイルを作成 今回は例として、 /tmp にslow.log を作成し、このファイルにスロークエリを記録するようにする。
+ファイル作成&amp;amp;権限付与： touch /tmp/slow.log sudo chown mysql:mysql -R /tmp/slow.log 権限確認 ls -l output: -rw-r--r-- 1 mysql mysql 451 Jun 22 17:21 slow.log -&amp;gt; ownerがmysqlになっている
+2. スロークエリを出力する設定を有効化 MySQLの設定ファイルである my.cnf にスロークエリを出力する設定を入れる。今回は５秒以上のクエリを出力する。 /etc/my.cnf にあるファイルを開き、以下を記載：
+[mysqld] ... long_query_time=5 slow_query_log_file=/tmp/slow.log slow_query_log=1 ... 記載できたらMySQLを再起動
+service restart mysqld 3.確認 MySQLにログインし、以下のクエリを実行
+SELECT SLEEP(5); /tmp/slow.logを確認すると、無事にスロークエリとして出力されていた。
+... # Time: 220622 17:21:43 # User@Host: root[root] @ localhost [] # Thread_id: 118 Schema: QC_hit: No # Query_time: 5.</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot のJDBCコネクションプール（HikariCP）のロギング方法</title>
       <link>https://ny1030.github.io/pages/posts/engineering/spring-boot-%E3%81%AEjdbc%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%97%E3%83%BC%E3%83%ABhikaricp%E3%81%AE%E3%83%AD%E3%82%AE%E3%83%B3%E3%82%B0%E6%96%B9%E6%B3%95/</link>
       <pubDate>Wed, 22 Jun 2022 00:00:00 +0000</pubDate>
       
