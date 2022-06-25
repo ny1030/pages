@@ -1,6 +1,6 @@
 ---
 date: 2022-06-22
-title: {title}
+title: Spring Boot のJDBCコネクションプール（HikariCP）のロギング方法
 ---
 
 ## やりたいこと
