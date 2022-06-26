@@ -51,8 +51,3 @@ aws ec2 describe-images --image-ids ami-xxxxxx | jq '.Snapshots[] | [ .Tags[] | 
 ### Reference
 [describe-instances — AWS CLI 1.25.2 Command Reference](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html)
 [describe-images — AWS CLI 1.25.4 Command Reference](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html)
-
-1. Oracle
-	1. backup暗号
-	2. tde（透過暗号）
-	3. dbms_crypto
