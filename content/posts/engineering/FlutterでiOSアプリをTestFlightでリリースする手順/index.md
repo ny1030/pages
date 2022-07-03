@@ -37,3 +37,28 @@ flutter build ipa
 ![](Pasted%20image%2020220626163223.png)
 -> 追加されると以下のようなメールが各ユーザに届くので、メールのLinkからアプリをDownloadする。
 `{APP_NAME} for iOS is now available to test.`
+
+## Tips
+App Store Connect でアプリの申請をするときにアプリのスクショをiPhone, iPad用それぞれで提出する必要がある。画像の解像度が各要件を満たしてないとアップロードできないので、とりあえずアップロードしたい場合は、以下のImagemagicのコマンドでオリジナル画像をリサイズすることでアップロードできた。
+
+*前提として、変換する画像は４枚（IMG0[1~4].PNG）
+```
+#iPhone 6.5inch用
+convert -resize 1284x2778! IMG01.PNG 6_5in_01.png  
+convert -resize 1284x2778! IMG02.PNG 6_5in_02.png  
+convert -resize 1284x2778! IMG03.PNG 6_5in_03.png  
+convert -resize 1284x2778! IMG04.PNG 6_5in_04.png  
+
+#iPhone 5.5inch用
+convert -resize 1242x2208! IMG01.PNG 5_5in_01.png  
+convert -resize 1242x2208! IMG02.PNG 5_5in_02.png  
+convert -resize 1242x2208! IMG03.PNG 5_5in_03.png  
+convert -resize 1242x2208! IMG04.PNG 5_5in_04.png  
+
+#iPad 12.9inch用
+convert -resize 2048x2732! IMG01.PNG 12_9in_01.png  
+convert -resize 2048x2732! IMG02.PNG 12_9in_02.png  
+convert -resize 2048x2732! IMG03.PNG 12_9in_03.png  
+convert -resize 2048x2732! IMG04.PNG 12_9in_04.png  
+```
+
