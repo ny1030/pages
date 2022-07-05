@@ -33,4 +33,6 @@ jobs:
           HUGO_GOOGLEANALYTICS: ${{ secrets.HUGO_GOOGLEANALYTICS}}
 
       - name: check
-        run: echo $HUGO_GOOGLEANALYTICS
+        run: |
+          echo $HUGO_GOOGLEANALYTICS
+          curl https://www.google.com/ping?sitemap=https://ny1030.github.io/pages/sitemap.xml
