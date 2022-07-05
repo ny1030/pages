@@ -7,6 +7,10 @@ title: Oracle SQLs
 ```
 SELECT grantee, table_name, privilege FROM dba_tab_privs WHERE grantee = 'USER_NAME';
 ```
+- SYSDBA権限をもつユーザ確認
+```
+SELECT * FROM V$PWFILE_USERS;
+```
 - 初期化パラメータの一覧
 ```
 SELECT name,display_value,default_value,isdefault,description FROM V$PARAMETER;
