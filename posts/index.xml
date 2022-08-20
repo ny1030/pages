@@ -289,5 +289,15 @@ AppBuilder 2 20180529-19:35
 &amp;lt;VirtualHost *:80&amp;gt; ... &amp;lt;Directory &amp;#34;/opt/blog&amp;#34;&amp;gt; ... &amp;lt;/Directory&amp;gt; RewriteEngine On RewriteCond %{HTTP_HOST} !^www\. [NC] RewriteCond %{REQUEST_URI} !^/admin/ RewriteRule ^(.*)$ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L] ... &amp;lt;/VirtualHost&amp;gt; RewriteEngine On: このディレクティブを書かないとRewriteは動かない。言い換えるとここだけコメントアウトすればRewriteを無効にできる。 RewriteCond: この条件に合致（true）したらRewriteRuleにしたがってURLの書き換えをおこなう。 今回の例：サーバのホスト名%{HTTP_HOST} でwww.が先頭にない !^www\.とき。（大文字小文字は区別しない[NC]） RewriteCondを複数記述した場合はデフォルトではAND条件になる。ORにしたい場合は末尾に [OR] を指定する。 RewriteRule: URLの書き換えルールを書いている。リダイレクトのステータスコードを末尾に記載。 [L] をつけると振り分けが終わる（それ以降の処理は無視される）が、Rewrite後に再度評価が実行されるのでループに注意とのこと。再度評価をしたくない場合、[END] をつければいいとのこと。.htaccess に RewriteRule 書くときは、[L]フラグをつけても </description>
     </item>
     
+    <item>
+      <title></title>
+      <link>https://ny1030.github.io/pages/posts/engineering/ga%E5%85%A5%E3%82%8C%E3%82%8B%E6%99%82%E3%81%AEcors%E5%AF%BE%E5%BF%9C/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/posts/engineering/ga%E5%85%A5%E3%82%8C%E3%82%8B%E6%99%82%E3%81%AEcors%E5%AF%BE%E5%BF%9C/</guid>
+      <description>URL: https://www.googletagmanager.com/gtag/js?id=G-T2Y3GLV0ZB Referrer Policy: strict-origin-when-cross-origin
+sudo mv /opt/bitnami/drupal/sites/default/default.services.yml /opt/bitnami/drupal/sites/default/services.yml </description>
+    </item>
+    
   </channel>
 </rss>
