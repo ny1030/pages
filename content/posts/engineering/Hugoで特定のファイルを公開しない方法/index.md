@@ -35,10 +35,10 @@ ignoreFiles:
 1つ目が `content/template/template.md` を公開しない設定でこれはほぼそのまま書けば良い。.（ドット）をエスケープ処理する必要があるため、\（バックスラッシュ）を入れている。
 2つ目が`content/private`を公開しない設定であり、こちらは正規表現を使っている。ディレクトリ内のファイルを全て公開したくないので、 `.*` としている。
 
-上記設定により、検索しても記事が出てこないことを確認。記事のURLに直アクセスした場合も404が出ることを確認
+上記設定により、検索しても記事が出てこないことを確認。記事のURLに直アクセスした場合も404が出ることを確認。
 
 #### 方法2. frontmatterを使う
-(https://gohugo.io/content-management/front-matter/)[Hugoで使える frontmatter] を確認し、`draft` という変数を true にすれば下書きの記事として認識されるので、公開されない。
+[Hugoで使える frontmatter](https://gohugo.io/content-management/front-matter/)を確認し、`draft` という変数を true にすれば下書きの記事として認識されるので、公開されない。
 以下のように公開したくない記事の先頭に以下のスニペットを書けば良い。frontmatterはダッシュ（---）も上下に書く必要があるので注意。
 ```
 ---

@@ -1,7 +1,9 @@
 ---
 date: 2022-08-21
-title: Bitnami-Drupalにletsencryptを導入する手順
+title: Bitnamiで構築したサイトにletsencryptを導入する手順
 ---
+
+参考：[Generate And Install A Let's Encrypt SSL Certificate For A Bitnami Application](https://docs.bitnami.com/aws/how-to/generate-install-lets-encrypt-ssl/)
 
 基本は以下のbitnami提供のToolを実行するだけでOK
 
