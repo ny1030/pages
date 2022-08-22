@@ -70,4 +70,3 @@ menu:
 
 ignoreFiles:
     - content/template/template\.md$
-    - content/private/.*$
