@@ -1,6 +1,6 @@
 
 URL:
-    https://www.googletagmanager.com/gtag/js?id=G-T2Y3GLV0ZB    
+    https://www.googletagmanager.com/gtag/js?id={id}
 Referrer Policy:
     strict-origin-when-cross-origin
 
