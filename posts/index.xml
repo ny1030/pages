@@ -14,8 +14,10 @@
       <guid>https://ny1030.github.io/pages/posts/engineering/hugo%E3%81%A7%E7%89%B9%E5%AE%9A%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E5%85%AC%E9%96%8B%E3%81%97%E3%81%AA%E3%81%84%E6%96%B9%E6%B3%95/</guid>
       <description>はじめに Hugo（静的サイトジェネレーター）でブログを書いてる際に、諸々の事情で公開したくないページが公開されてしまう事例があった。厳密にいうと、TOPページに出てくる記事の一覧からは見えないが、検索ボックスからそのページに含むキーワードを検索するとそのページが出てきてしまっていた。
 フォルダ構成の例 例として、Hugoの記事を格納しているフォルダ構成は以下の通り。
-. ├── archetypes └── content ├── posts │ └── engineering &amp;lt;--- 公開したい記事 ├── private. &amp;lt;--- 公開したくない記事（今回の対象） └── template. &amp;lt;--- 公開したくない記事（今回の対象） 今回は content/private および content/template に入っている記事を公開したくないので、その設定方法を考える。
-設定方法 </description>
+. ├── archetypes └── content ├── posts │ └── engineering &amp;lt;--- 公開したい記事 ├── private. &amp;lt;--- ディレクトリ単位で公開したくない記事（今回の対象） └── template. │ └── template.md &amp;lt;--- ファイル単位で公開したくない記事（今回の対象） 今回は content/private のフォルダに入っている記事および content/template/template.md というファイルを公開したくないので、その設定方法を考える。
+設定方法 方法1. configファイルに指定 Hugoの設定ファイルである config.yaml に ignoreFiles ディレクティブを追加する。 ※ 設定ファイルの形式が TOMLの場合は config.toml に読み換えてください。
+ignoreFiles: - content/template/template\.md$ - content/private/.*$ 1つ目が content/template/template.md を公開しない設定でこれはほぼそのまま書けば良い。.（ドット）をエスケープ処理する必要があるため、\（バックスラッシュ）を入れている。 2つ目がcontent/privateを公開しない設定であり、こちらは正規表現を使っている。ディレクトリ内のファイルを全て公開したくないので、 .* としている。
+上記設定により、検索しても記事が出てこないことを確認。</description>
     </item>
     
     <item>

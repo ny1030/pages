@@ -14,8 +14,10 @@
       <guid>https://ny1030.github.io/pages/posts/engineering/hugo%E3%81%A7%E7%89%B9%E5%AE%9A%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E5%85%AC%E9%96%8B%E3%81%97%E3%81%AA%E3%81%84%E6%96%B9%E6%B3%95/</guid>
       <description>はじめに Hugo（静的サイトジェネレーター）でブログを書いてる際に、諸々の事情で公開したくないページが公開されてしまう事例があった。厳密にいうと、TOPページに出てくる記事の一覧からは見えないが、検索ボックスからそのページに含むキーワードを検索するとそのページが出てきてしまっていた。
 フォルダ構成の例 例として、Hugoの記事を格納しているフォルダ構成は以下の通り。
-. ├── archetypes └── content ├── posts │ └── engineering &amp;lt;--- 公開したい記事 ├── private. &amp;lt;--- 公開したくない記事（今回の対象） └── template. &amp;lt;--- 公開したくない記事（今回の対象） 今回は content/private および content/template に入っている記事を公開したくないので、その設定方法を考える。
-設定方法 </description>
+. ├── archetypes └── content ├── posts │ └── engineering &amp;lt;--- 公開したい記事 ├── private. &amp;lt;--- ディレクトリ単位で公開したくない記事（今回の対象） └── template. │ └── template.md &amp;lt;--- ファイル単位で公開したくない記事（今回の対象） 今回は content/private のフォルダに入っている記事および content/template/template.md というファイルを公開したくないので、その設定方法を考える。
+設定方法 方法1. configファイルに指定 Hugoの設定ファイルである config.yaml に ignoreFiles ディレクティブを追加する。 ※ 設定ファイルの形式が TOMLの場合は config.toml に読み換えてください。
+ignoreFiles: - content/template/template\.md$ - content/private/.*$ 1つ目が content/template/template.md を公開しない設定でこれはほぼそのまま書けば良い。.（ドット）をエスケープ処理する必要があるため、\（バックスラッシュ）を入れている。 2つ目がcontent/privateを公開しない設定であり、こちらは正規表現を使っている。ディレクトリ内のファイルを全て公開したくないので、 .* としている。
+上記設定により、検索しても記事が出てこないことを確認。</description>
     </item>
     
     <item>
@@ -320,6 +322,19 @@ AppBuilder 2 20180529-19:35
       <guid>https://ny1030.github.io/pages/posts/engineering/ga%E5%85%A5%E3%82%8C%E3%82%8B%E6%99%82%E3%81%AEcors%E5%AF%BE%E5%BF%9C/</guid>
       <description>URL: https://www.googletagmanager.com/gtag/js?id=G-T2Y3GLV0ZB Referrer Policy: strict-origin-when-cross-origin
 sudo mv /opt/bitnami/drupal/sites/default/default.services.yml /opt/bitnami/drupal/sites/default/services.yml </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://ny1030.github.io/pages/private/%E6%89%8B%E5%8B%95%E3%81%AB%E3%82%88%E3%82%8B%E5%AF%BE%E7%AD%96%E3%81%AE%E5%AF%BE%E5%BF%9C%E5%86%85%E5%AE%B9-2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/private/%E6%89%8B%E5%8B%95%E3%81%AB%E3%82%88%E3%82%8B%E5%AF%BE%E7%AD%96%E3%81%AE%E5%AF%BE%E5%BF%9C%E5%86%85%E5%AE%B9-2/</guid>
+      <description>対応. コンテンツの作成方針の見直し BEFORE 当サイトがこれまでの方針で作成していたコンテンツの典型例として以下のように、ページのTitleで検索した場合に同様の内容を掲載していると思われるサイトが複数出現していました 今回の手動による対応の具体的な要因として、上記のようなサイト間で重複したコンテンツが掲載＆引用元のサイトと比べ付加価値が無いと判断されたと私は認識しました。そのため今回以下のような対応をおこないました。 ↓
+AFTER 当サイトはインターネットコミュニティ上で話題となるトピックで特にユーザにとって有益な情報を提供することをコンセプトにしています。そのため今回以下の３つの対応を実施しました。
+コンテンツのタイトルの精緻化 特に有用なトピックのみ切り出すことで、コンテンツのボリュームを適正化 類似トピックへの別コンテンツ or 別トピックの人気コンテンツの提案 コンテンツのタイトルの精緻化 これまでは引用元のコンテンツのタイトルと統一していることがほとんどであったが、今回の指摘の一因であると考え、以下画像のようにより当サイトのコンテンツに即したタイトルの名前づけをおこなうように変更した。（当サイトでは、2022/08/14以降に開始） 特に有用なトピックのみ切り出すことで、コンテンツのボリュームを適正化 上記のタイトルの精緻化に関連して、コンテンツのタイトルと文脈上関係ない記述を人間によるチェックで排除するように対応をおこなっている。（当サイトでは、2022/08/14以降に開始）
+類似トピックへの別コンテンツの提案 自然検索で流入したユーザがあるコンテンツに興味をもってクリックした場合に、更に類似するトピックの別のコンテンツ（記事）にも興味を持つ可能性があるので、関連記事をサジェストすることで付加価値を創出できると考えています（以下画像の右メニュー部分）。 また、別のトピックで特に人気を集めている記事をサジェストし、ユーザが別のトピックへ興味を持ち知見の提供ができる、という付加価値も創出できると考えています（以下画像の左メニュー部分）。
+以上となります。</description>
     </item>
     
     
