@@ -17,18 +17,19 @@
 . ├── archetypes └── content ├── posts │ └── engineering &amp;lt;--- 公開したい記事 ├── private. &amp;lt;--- ディレクトリ単位で公開したくない記事（今回の対象） └── template. │ └── template.md &amp;lt;--- ファイル単位で公開したくない記事（今回の対象） 今回は content/private のフォルダに入っている記事および content/template/template.md というファイルを公開したくないので、その設定方法を考える。
 設定方法 方法1. configファイルに指定 Hugoの設定ファイルである config.yaml に ignoreFiles ディレクティブを追加する。 ※ 設定ファイルの形式が TOMLの場合は config.toml に読み換えてください。
 ignoreFiles: - content/template/template\.md$ - content/private/.*$ 1つ目が content/template/template.md を公開しない設定でこれはほぼそのまま書けば良い。.（ドット）をエスケープ処理する必要があるため、\（バックスラッシュ）を入れている。 2つ目がcontent/privateを公開しない設定であり、こちらは正規表現を使っている。ディレクトリ内のファイルを全て公開したくないので、 .* としている。
-上記設定により、検索しても記事が出てこないことを確認。記事のURLに直アクセスした場合も404が出ることを確認
-方法2. frontmatterを使う (https://gohugo.io/content-management/front-matter/)[Hugoで使える frontmatter] を確認し、draft という変数を true にすれば下書きの記事として認識されるので、公開されない。 以下のように公開したくない記事の先頭に以下のスニペットを書けば良い。frontmatterはダッシュ（&amp;mdash;）も上下に書く必要があるので注意。
+上記設定により、検索しても記事が出てこないことを確認。記事のURLに直アクセスした場合も404が出ることを確認。
+方法2. frontmatterを使う Hugoで使える frontmatterを確認し、draft という変数を true にすれば下書きの記事として認識されるので、公開されない。 以下のように公開したくない記事の先頭に以下のスニペットを書けば良い。frontmatterはダッシュ（&amp;mdash;）も上下に書く必要があるので注意。
 --- draft: true --- 上記設定により、同様に検索しても記事が出てこないことを確認。</description>
     </item>
     
     <item>
-      <title>Bitnami-Drupalにletsencryptを導入する手順</title>
-      <link>https://ny1030.github.io/pages/posts/engineering/bitnami-drupal%E3%81%ABletsencrypt%E3%82%92%E5%B0%8E%E5%85%A5/</link>
+      <title>Bitnamiで構築したサイトにletsencryptを導入する手順</title>
+      <link>https://ny1030.github.io/pages/posts/engineering/bitnami%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E3%82%B5%E3%82%A4%E3%83%88%E3%81%ABletsencrypt%E3%82%92%E5%B0%8E%E5%85%A5/</link>
       <pubDate>Sun, 21 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://ny1030.github.io/pages/posts/engineering/bitnami-drupal%E3%81%ABletsencrypt%E3%82%92%E5%B0%8E%E5%85%A5/</guid>
-      <description>基本は以下のbitnami提供のToolを実行するだけでOK
+      <guid>https://ny1030.github.io/pages/posts/engineering/bitnami%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E3%82%B5%E3%82%A4%E3%83%88%E3%81%ABletsencrypt%E3%82%92%E5%B0%8E%E5%85%A5/</guid>
+      <description>参考：Generate And Install A Let&amp;rsquo;s Encrypt SSL Certificate For A Bitnami Application
+基本は以下のbitnami提供のToolを実行するだけでOK
 sudo /opt/bitnami/bncert-tool 対話形式で以下の事項が聞かれるので回答
 サイトのドメイン名 このタイミングでAレコードに上記ドメイン &amp;lt;-&amp;gt; 当該ホストのIP が設定されてないと、名前解決できないというエラーが出るので事前にDNSレコード（Aレコード）を設定しておくのがベター wwwドメインを設定するか メールアドレス 最終確認 </description>
     </item>
