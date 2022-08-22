@@ -323,7 +323,7 @@ AppBuilder 2 20180529-19:35
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://ny1030.github.io/pages/posts/engineering/ga%E5%85%A5%E3%82%8C%E3%82%8B%E6%99%82%E3%81%AEcors%E5%AF%BE%E5%BF%9C/</guid>
-      <description>URL: https://www.googletagmanager.com/gtag/js?id=G-T2Y3GLV0ZB Referrer Policy: strict-origin-when-cross-origin
+      <description>URL: https://www.googletagmanager.com/gtag/js?id={id} Referrer Policy: strict-origin-when-cross-origin
 sudo mv /opt/bitnami/drupal/sites/default/default.services.yml /opt/bitnami/drupal/sites/default/services.yml </description>
     </item>
     
