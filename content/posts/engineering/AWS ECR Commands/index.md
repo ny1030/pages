@@ -1,6 +1,6 @@
 ---
 date: "2022-05-18"
-title: [AWS CLI] ECR Commands
+title: AWS-CLI ECR Commands
 ---
 ### imageDigest を確認
 - e.g. apple というECRリポジトリの developタグ
@@ -29,8 +29,6 @@ Error saving credentials: error storing credentials - err: exit status 1, out: `
 `docker pull 12345678.dkr.ecr.ap-northeast-1.amazonaws.com/{repository_name}/{image_name}:{tag_name}`
 ↓
 `docker images` でPullできたことを確認
+
 ##### 補足
 - `ecr:BatchGetImage` のRoleが必要
-
-TODO: 
-- スニペット化
