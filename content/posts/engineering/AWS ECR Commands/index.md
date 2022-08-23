@@ -26,9 +26,13 @@ Error saving credentials: error storing credentials - err: exit status 1, out: `
 [Qiitaの記事](https://qiita.com/P2eFR6RU/items/180d6de4c52f36b7adc0) を参考に、`$HOME/.docker/config.json` の `credsStore` の項目を削除することでエラーが消えることを確認（ただし、あくまで応急的な対応）
 
 #### 2. Pull
-`docker pull 12345678.dkr.ecr.ap-northeast-1.amazonaws.com/{repository_name}/{image_name}:{tag_name}`
+```
+docker pull 12345678.dkr.ecr.ap-northeast-1.amazonaws.com/{repository_name}/{image_name}:{tag_name}
+
 ↓
-`docker images` でPullできたことを確認
+
+docker images でPullできたことを確認
+```
 
 ##### 補足
 - `ecr:BatchGetImage` のRoleが必要
