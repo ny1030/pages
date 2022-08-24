@@ -14,7 +14,7 @@ docker exec -it {container_id} /bin/sh
  してもコンテナが既に終了しており、ログイン出来ないという事がある。
 
 ## 方法
- そのため、どうにかコンテナにログインする方法は無いか調べたところ、 `docker run` のオプションで `--entrypoint /bin/sh` を指定して、ENTRYPOINT (コンテナ起動時に最初に実行されるコマンド) を上書きするのが良い事がわかった。
+ `docker run` のオプションで `-it` を指定することで、コンテナが終了してもログイン出来るようになる。`-it` はそれぞれ独立したオプションで、`-i(interactive)` , `-t(tty)` 
  
 コマンドとしては以下のような感じ：
 
@@ -24,6 +24,14 @@ docker run -it --entrypoint /bin/sh {container_name}
 
 - `container_name` は `docker images` で確認。`docker build -t {name}:{tag}` でビルド時に名前を指定可能。
 
-## 参考
+### docker composeの場合
+docker composeでも同様の事をしたい場合は、docker-compose.yamlで以下のオプションを追加すればよい。
+```
+tty: true
+stdin_open: true
 
-[ENTRYPOINT（実行時に処理するデフォルトのコマンド）](https://docs.docker.jp/engine/reference/run.html#run-entrypoint)
+* service.{service_name} の階層に書く
+```
+
+## 参考
+[Docker run リファレンス](https://docs.docker.jp/engine/reference/run.html)
