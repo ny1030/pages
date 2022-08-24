@@ -5,7 +5,20 @@
     <link>https://ny1030.github.io/pages/</link>
     <description>Recent content on ny1030.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 22 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 24 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dockerで起動してないコンテナにログインする方法</title>
+      <link>https://ny1030.github.io/pages/posts/engineering/docker%E3%81%A7%E8%B5%B7%E5%8B%95%E3%81%97%E3%81%A6%E3%81%AA%E3%81%84%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%81%AB%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Wed, 24 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/posts/engineering/docker%E3%81%A7%E8%B5%B7%E5%8B%95%E3%81%97%E3%81%A6%E3%81%AA%E3%81%84%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%81%AB%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/</guid>
+      <description>背景 Dockerにログインして、ディレクトリの構造などを確認したい場合、一般的なやり方だと以下のように起動しているコンテナのidを調べてログインをしている。
+docker run {container_name} docker ps docker exec -it {container_id} /bin/sh こちらの方法だと、Dockerfileで指定しているコマンドが起動直後に終了する場合、docker ps してもコンテナが既に終了しており、ログイン出来ないという事がある。
+方法 そのため、どうにかコンテナにログインする方法は無いか調べたところ、 docker run のオプションで --entrypoint /bin/sh を指定して、ENTRYPOINT (コンテナ起動時に最初に実行されるコマンド) を上書きするのが良い事がわかった。
+コマンドとしては以下のような感じ：
+docker run -it --entrypoint /bin/sh {container_name} container_name は docker images で確認。docker build -t {name}:{tag} でビルド時に名前を指定可能。 参考 ENTRYPOINT（実行時に処理するデフォルトのコマンド）</description>
+    </item>
+    
     <item>
       <title>Hugoで特定のファイルを公開しない方法</title>
       <link>https://ny1030.github.io/pages/posts/engineering/hugo%E3%81%A7%E7%89%B9%E5%AE%9A%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E5%85%AC%E9%96%8B%E3%81%97%E3%81%AA%E3%81%84%E6%96%B9%E6%B3%95/</link>

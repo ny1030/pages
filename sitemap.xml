@@ -2,13 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://ny1030.github.io/pages/posts/engineering/hugo%E3%81%A7%E7%89%B9%E5%AE%9A%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E5%85%AC%E9%96%8B%E3%81%97%E3%81%AA%E3%81%84%E6%96%B9%E6%B3%95/</loc>
-    <lastmod>2022-08-22T00:00:00+00:00</lastmod>
+    <loc>https://ny1030.github.io/pages/posts/engineering/docker%E3%81%A7%E8%B5%B7%E5%8B%95%E3%81%97%E3%81%A6%E3%81%AA%E3%81%84%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%81%AB%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2022-08-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ny1030.github.io/pages/</loc>
-    <lastmod>2022-08-22T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ny1030.github.io/pages/posts/</loc>
+    <lastmod>2022-08-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ny1030.github.io/pages/posts/engineering/hugo%E3%81%A7%E7%89%B9%E5%AE%9A%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E5%85%AC%E9%96%8B%E3%81%97%E3%81%AA%E3%81%84%E6%96%B9%E6%B3%95/</loc>
     <lastmod>2022-08-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ny1030.github.io/pages/posts/engineering/bitnami%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E3%82%B5%E3%82%A4%E3%83%88%E3%81%ABletsencrypt%E3%82%92%E5%B0%8E%E5%85%A5/</loc>
