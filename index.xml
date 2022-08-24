@@ -21,6 +21,15 @@ tty: true stdin_open: true * service.{service_name} の階層に書く 参考 Do
     </item>
     
     <item>
+      <title>influxDB 関連コマンド</title>
+      <link>https://ny1030.github.io/pages/posts/engineering/influxdb-%E9%96%A2%E9%80%A3%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/</link>
+      <pubDate>Wed, 24 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/posts/engineering/influxdb-%E9%96%A2%E9%80%A3%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/</guid>
+      <description>データベース作成 curl -i -XPOST http://localhost:8086/query --data-urlencode &amp;#34;q=CREATE DATABASE mydb&amp;#34; Smapleデータ書き込み curl -i -XPOST &amp;#39;http://localhost:8086/write?db=mydb&amp;#39; --data-binary &amp;#39;cpu_load_short,host=server01,region=us-west value=0.64 1434055562000000000&amp;#39; 参考 Write data with the InfluxDB API</description>
+    </item>
+    
+    <item>
       <title>Hugoで特定のファイルを公開しない方法</title>
       <link>https://ny1030.github.io/pages/posts/engineering/hugo%E3%81%A7%E7%89%B9%E5%AE%9A%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E5%85%AC%E9%96%8B%E3%81%97%E3%81%AA%E3%81%84%E6%96%B9%E6%B3%95/</link>
       <pubDate>Mon, 22 Aug 2022 00:00:00 +0000</pubDate>
