@@ -5,7 +5,16 @@
     <link>https://ny1030.github.io/pages/posts/</link>
     <description>Recent content in Posts on ny1030.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 24 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 07 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWS CLI Snapshot Commands</title>
+      <link>https://ny1030.github.io/pages/posts/engineering/aws-cli-snapshot-commands/</link>
+      <pubDate>Wed, 07 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/posts/engineering/aws-cli-snapshot-commands/</guid>
+      <description>特定のvolumeIdのSnapshot一覧を確認したい時 取得日時が新しい順に表示されてそう aws ec2 describe-snapshots --filters Name=&amp;#34;volume-id,Values=${volume}&amp;#34; describe-snapshots — AWS CLI 2.7.29 Command Reference</description>
+    </item>
+    
     <item>
       <title>Dockerで起動してないコンテナにログインする方法</title>
       <link>https://ny1030.github.io/pages/posts/engineering/docker%E3%81%A7%E8%B5%B7%E5%8B%95%E3%81%97%E3%81%A6%E3%81%AA%E3%81%84%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%81%AB%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/</link>
@@ -153,7 +162,7 @@ Nodejs コマンド node 11_post.js ../data/1655618612.json VSCode上の設定�
       <guid>https://ny1030.github.io/pages/posts/engineering/ec2%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%82%B9%E3%81%AB%E3%82%BF%E3%82%B0%E3%82%92%E4%BB%98%E4%B8%8E/</guid>
       <description>単発実行 AMI 現在のインスタンスのTagの状態を確認 aws ec2 describe-images --image-ids ami-xxxxxx タグを付与(例として system:front というTagを付与する) aws ec2 create-tags --resources ami-ffa5df99 --tags Key=system,Value=front ⇨再度実行しても同じKey/Valueなら結果は変わらないことを確認
 systemのタグが付いてるリソースを列挙 aws ec2 describe-images --filter Name=&amp;#34;tag-key&amp;#34;,Values=&amp;#34;system&amp;#34; ワイルドカードによる検索も可能 aws ec2 describe-images --filter Name=&amp;#34;tag-key&amp;#34;,Values=&amp;#34;sys*&amp;#34; タグのKeyが system の値を取得 aws ec2 describe-images --image-ids ami-xxxxxx | jq &amp;#39;.Snapshots[] | [ .Tags[] | select(.Key == &amp;#34;system&amp;#34;).Value]&amp;#39; Snapshot 現在のTagの状態を確認
-snapshotIdをキーに確認する場合 VolumeId=$(aws ec2 describe-snapshots --snapshot-ids snap-xxxxxx | jq .Snapshots[].VolumeId | tr -d &amp;#39;&amp;#34;&amp;#39;) aws ec2 describe-volumes --volume-ids $VolumeId ``</description>
+snapshotIdをキーに確認する場合 VolumeId=$(aws ec2 describe-snapshots --snapshot-ids snap-xxxxxx | jq .Snapshots[].VolumeId | tr -d &amp;#39;&amp;#34;&amp;#39;) aws ec2 describe-volumes --volume-ids $VolumeId AMIのImageIdをキーに確認する場合 SnapshotId=$(aws ec2 describe-images --image-ids ami-xxxxxxx | jq .</description>
     </item>
     
     <item>
