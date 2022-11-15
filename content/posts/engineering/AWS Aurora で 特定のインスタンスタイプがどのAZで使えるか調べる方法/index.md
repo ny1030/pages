@@ -13,12 +13,16 @@ AWSのEC2やRDSを使用するにあたり、インスタンスタイプを選�
 
 ### 対応リージョン
 
-対応リージョンについては、管理コンソールから確認できないものの、価格票のページから同等の情報を確認することが可能 [1] : [https://aws.amazon.com/jp/rds/aurora/pricing/](https://aws.amazon.com/jp/rds/aurora/pricing/)
+対応リージョンについては、管理コンソールから確認できないものの、価格票のページから同等の情報を確認することが可能 [^1] 
+[^1]:: [https://aws.amazon.com/jp/rds/aurora/pricing/](https://aws.amazon.com/jp/rds/aurora/pricing/)
+
 ただし、AWS曰くまれに価格票が更新される際に使えるけど乗ってないケースがあるので、その際はリロードするなりしてくれとのこと。
 
 ### 対応AZ
 
-対応しているリージョンが分かった後に、そのリージョンで対応しているAZ（Availability Zone）を調べる場合は CLIコマンド `describe-orderable-db-instance-options` で確認が可能である [2] : https://docs.aws.amazon.com/cli/latest/reference/rds/describe-orderable-db-instance-options.html
+対応しているリージョンが分かった後に、そのリージョンで対応しているAZ（Availability Zone）を調べる場合は CLIコマンド `describe-orderable-db-instance-options` で確認が可能である [^2]
+[^2]:https://docs.aws.amazon.com/cli/latest/reference/rds/describe-orderable-db-instance-options.html
+
 
 例として、TokyoリージョンのAurora for PostgreSQL 14.3 の r6i.large が使えるAZを確認するコマンドは以下の通りである。
 ```
