@@ -40,10 +40,10 @@ https://docs.aws.amazon.com/cli/latest/reference/rds/describe-orderable-db-insta
       <guid>https://ny1030.github.io/pages/posts/engineering/docker%E3%81%A7%E8%B5%B7%E5%8B%95%E3%81%97%E3%81%A6%E3%81%AA%E3%81%84%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%81%AB%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/</guid>
       <description>背景 Dockerにログインして、ディレクトリの構造などを確認したい場合、一般的なやり方だと以下のように起動しているコンテナのidを調べてログインをしている。
 docker run {container_name} docker ps docker exec -it {container_id} /bin/sh こちらの方法だと、Dockerfileで指定しているコマンドが起動直後に終了する場合、docker ps してもコンテナが既に終了しており、ログイン出来ないという事がある。
-方法 docker run のオプションで -it を指定することで、コンテナが終了してもログイン出来るようになる。-it はそれぞれ独立したオプションで、-i(interactive) , -t(tty)
+方法 docker run のオプションで -it を指定することで、コンテナが終了してもログイン出来るようになる。-it はそれぞれ独立したオプションで、-i(interactive) , -t(tty) 1
 コマンドとしては以下のような感じ：
 docker run -it --entrypoint /bin/sh {container_name} container_name は docker images で確認。docker build -t {name}:{tag} でビルド時に名前を指定可能。 docker composeの場合 docker composeでも同様の事をしたい場合は、docker-compose.yamlで以下のオプションを追加すればよい。
-tty: true stdin_open: true * service.{service_name} の階層に書く 参考 Docker run リファレンス</description>
+tty: true stdin_open: true * service.{service_name} の階層に書く Docker run リファレンス&amp;#160;&amp;#x21a9;&amp;#xfe0e;</description>
     </item>
     
     <item>
