@@ -14,7 +14,7 @@ docker exec -it {container_id} /bin/sh
  してもコンテナが既に終了しており、ログイン出来ないという事がある。
 
 ## 方法
- `docker run` のオプションで `-it` を指定することで、コンテナが終了してもログイン出来るようになる。`-it` はそれぞれ独立したオプションで、`-i(interactive)` , `-t(tty)` 
+ `docker run` のオプションで `-it` を指定することで、コンテナが終了してもログイン出来るようになる。`-it` はそれぞれ独立したオプションで、`-i(interactive)` , `-t(tty)` [^1]
  
 コマンドとしては以下のような感じ：
 
@@ -33,5 +33,4 @@ stdin_open: true
 * service.{service_name} の階層に書く
 ```
 
-## 参考
-[Docker run リファレンス](https://docs.docker.jp/engine/reference/run.html)
+[^1]: [Docker run リファレンス](https://docs.docker.jp/engine/reference/run.html)
