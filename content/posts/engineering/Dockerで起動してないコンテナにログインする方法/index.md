@@ -22,7 +22,7 @@ docker exec -it {container_id} /bin/sh
 docker run -it --entrypoint /bin/sh {container_name}
 ```
 
-- `container_name` は `docker images` で確認。`docker build -t {name}:{tag}` でビルド時に名前を指定可能。
+Tips: `container_name` は `docker images` で確認。`docker build -t {name}:{tag}` でビルド時に名前を指定可能。
 
 ### docker composeの場合
 docker composeでも同様の事をしたい場合は、docker-compose.yamlで以下のオプションを追加すればよい。
