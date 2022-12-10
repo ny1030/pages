@@ -48,12 +48,12 @@ configで検索して[出てきたModule](https://deno.land/x/load_config_files@
 
 ```ts
 import {
-  Config,
-  CONFIG_FORMATTERS,
-  ConfigFormatter,
-  loadConfig,
-  LoadConfigOptions,
-} from "https://deno.land/x/load_config_files/mod.ts";
+    Config,
+    CONFIG_FORMATTERS,
+    ConfigFormatter,
+    loadConfig,
+    LoadConfigOptions,
+} from "https://deno.land/x/load_config_files@0.3.0/mod.ts";
 
 const options: LoadConfigOptions = { verbose: false };
 
@@ -92,4 +92,5 @@ console.log(conf);
 単一のファイルを読み込む場合にはこちらのほうがシンプルだが、環境ごとに設定ファイルを分けたい場合などは結局引数から情報を渡す必要があるので、同じ感じにはなりそう。
 
 [^1] : [Compatibility with Node and npm](https://deno.com/blog/changes#compatibility-with-node-and-npm)
+
 [^2] : [Importing JSON](https://examples.deno.land/importing-json)
