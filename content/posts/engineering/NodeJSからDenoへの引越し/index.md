@@ -8,6 +8,8 @@ title: NodeJSからDenoへの引越し
 
 jsランタイム環境であるDenoが最近目にするので、勉強のためにNodejsで書いたコードをDenoに引越ししてみる。
 
+Deno: https://deno.land/
+
 # 処理別の実装方法
 
 ## JSONのconfigをスクリプトに読み込む
