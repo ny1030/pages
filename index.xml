@@ -19,7 +19,7 @@ Context jsランタイム環境であるDenoが最近目にするので、勉強
 https://deno.land/x
 configで検索して出てきたModuleを使ってみる。Documentに書いてる例を参考に、以下のような構造のディレクトリを作成する。
 {project_root} ├── app1.ts └── config └── prod └── app1.json 設定ファイルが app1.json で、スクリプトが app1.ts とする。
-import * from &amp;#34;https://deno.land/x/load_config_files@0.3.0/mod.ts&amp;#34;; const options: LoadConfigOptions = { verbose: false }; const [formatterId, configRootPath, .</description>
+import { Config, CONFIG_FORMATTERS, ConfigFormatter, loadConfig, LoadConfigOptions, } from &amp;#34;https://deno.land/x/load_config_files/mod.ts&amp;#34;; const options: LoadConfigOptions = { verbose: false }; const [formatterId, configRootPath, .</description>
     </item>
     
     <item>
