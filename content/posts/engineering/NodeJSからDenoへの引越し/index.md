@@ -45,7 +45,13 @@ configで検索して[出てきたModule](https://deno.land/x/load_config_files@
 設定ファイルが  `app1.json` で、スクリプトが `app1.ts` とする。
 
 ```ts
-import * from "https://deno.land/x/load_config_files@0.3.0/mod.ts";
+import {
+  Config,
+  CONFIG_FORMATTERS,
+  ConfigFormatter,
+  loadConfig,
+  LoadConfigOptions,
+} from "https://deno.land/x/load_config_files/mod.ts";
 
 const options: LoadConfigOptions = { verbose: false };
 
