@@ -20,7 +20,7 @@ Deno: https://deno.land/
 https://deno.land/x
 configで検索して出てきたModuleを使ってみる。Documentに書いてる例を参考に、以下のような構造のディレクトリを作成する。
 {project_root} ├── app1.ts └── config └── prod └── app1.json 設定ファイルが app1.json で、スクリプトが app1.ts とする。
-import { Config, CONFIG_FORMATTERS, ConfigFormatter, loadConfig, LoadConfigOptions, } from &amp;#34;https://deno.land/x/load_config_files/mod.ts&amp;#34;; const options: LoadConfigOptions = { verbose: false }; const [formatterId, configRootPath, .</description>
+import { Config, CONFIG_FORMATTERS, ConfigFormatter, loadConfig, LoadConfigOptions, } from &amp;#34;https://deno.land/x/load_config_files@0.3.0/mod.ts&amp;#34;; const options: LoadConfigOptions = { verbose: false }; const [formatterId, configRootPath, .</description>
     </item>
     
     <item>
@@ -381,8 +381,9 @@ AppBuilder 2 20180529-19:35
       <pubDate>Fri, 22 Oct 2021 00:00:00 +0000</pubDate>
       
       <guid>https://ny1030.github.io/pages/posts/engineering/apache%E3%81%AEredirect%E8%A8%AD%E5%AE%9A/</guid>
-      <description>www無しドメイン -&amp;gt; www有りドメインにリダイレクト 参考：Apache RewriteCond の基礎知識 | - WEB ARCH LABO {apache_dir}/conf/vhost
-&amp;lt;VirtualHost *:80&amp;gt; ... &amp;lt;Directory &amp;#34;/opt/blog&amp;#34;&amp;gt; ... &amp;lt;/Directory&amp;gt; RewriteEngine On RewriteCond %{HTTP_HOST} !^www\. [NC] RewriteCond %{REQUEST_URI} !^/admin/ RewriteRule ^(.*)$ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L] ... &amp;lt;/VirtualHost&amp;gt; RewriteEngine On: このディレクティブを書かないとRewriteは動かない。言い換えるとここだけコメントアウトすればRewriteを無効にできる。 RewriteCond: この条件に合致（true）したらRewriteRuleにしたがってURLの書き換えをおこなう。 今回の例：サーバのホスト名%{HTTP_HOST} でwww.が先頭にない !^www\.とき。（大文字小文字は区別しない[NC]） RewriteCondを複数記述した場合はデフォルトではAND条件になる。ORにしたい場合は末尾に [OR] を指定する。 RewriteRule: URLの書き換えルールを書いている。リダイレクトのステータスコードを末尾に記載。 [L] をつけると振り分けが終わる（それ以降の処理は無視される）が、Rewrite後に再度評価が実行されるのでループに注意とのこと。再度評価をしたくない場合、[END] をつければいいとのこと。.htaccess に RewriteRule 書くときは、[L]フラグをつけても </description>
+      <description>Case1 www無しドメイン -&amp;gt; www有りドメインにリダイレクト 参考：Apache RewriteCond の基礎知識 | - WEB ARCH LABO {apache_dir}/conf/vhost
+&amp;lt;VirtualHost *:80&amp;gt; ... &amp;lt;Directory &amp;#34;/opt/blog&amp;#34;&amp;gt; ... &amp;lt;/Directory&amp;gt; RewriteEngine On RewriteCond %{HTTP_HOST} !^www\. [NC] RewriteCond %{REQUEST_URI} !^/admin/ RewriteRule ^(.*)$ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L] ... &amp;lt;/VirtualHost&amp;gt; RewriteEngine On: このディレクティブを書かないとRewriteは動かない。言い換えるとここだけコメントアウトすればRewriteを無効にできる。 RewriteCond: この条件に合致（true）したらRewriteRuleにしたがってURLの書き換えをおこなう。 今回の例：サーバのホスト名%{HTTP_HOST} でwww.が先頭にない !^www\.とき。（大文字小文字は区別しない[NC]） RewriteCondを複数記述した場合はデフォルトではAND条件になる。ORにしたい場合は末尾に [OR] を指定する。例では2つ目のRewriteCondにおいて /admin のパスはリライトしないように条件を追加。 RewriteRule: URLの書き換えルールを書いている。リダイレクトのステータスコードを末尾に記載。 [L] をつけると振り分けが終わる（それ以降の処理は無視される）が、Rewrite後に再度評価が実行されるのでループに注意とのこと。再度評価をしたくない場合、[END] をつければいいとのこと。.htaccess に RewriteRule 書くときは、[L]フラグをつけても 併せてhttpsにリダイレクトしたい場合はRewriteRuleで指定しているプロトコルをhttpsにする。 Case2 www有りドメイン -&amp;gt; www無しドメインにリダイレクト {apache_dir}/conf/vhost
+&amp;lt;VirtualHost *:80&amp;gt; ... &amp;lt;Directory &amp;#34;/opt/blog&amp;#34;&amp;gt; ... &amp;lt;/Directory&amp;gt; RewriteEngine On RewriteCond %{HTTP_HOST} ^www\.</description>
     </item>
     
     <item>
