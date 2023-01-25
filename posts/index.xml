@@ -24,7 +24,7 @@
       <description>※順次追記
 Context jsランタイム環境であるDenoが最近目にするので、勉強のためにNodejsで書いたコードをDenoに引越ししてみる。
 Deno: https://deno.land/
-処理別の実装方法 JSONのconfigをスクリプトに読み込む Nodejs node-config モジュールを使って以下のように、JSONファイルをオブジェクトとして読み込む。 const conf = require(&amp;#39;config&amp;#39;); //JSONファイルは ./config/default.json const INTERVAL = conf.interval; const LOWER_LIMIT = conf.lowerLimit; const UPPER_LIMIT = conf.upperLimit; Deno 最も簡単と思われる方法は以下のようにnpmをインポートする。 import config from &amp;#34;npm:config&amp;#34;; console.log(config); ただし、この機能自体はDenoが作られた経緯とは反するもので、Deno社も渋々npmをサポートしているように見える。1
+処理別の実装方法 JSONのconfigをスクリプトに読み込む Nodejs node-config モジュールを使って以下のように、JSONファイルをオブジェクトとして読み込む。 const conf = require(&amp;#39;config&amp;#39;); //JSONファイルは ./config/default.json const INTERVAL = conf.interval; const LOWER_LIMIT = conf.lowerLimit; const UPPER_LIMIT = conf.upperLimit; Deno 最も簡単と思われる方法は以下のようにnpmをインポートする。 import config from &amp;#34;npm:config&amp;#34;; console.log(config); ただし、この機能自体はDenoが作られた経緯（脱npm）とは反するもので、Deno社も渋々npmをサポートしているように見える。1
 また、npmのサポートは実験的な機能でまだサポートされてないパッケージもあるので、極力使わないほうがいいかもしれない。
 方法1. Denoで公開されているModuleを使う npmが使えない -&amp;gt; ならDenoで公開しているModuleを使う、という方法。Moduleは以下で公開されている。
 https://deno.land/x
