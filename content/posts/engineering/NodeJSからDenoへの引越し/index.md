@@ -84,8 +84,6 @@ deno run --allow-read --allow-net=deno.land app1.ts json config prod app1
 
 ### 方法2. Deno標準機能だけで実装する
 サードパーティを使わない方法も試してみたので、こちらに記載。チュートリアルのexampleに載っている例を参考に、以下のようにjsonファイルを読み込む。[^2]
-[^1]: [Compatibility with Node and npm](https://deno.com/blog/changes#compatibility-with-node-and-npm)
-[^2]: [Importing JSON](https://examples.deno.land/importing-json)
 
 ```ts
 import conf from "./config/config.json" assert { type: "json" };
@@ -94,3 +92,5 @@ console.log(conf);
 
 単一のファイルを読み込む場合にはこちらのほうがシンプルだが、環境ごとに設定ファイルを分けたい場合などは結局引数から情報を渡す必要があるので、同じ感じにはなりそう。
 
+[^1]: [Compatibility with Node and npm](https://deno.com/blog/changes#compatibility-with-node-and-npm)
+[^2]: [Importing JSON](https://examples.deno.land/importing-json)
