@@ -52,7 +52,7 @@ select * from table(DBMS_XPLAN.DISPLAY_CURSOR(`SQL_ID`, format=>``'ALL ALLSTATS 
 - 実行したSQLのSQL_IDを調べる
 	SQL文にコメントを入れて `v$sql` から探す
 ```
-SELECT * FROM AREA WHERE STORE = '117666' /* FINDME */;
+SELECT * FROM AREA WHERE STORE = '117666' /* FINDME */; -- Sample SQL to find
 SELECT SQL_ID,SQL_TEXT FROM v$sql WHERE SQL_TEXT LIKE '%FINDME%';
 ```
 	実行された時刻（FIRST_LOAD_TIME）を使って `v$sql` から探す
