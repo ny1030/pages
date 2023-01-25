@@ -1,5 +1,5 @@
 ---
-date: "2023-01-27"
+date: "2023-01-23"
 title: Oracle SQLs
 ---
 ### General Use

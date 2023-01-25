@@ -28,7 +28,8 @@ const UPPER_LIMIT = conf.upperLimit;
 import config from "npm:config";
 console.log(config);
 ```
-ただし、この機能自体はDenoが作られた経緯とは反するもので、Deno社も渋々npmをサポートしているように見える[^1]。
+ただし、この機能自体はDenoが作られた経緯とは反するもので、Deno社も渋々npmをサポートしているように見える。[^1]
+[^1] : [Compatibility with Node and npm](https://deno.com/blog/changes#compatibility-with-node-and-npm)
 また、npmのサポートは実験的な機能でまだサポートされてないパッケージもあるので、極力使わないほうがいいかもしれない。
 
 ### 方法1. Denoで公開されているModuleを使う
@@ -37,7 +38,7 @@ npmが使えない -> ならDenoで公開しているModuleを使う、という
 https://deno.land/x
 
 configで検索して[出てきたModule](https://deno.land/x/load_config_files@0.3.0)を使ってみる。Documentに書いてる例を参考に、以下のような構造のディレクトリを作成する。
-```
+```plaintext
 {project_root}
 ├── app1.ts
 └── config
@@ -82,7 +83,8 @@ deno run --allow-read --allow-net=deno.land app1.ts json config prod app1
 上手く動かない際は、 `const options: LoadConfigOptions = { verbose: false };` のオプションをtrueにするとログが出力されるのでオススメ。
 
 ### 方法2. Deno標準機能だけで実装する
-サードパーティを使わない方法も試してみたので、こちらに記載。チュートリアルのexampleに載っている例を参考に、以下のようにjsonファイルを読み込む[^2]。
+サードパーティを使わない方法も試してみたので、こちらに記載。チュートリアルのexampleに載っている例を参考に、以下のようにjsonファイルを読み込む。[^2]
+[^2]: [Importing JSON](https://examples.deno.land/importing-json)
 
 ```ts
 import conf from "./config/config.json" assert { type: "json" };
@@ -91,6 +93,3 @@ console.log(conf);
 
 単一のファイルを読み込む場合にはこちらのほうがシンプルだが、環境ごとに設定ファイルを分けたい場合などは結局引数から情報を渡す必要があるので、同じ感じにはなりそう。
 
-[^1] : [Compatibility with Node and npm](https://deno.com/blog/changes#compatibility-with-node-and-npm)
-
-[^2] : [Importing JSON](https://examples.deno.land/importing-json)
