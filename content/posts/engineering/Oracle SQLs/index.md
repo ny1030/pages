@@ -42,18 +42,24 @@ from x$ksppi join x$ksppcv using (indx)
 where ksppinm IN ('_optimizer_use_stats_on_conventional_dml','_optimizer_gather_stats_on_conventional_dml');
 ```
 #### SQL Tuning
-- 特定のSQL_IのDActualの実行計画を確認する
+- 特定のSQL_IDの**Actual**の実行計画を確認する
 ```
-show parameter statistics_level;でstatistics_levelがtypicalの場合：
-alter session set statistics_level=all;
-<<対象のSQLを実行>>
-select * from table(DBMS_XPLAN.DISPLAY_CURSOR(`SQL_ID`, format=>``'ALL ALLSTATS LAST'``));
+SHOW parameter statistics_level;でstatistics_levelがtypicalの場合：
+　- ALTER SESSION SET statistics_level=all;
+　- <<対象のSQLを実行>>
+
+SELECT * FROM table(DBMS_XPLAN.DISPLAY_CURSOR(`上記で実行したSQLのSQL_ID`, format=>``'ALL ALLSTATS LAST'``));
 ```
+補足：
+-  `statistics_level`　をALLに変えてから SQLを再実行するのが重要
+- SQLを再実行する際に、全く同じテキストだとSQL_IDが変わらず `statistics_level = typical` の情報しか得られないのでコメントを入れるなどして別のSQLとして認識させることでActualの情報が取れる
+- 最後のSQLを実行した際に、A-Rows, A-Timeのカラムが表示されていればActualの情報が取れている。
+
 - 実行したSQLのSQL_IDを調べる
 	SQL文にコメントを入れて `v$sql` から探す
 ```
 SELECT * FROM AREA WHERE STORE = '117666' /* FINDME */; -- Sample SQL to find
-SELECT SQL_ID,SQL_TEXT FROM v$sql WHERE SQL_TEXT LIKE '%FINDME%';
+SELECT SQL_ID,FIRST_LOAD_TIME,SQL_TEXT FROM v$sql WHERE SQL_TEXT LIKE '%FINDME%';
 ```
 	実行された時刻（FIRST_LOAD_TIME）を使って `v$sql` から探す
 ```
