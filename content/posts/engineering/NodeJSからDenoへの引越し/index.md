@@ -28,7 +28,7 @@ const UPPER_LIMIT = conf.upperLimit;
 import config from "npm:config";
 console.log(config);
 ```
-ただし、この機能自体はDenoが作られた経緯とは反するもので、Deno社も渋々npmをサポートしているように見える。[^1]
+ただし、この機能自体はDenoが作られた経緯（脱npm）とは反するもので、Deno社も渋々npmをサポートしているように見える。[^1]
 
 また、npmのサポートは実験的な機能でまだサポートされてないパッケージもあるので、極力使わないほうがいいかもしれない。
 
