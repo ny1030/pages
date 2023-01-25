@@ -29,7 +29,8 @@ import config from "npm:config";
 console.log(config);
 ```
 ただし、この機能自体はDenoが作られた経緯とは反するもので、Deno社も渋々npmをサポートしているように見える。[^1]
-[^1] : [Compatibility with Node and npm](https://deno.com/blog/changes#compatibility-with-node-and-npm)
+[^1]: [Compatibility with Node and npm](https://deno.com/blog/changes#compatibility-with-node-and-npm)
+
 また、npmのサポートは実験的な機能でまだサポートされてないパッケージもあるので、極力使わないほうがいいかもしれない。
 
 ### 方法1. Denoで公開されているModuleを使う
