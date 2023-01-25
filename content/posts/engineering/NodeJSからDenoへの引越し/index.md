@@ -29,7 +29,6 @@ import config from "npm:config";
 console.log(config);
 ```
 ただし、この機能自体はDenoが作られた経緯とは反するもので、Deno社も渋々npmをサポートしているように見える。[^1]
-[^1]: [Compatibility with Node and npm](https://deno.com/blog/changes#compatibility-with-node-and-npm)
 
 また、npmのサポートは実験的な機能でまだサポートされてないパッケージもあるので、極力使わないほうがいいかもしれない。
 
@@ -85,6 +84,7 @@ deno run --allow-read --allow-net=deno.land app1.ts json config prod app1
 
 ### 方法2. Deno標準機能だけで実装する
 サードパーティを使わない方法も試してみたので、こちらに記載。チュートリアルのexampleに載っている例を参考に、以下のようにjsonファイルを読み込む。[^2]
+[^1]: [Compatibility with Node and npm](https://deno.com/blog/changes#compatibility-with-node-and-npm)
 [^2]: [Importing JSON](https://examples.deno.land/importing-json)
 
 ```ts
