@@ -1,4 +1,7 @@
-
+---
+date: 2022-12-15
+title: GA入れる時のCORS対応
+---
 URL:
     https://www.googletagmanager.com/gtag/js?id={id}
 Referrer Policy:
