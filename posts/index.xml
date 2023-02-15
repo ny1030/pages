@@ -27,6 +27,16 @@ arch -x86_64 /Applications/SQLDeveloper.app/Contents/MacOS/sqldeveloper.sh SQL D
     </item>
     
     <item>
+      <title>GA入れる時のCORS対応</title>
+      <link>https://ny1030.github.io/pages/posts/engineering/ga%E5%85%A5%E3%82%8C%E3%82%8B%E6%99%82%E3%81%AEcors%E5%AF%BE%E5%BF%9C/</link>
+      <pubDate>Thu, 15 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/posts/engineering/ga%E5%85%A5%E3%82%8C%E3%82%8B%E6%99%82%E3%81%AEcors%E5%AF%BE%E5%BF%9C/</guid>
+      <description>URL: https://www.googletagmanager.com/gtag/js?id={id} Referrer Policy: strict-origin-when-cross-origin
+sudo mv /opt/bitnami/drupal/sites/default/default.services.yml /opt/bitnami/drupal/sites/default/services.yml </description>
+    </item>
+    
+    <item>
       <title>NodeJSからDenoへの引越し</title>
       <link>https://ny1030.github.io/pages/posts/engineering/nodejs%E3%81%8B%E3%82%89deno%E3%81%B8%E3%81%AE%E5%BC%95%E8%B6%8A%E3%81%97/</link>
       <pubDate>Sat, 10 Dec 2022 00:00:00 +0000</pubDate>
@@ -396,16 +406,6 @@ AppBuilder 2 20180529-19:35
       <description>Case1 www無しドメイン -&amp;gt; www有りドメインにリダイレクト 参考：Apache RewriteCond の基礎知識 | - WEB ARCH LABO {apache_dir}/conf/vhost
 &amp;lt;VirtualHost *:80&amp;gt; ... &amp;lt;Directory &amp;#34;/opt/blog&amp;#34;&amp;gt; ... &amp;lt;/Directory&amp;gt; RewriteEngine On RewriteCond %{HTTP_HOST} !^www\. [NC] RewriteCond %{REQUEST_URI} !^/admin/ RewriteRule ^(.*)$ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L] ... &amp;lt;/VirtualHost&amp;gt; RewriteEngine On: このディレクティブを書かないとRewriteは動かない。言い換えるとここだけコメントアウトすればRewriteを無効にできる。 RewriteCond: この条件に合致（true）したらRewriteRuleにしたがってURLの書き換えをおこなう。 今回の例：サーバのホスト名%{HTTP_HOST} でwww.が先頭にない !^www\.とき。（大文字小文字は区別しない[NC]） RewriteCondを複数記述した場合はデフォルトではAND条件になる。ORにしたい場合は末尾に [OR] を指定する。例では2つ目のRewriteCondにおいて /admin のパスはリライトしないように条件を追加。 RewriteRule: URLの書き換えルールを書いている。リダイレクトのステータスコードを末尾に記載。 [L] をつけると振り分けが終わる（それ以降の処理は無視される）が、Rewrite後に再度評価が実行されるのでループに注意とのこと。再度評価をしたくない場合、[END] をつければいいとのこと。.htaccess に RewriteRule 書くときは、[L]フラグをつけても 併せてhttpsにリダイレクトしたい場合はRewriteRuleで指定しているプロトコルをhttpsにする。 Case2 www有りドメイン -&amp;gt; www無しドメインにリダイレクト {apache_dir}/conf/vhost
 &amp;lt;VirtualHost *:80&amp;gt; ... &amp;lt;Directory &amp;#34;/opt/blog&amp;#34;&amp;gt; ... &amp;lt;/Directory&amp;gt; RewriteEngine On RewriteCond %{HTTP_HOST} ^www\.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://ny1030.github.io/pages/posts/engineering/ga%E5%85%A5%E3%82%8C%E3%82%8B%E6%99%82%E3%81%AEcors%E5%AF%BE%E5%BF%9C/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ny1030.github.io/pages/posts/engineering/ga%E5%85%A5%E3%82%8C%E3%82%8B%E6%99%82%E3%81%AEcors%E5%AF%BE%E5%BF%9C/</guid>
-      <description>URL: https://www.googletagmanager.com/gtag/js?id={id} Referrer Policy: strict-origin-when-cross-origin
-sudo mv /opt/bitnami/drupal/sites/default/default.services.yml /opt/bitnami/drupal/sites/default/services.yml </description>
     </item>
     
   </channel>
