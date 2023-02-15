@@ -2,13 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://ny1030.github.io/pages/</loc>
-    <lastmod>2023-01-23T00:00:00+00:00</lastmod>
+    <loc>https://ny1030.github.io/pages/posts/engineering/m1-mac%E3%81%A7oracle-sql-developer%E3%82%92%E4%BD%BF%E3%81%86%E5%A0%B4%E5%90%88/</loc>
+    <lastmod>2023-02-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ny1030.github.io/pages/posts/engineering/oracle-sqls/</loc>
-    <lastmod>2023-01-23T00:00:00+00:00</lastmod>
+    <loc>https://ny1030.github.io/pages/</loc>
+    <lastmod>2023-02-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ny1030.github.io/pages/posts/</loc>
+    <lastmod>2023-02-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ny1030.github.io/pages/posts/engineering/oracle-sqls/</loc>
     <lastmod>2023-01-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ny1030.github.io/pages/posts/engineering/nodejs%E3%81%8B%E3%82%89deno%E3%81%B8%E3%81%AE%E5%BC%95%E8%B6%8A%E3%81%97/</loc>

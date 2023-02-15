@@ -5,7 +5,18 @@
     <link>https://ny1030.github.io/pages/</link>
     <description>Recent content on ny1030.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 23 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 15 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>M1 MacでOracle SQL Developerを使う場合</title>
+      <link>https://ny1030.github.io/pages/posts/engineering/m1-mac%E3%81%A7oracle-sql-developer%E3%82%92%E4%BD%BF%E3%81%86%E5%A0%B4%E5%90%88/</link>
+      <pubDate>Wed, 15 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/posts/engineering/m1-mac%E3%81%A7oracle-sql-developer%E3%82%92%E4%BD%BF%E3%81%86%E5%A0%B4%E5%90%88/</guid>
+      <description>M1 MacBookProでOracle社のSQL Developerと呼ばれるSQLクライアント1を使っていると、上手く出来なかったり、頻繁に異常終了することがある。
+対処法として、 arch コマンドを使って起動することで、安定して利用できることを確認。
+arch -x86_64 /Applications/SQLDeveloper.app/Contents/MacOS/sqldeveloper.sh SQL Developer&amp;#160;&amp;#x21a9;&amp;#xfe0e;</description>
+    </item>
+    
     <item>
       <title>Oracle SQLs</title>
       <link>https://ny1030.github.io/pages/posts/engineering/oracle-sqls/</link>
