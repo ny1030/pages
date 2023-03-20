@@ -16,7 +16,7 @@
 RDS for SQL Server を使ってる場合 AWSのRDSでSQL Serverを使っている場合は、AWSネイティブの以下モニタリング機能を使うのがベター。
 拡張モニタリング CPU使用率の内訳が見れる（idleやsys, usrなど） Performance Insight 時系列でロングランしているSQLや何で待機しているか等の情報が見れる どちらもゼロダウンタイムで有効化ができる1。 GCPやAzureは調べてないが、Azureは少なくとも同様のモニタリング機能があるのではと想定。
 調査用のSQL クラウド・オンプレ関わらず、SQL Serverにログインできるのであれば、以下クエリで各種調査を行う。
-所要時間が大きい順のSQL SQLの性能問題を解析する際は所要時間が大きいものから解析していくため、以下のSQLで「TotalElapsedTime(sec)」を確認する。 あわせて、CPU時間やIO回数などの情報も取得している。とりあえず所要時間だけ見たい際はコメントアウトするのが良い。
+所要時間が大きいSQL、CPU時間など SQLの性能問題を解析する際は所要時間が大きいものから一般的には解析していくため、以下のSQLでトータルの所要時間を表す「TotalElapsedTime(sec)」をまず確認。 あわせて、CPU時間やIO回数などの情報も取得している。とりあえず所要時間だけ見たい際はコメントアウトするのが良い。
 SELECT TOP 100 t1.total_worker_time / t1.execution_count / 1000 as &amp;#34;avg cputime(ms)&amp;#34;, t1.max_worker_time /1000 as &amp;#34;max cputime(ms)&amp;#34;, t1.total_worker_time / 1000 as &amp;#34;total cputime(ms)&amp;#34;, t1.total_elapsed_time / 1000 as &amp;#34;TotalElapsedTime(sec)&amp;#34;, t1.total_logical_reads / t1.execution_count as &amp;#34;avg read count&amp;#34;, t1.max_logical_reads as &amp;#34;max read count&amp;#34;, t1.total_logical_reads as &amp;#34;total read count&amp;#34;, t1.execution_count as &amp;#34;exec count&amp;#34;, t2.</description>
     </item>
     
