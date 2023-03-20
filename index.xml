@@ -5,7 +5,21 @@
     <link>https://ny1030.github.io/pages/</link>
     <description>Recent content on ny1030.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 15 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Microsoft SQL Serverのパフォーマンス解析</title>
+      <link>https://ny1030.github.io/pages/posts/engineering/microsoft-sql-server%E3%81%AE%E3%83%91%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%B3%E3%82%B9%E8%A7%A3%E6%9E%90/</link>
+      <pubDate>Mon, 20 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/posts/engineering/microsoft-sql-server%E3%81%AE%E3%83%91%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%B3%E3%82%B9%E8%A7%A3%E6%9E%90/</guid>
+      <description>諸々の理由で業務システムのデータベース製品にSQL Serverを使っており、そこで問題が起きた際に解析できるようのメモ。
+RDS for SQL Server を使ってる場合 AWSのRDSでSQL Serverを使っている場合は、AWSネイティブの以下モニタリング機能を使うのがベター。
+拡張モニタリング CPU使用率の内訳が見れる（idleやsys, usrなど） Performance Insight 時系列でロングランしているSQLや何で待機しているか等の情報が見れる どちらもゼロダウンタイムで有効化ができる1。 GCPやAzureは調べてないが、Azureは少なくとも同様のモニタリング機能があるのではと想定。
+調査用のSQL クラウド・オンプレ関わらず、SQL Serverにログインできるのであれば、以下クエリで各種調査を行う。
+所要時間が大きい順のSQL select top 100 t1.total_elapsed_time / 1000 as &amp;#34;TotalElapsedTime(sec)&amp;#34; ,t1.execution_count as ExecCount ,t1.total_elapsed_time / t1.execution_count / 1000 as &amp;#34;AvgElapsedTime(sec)&amp;#34; ,t2.text as SQLtext ,t3.query_plan as SQLtext from sys.dm_exec_query_stats as t1 cross apply sys.dm_exec_sql_text(t1.sql_handle) as t2 outer apply sys.dm_exec_query_plan(t2.plan_handle) as t3 order by &amp;#34;TotalElapsedTime(sec)&amp;#34; desc; ページサイズ・断片化情報 テーブルやIndexのオブジェクトが肥大化・断片化しているか確認する
+SELECT S.name AS &amp;#39;schema name&amp;#39;, O.</description>
+    </item>
+    
     <item>
       <title>M1 MacでOracle SQL Developerを使う場合</title>
       <link>https://ny1030.github.io/pages/posts/engineering/m1-mac%E3%81%A7oracle-sql-developer%E3%82%92%E4%BD%BF%E3%81%86%E5%A0%B4%E5%90%88/</link>
