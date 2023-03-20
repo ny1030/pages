@@ -58,4 +58,28 @@ ORDER BY
 ;
 ```
 
+### CPU時間やIO回数
+```sql
+SELECT
+    TOP 100
+    t1.total_worker_time / t1.execution_count/ 1000 as "avg cputime(ms)",
+    t1.max_worker_time /1000                         as "max cputime(ms)",
+    t1.total_worker_time / 1000                      as "total cputime(ms)",
+    t1.total_logical_reads / t1.execution_count      as "avg read count",
+    t1.max_logical_reads                             as "max read count",
+    t1.total_logical_reads                           as "total read count",
+    t1.execution_count                               as "exec count",
+    t2.text                                          as "sql text",
+    t3.query_plan                                    as "query plan"
+FROM
+    sys.dm_exec_query_stats as t1
+    cross apply sys.dm_exec_sql_text(t1.sql_handle) as t2
+    outer apply sys.dm_exec_query_plan(t1.plan_handle) as t3
+WHERE
+    t2.text NOT LIKE '%dm_exec_query_stats%'
+ORDER BY
+    t1.total_worker_time DESC
+;
+```
+
 [^1]: [DB インスタンスの設定](https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings)
