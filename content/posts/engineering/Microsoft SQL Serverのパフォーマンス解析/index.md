@@ -22,19 +22,30 @@ GCPやAzureは調べてないが、Azureは少なくとも同様のモニタリ�
 クラウド・オンプレ関わらず、SQL Serverにログインできるのであれば、以下クエリで各種調査を行う。
 
 ### 所要時間が大きい順のSQL
+SQLの性能問題を解析する際は所要時間が大きいものから解析していくため、以下のSQLで「TotalElapsedTime(sec)」を確認する。
+あわせて、CPU時間やIO回数などの情報も取得している。とりあえず所要時間だけ見たい際はコメントアウトするのが良い。
 ```sql
-select top 100
-    t1.total_elapsed_time / 1000 as "TotalElapsedTime(sec)"
-    ,t1.execution_count as ExecCount
-    ,t1.total_elapsed_time / t1.execution_count / 1000 as "AvgElapsedTime(sec)"
-    ,t2.text as SQLtext
-    ,t3.query_plan as SQLtext
-from
+SELECT
+    TOP 100
+    t1.total_worker_time / t1.execution_count / 1000 as "avg cputime(ms)",
+    t1.max_worker_time /1000                         as "max cputime(ms)",
+    t1.total_worker_time / 1000                      as "total cputime(ms)",
+    t1.total_elapsed_time / 1000 as "TotalElapsedTime(sec)",
+    t1.total_logical_reads / t1.execution_count      as "avg read count",
+    t1.max_logical_reads                             as "max read count",
+    t1.total_logical_reads                           as "total read count",
+    t1.execution_count                               as "exec count",
+    t2.text                                          as "sql text",
+    t3.query_plan                                    as "query plan"
+FROM
     sys.dm_exec_query_stats as t1
     cross apply sys.dm_exec_sql_text(t1.sql_handle) as t2
-    outer apply sys.dm_exec_query_plan(t2.plan_handle) as t3
-order by
-    "TotalElapsedTime(sec)" desc; 
+    outer apply sys.dm_exec_query_plan(t1.plan_handle) as t3
+WHERE
+    t2.text NOT LIKE '%dm_exec_query_stats%'
+ORDER BY
+    t1.total_worker_time DESC
+;
 ```
 
 ### ページサイズ・断片化情報
