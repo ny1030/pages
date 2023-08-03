@@ -5,7 +5,28 @@
     <link>https://ny1030.github.io/pages/posts/</link>
     <description>Recent content in Posts on ny1030.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 20 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/posts/index.xml" rel="self" type="application/rss+xml" />
+    <language>ja</language>
+    <lastBuildDate>Thu, 03 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWSリソースの移行をFormer2で実施</title>
+      <link>https://ny1030.github.io/pages/posts/engineering/aws%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E7%A7%BB%E8%A1%8C%E3%82%92former2%E3%81%A7%E5%AE%9F%E6%96%BD/</link>
+      <pubDate>Thu, 03 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/posts/engineering/aws%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E7%A7%BB%E8%A1%8C%E3%82%92former2%E3%81%A7%E5%AE%9F%E6%96%BD/</guid>
+      <description>Background 本番環境だけ作っていたシステムがあり、DBMSなどの大幅なバージョンアップを計画しており、流石にテストが必要ということで、検証環境を別AWSアカウントに作ることになった。 EC2, RDSなどのリソースしかない簡単なスタックだが、SGの設定なども移行するとなると割と面倒なので、既存のリソースを使った方法で楽に作れないかを模索。
+以下のFormer2という既存のリソースからCloudFormationやTerraformのコードを生成するツールがあることを発見。 https://github.com/iann0036/former2
+Former2の使用 以下のWebサイトで自身のAWSアカウントのクレデンシャルなどを登録すると、SDK APIでリソースを解析してテンプレートを生成してくれる模様 https://former2.com/#
+ただ、流石に上記のサイトにクレデンシャルを登録するのは気が引けるので、Dockerを利用してスタンドアロンでFormer2を使う方法を試した。
+Former2（スタンドアロン版）の使い方 以下リポジトリをクローンする https://github.com/iann0036/former2
+rootディレクトリで docker compose up -d でビルドおよび起動をする
+127.0.0.1 をブラウザで開くと、Former2が表示される
+案内の通り、Chrome拡張機能をインストール https://chrome.google.com/webstore/detail/former2-helper/fhejmeojlbhfhjndnkkleooeejklmigi
+解析対象のリソースがあるAWSのクレデンシャルを入力
+Cloud Formation のパラメータを入力、とりあえずはここは未設定 最後にここの画面の緑色の Scan ボタンを押すとスキャンが始まる、不足している権限があると都度ポップアップで表示される。 また右上にリージョンの設定があり、デフォルトではバージニア北部になっているので要確認。 スキャンの途中でサイドバーからRDSを見てみると すげえ！！ちゃんと表示されてる。 Describeの内容を表示してるだけなんだけど、自分の手元でこうやって一覧を見れるのはテンションが上がる。
+気になったところ スキャンする際に全てのリソースがスキャンされるのか？ 全てをスキャンするのは便利であるものの、自身のM1 MacBookProだと、10分経過したあたりでブラウザが一度ハングした。全てスキャンした後の画面ではフィルタの機能などはあるのはわかるが、スキャンする前に特定のリソースをスキャンできないのか？
+スキャンした情報は永続化できる？ Dockerプロセスを停止=&amp;gt;起動して試したが、スキャンした情報は残ってたので永続化はされてそう。</description>
+    </item>
+    
     <item>
       <title>Microsoft SQL Serverのパフォーマンス解析</title>
       <link>https://ny1030.github.io/pages/posts/engineering/microsoft-sql-server%E3%81%AE%E3%83%91%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%B3%E3%82%B9%E8%A7%A3%E6%9E%90/</link>
