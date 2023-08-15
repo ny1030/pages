@@ -72,7 +72,7 @@ from dotenv import load_dotenv
 import botocore
 import os
 
-# .envファイルから環境変数（AWSクレデンシャル情報）を読み込む
+# .envファイルから環境変数を読み込む
 load_dotenv()
 source_account_access_key = os.getenv("SOURCE_ACCESS_KEY")
 source_account_secret_key = os.getenv("SOURCE_SECRET_KEY")
@@ -80,57 +80,48 @@ dest_account_access_key = os.getenv("DEST_ACCESS_KEY")
 dest_account_secret_key = os.getenv("DEST_SECRET_KEY")
 
 # INPUT情報
-source_security_group_id = 'sg-xxx'
+source_security_group_id = 'sg-xxxxx'
 source_region = 'ap-northeast-1'
-dest_security_group_name = 'security-group-xxx'
+dest_security_group_name = 'security-group-sample'
 dest_security_group_description = 'Created by SDK'
 dest_region = 'ap-northeast-1'
-dest_vpc_id = 'vpc-xxxxx'
-
-  
+dest_vpc_id = 'vpc-xxxxxxx'
 
 # 元のアカウントからSecurity Group情報を取得
 source_ec2 = boto3.client('ec2', aws_access_key_id=source_account_access_key, aws_secret_access_key=source_account_secret_key, region_name=source_region)
 response = source_ec2.describe_security_groups(GroupIds=[source_security_group_id])
 source_security_group_info = response['SecurityGroups'][0]
-
 # 目的のアカウントでSecurity Groupを作成
 dest_ec2 = boto3.client('ec2', aws_access_key_id=dest_account_access_key, aws_secret_access_key=dest_account_secret_key, region_name=dest_region)
 response = dest_ec2.create_security_group(
-GroupName=dest_security_group_name,
-Description=dest_security_group_description,
-VpcId=dest_vpc_id
+    GroupName=dest_security_group_name,
+    Description=dest_security_group_description,
+    VpcId=dest_vpc_id
 )
-
 
 for rule in source_security_group_info['IpPermissions']:
-modified_rule = rule.copy() # ルールをコピーして編集
-if 'UserIdGroupPairs' in modified_rule:
-# 移行先に存在しないセキュリティグループを除外する
-modified_rule['UserIdGroupPairs'] = [
-pair for pair in modified_rule['UserIdGroupPairs']
-if pair.get('GroupId') == response['GroupId'] # 移行先セキュリティグループに対するルールのみ残す
-]
-
-try:
-if modified_rule.get('IpRanges') or modified_rule.get('Ipv6Ranges') or modified_rule.get('UserIdGroupPairs'):
-
-# ルールに許可するエントリが存在する場合のみ処理を実行
-dest_ec2.authorize_security_group_ingress(
-GroupId=response['GroupId'],
-IpPermissions=[modified_rule]
-)
-
-except botocore.exceptions.ClientError as e:
-error_code = e.response['Error']['Code']
-if error_code == 'InvalidPermission.Duplicate':
-print("Rule already exists in the destination security group. Skipping.")
-
-elif error_code == 'DependencyViolation':
-print("Dependency violation. Skipping rule with source SG:", modified_rule.get('UserIdGroupPairs'))
-
-else:
-print("Error:", e.response['Error']['Message'])
+    modified_rule = rule.copy()  # ルールをコピーして編集
+    if 'UserIdGroupPairs' in modified_rule:
+        # 移行先に存在しないセキュリティグループを除外する
+        modified_rule['UserIdGroupPairs'] = [
+            pair for pair in modified_rule['UserIdGroupPairs']
+            if pair.get('GroupId') == response['GroupId']  # 移行先セキュリティグループに対するルールのみ残す
+        ]
+    try:
+        if modified_rule.get('IpRanges') or modified_rule.get('Ipv6Ranges') or modified_rule.get('UserIdGroupPairs'):
+            # ルールに許可するエントリが存在する場合のみ処理を実行
+            dest_ec2.authorize_security_group_ingress(
+                GroupId=response['GroupId'],
+                IpPermissions=[modified_rule]
+            )
+    except botocore.exceptions.ClientError as e:
+        error_code = e.response['Error']['Code']
+        if error_code == 'InvalidPermission.Duplicate':
+            print("Rule already exists in the destination security group. Skipping.")
+        elif error_code == 'DependencyViolation':
+            print("Dependency violation. Skipping rule with source SG:", modified_rule.get('UserIdGroupPairs'))
+        else:
+            print("Error:", e.response['Error']['Message'])
 
 print("Security Group migration completed.")
 ```
