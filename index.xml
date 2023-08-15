@@ -24,7 +24,11 @@ rootディレクトリで docker compose up -d でビルドおよび起動をす
 解析対象のリソースがあるAWSのクレデンシャルを入力
 Cloud Formation のパラメータを入力、とりあえずはここは未設定 最後にここの画面の緑色の Scan ボタンを押すとスキャンが始まる、不足している権限があると都度ポップアップで表示される。 また右上にリージョンの設定があり、デフォルトではバージニア北部になっているので要確認。 スキャンの途中でサイドバーからRDSを見てみると すげえ！！ちゃんと表示されてる。 Describeの内容を表示してるだけなんだけど、自分の手元でこうやって一覧を見れるのはテンションが上がる。
 気になったところ スキャンする際に全てのリソースがスキャンされるのか？ 全てをスキャンするのは便利であるものの、自身のM1 MacBookProだと、10分経過したあたりでブラウザが一度ハングした。全てスキャンした後の画面ではフィルタの機能などはあるのはわかるが、スキャンする前に特定のリソースをスキャンできないのか？
-スキャンした情報は永続化できる？ Dockerプロセスを停止=&amp;gt;起動して試したが、スキャンした情報は残ってたので永続化はされてそう。</description>
+調べた＆使ってみた結果、出来なさそう。なのでリソースが沢山ある場合はスキャンに数時間かかることと、キャッシュされてない状態で開いた際にリソース情報のロードに時間を要することは念頭に置いて使った方がいい。
+スキャンした情報は永続化できる？ Dockerプロセスを停止=&amp;gt;起動して試したが、スキャンした情報は残ってたので永続化はされてそう。ただし、Former2起動直後はリソース情報をロード中で、何も出てこないように見えるので注意。
+テンプレート作成可能なリソースタイプ EC2やRDSなど基本的なサービスは対応しているが、以下のダッシュボードから確認した限りだとSecurity Groupなどは作成できない。 SecurityGroupに色んなルールを追加している場合は移行がめんどかったりするので、痒い所に手が届かない感じはする。
+自分はChatGPTの力を借りて、SecurityGroupのルールを別アカウントに移行してくれるPythonスクリプトを作成した。
+import boto3 from dotenv import load_dotenv import botocore import os # .envファイルから環境変数（AWSクレデンシャル情報）を読み込む load_dotenv() source_account_access_key = os.getenv(&amp;#34;SOURCE_ACCESS_KEY&amp;#34;) source_account_secret_key = os.getenv(&amp;#34;SOURCE_SECRET_KEY&amp;#34;) dest_account_access_key = os.getenv(&amp;#34;DEST_ACCESS_KEY&amp;#34;) dest_account_secret_key = os.</description>
     </item>
     
     <item>
