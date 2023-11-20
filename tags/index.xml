@@ -5,6 +5,34 @@
     <link>https://ny1030.github.io/pages/tags/</link>
     <description>Recent content in Tags on ny1030.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja</language><atom:link href="https://ny1030.github.io/pages/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>ja</language>
+    <lastBuildDate>Mon, 20 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWS</title>
+      <link>https://ny1030.github.io/pages/tags/aws/</link>
+      <pubDate>Mon, 20 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/tags/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Operation</title>
+      <link>https://ny1030.github.io/pages/tags/operation/</link>
+      <pubDate>Mon, 20 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/tags/operation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Snippet</title>
+      <link>https://ny1030.github.io/pages/tags/snippet/</link>
+      <pubDate>Mon, 20 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/tags/snippet/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

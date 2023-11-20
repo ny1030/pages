@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Snippet on ny1030.github.io</title>
+    <link>https://ny1030.github.io/pages/tags/snippet/</link>
+    <description>Recent content in Snippet on ny1030.github.io</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Mon, 20 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://ny1030.github.io/pages/tags/snippet/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWS CLI スニペット集</title>
+      <link>https://ny1030.github.io/pages/posts/engineering/aws-cli-%E3%82%B9%E3%83%8B%E3%83%9A%E3%83%83%E3%83%88%E9%9B%86/</link>
+      <pubDate>Mon, 20 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://ny1030.github.io/pages/posts/engineering/aws-cli-%E3%82%B9%E3%83%8B%E3%83%9A%E3%83%83%E3%83%88%E9%9B%86/</guid>
+      <description>ユースケース別 Operation（運用） RDS_特定の認証局証明書を利用しているインスタンスの列挙 WIP RDS_利用可能な認証局証明書の確認（RDS for PostgreSQL） 結果が大量にあるため、下記例では --engine で RDS for PostgreSQL のみに絞っている aws rds describe-db-engine-versions --engine postgres | jq -r &amp;#39;.DBEngineVersions[] | [.Engine, .EngineVersion, .SupportedCACertificateIdentifiers] | @csv &amp;#39; </description>
+    </item>
+    
+  </channel>
+</rss>
